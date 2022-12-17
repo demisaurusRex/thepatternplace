@@ -1,2 +1,65 @@
-<h1>Patterns#show</h1>
-<p>Find me in app/views/patterns/show.html.erb</p>
+<div class="show-pattern">
+  <div style="max-width: 80rem;" class="container mt-5">
+  <div class="d-flex m-2">
+    <%= link_to '↩ Return to search', patterns_path , class: 'btn btn-secondary'%>
+  </div>
+  <div class="card container p-2">
+    <h2 class="card-title mx-auto"><%= @pattern.title %></h2>
+    <hr/>
+    <div class="row d-flex justify-content-center">
+      <div class="col d-flex justify-content-center">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @pattern.image.each_with_index do |image, index| %>
+              <% if index == 0 %>
+                <div class="carousel-item active">
+                  <%= cl_image_tag image.key,
+                      class: "d-block w-100",
+                      width: 500,
+                      height: 700,
+                      crop: :fit %>
+                </div>
+              <% else %>
+                <div class="carousel-item">
+                  <%= cl_image_tag image.key,
+                      class: "d-block w-100",
+                      width: 500,
+                      height: 700,
+                      crop: :fit %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+             <i class="fa-solid fa-circle-chevron-left"></i>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <i class="fa-solid fa-circle-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="col-7">
+        <ul class = "list-group list-group-flush ">
+          <h4 class="card-title my-2"><strong>Designer: </strong>  <%= @pattern.user.email %></h4>
+
+          <li class="list-group-item p-0 my-2"><%= @pattern.description %></li>
+          <li class="list-group-item p-0 my-2"><strong>Price: </strong>$<%= @pattern.price %> </li>
+          <div>
+            <%= cl_image_tag @pattern.sizing.key,
+              class: "rounded d-block mx-auto my-2",
+              width: 400,
+              crop: :fit %>
+          </div>
+          <div>
+            <%= cl_image_tag @pattern.fabric_usage.key,
+              class: "rounded d-block mx-auto my-2",
+              width: 400,
+              crop: :fit %>
+          </div>
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
