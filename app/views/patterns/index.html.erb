@@ -1,0 +1,23 @@
+<div class="index-patterns">
+  <h1 class = "text-center heading">Available Patterns</h1>
+
+  <ul class = "list-group">
+    <div class="container">
+        <div class="d-flex justify-content-between flex-wrap">
+          <% @patterns.each do |pattern| %>
+            <div class="card each-card" style="width: 19rem">
+              <%= image_tag 'heart-top.jpeg', class: 'card-img-top img-top' %>
+              <div class="card-body">
+                <li class="list-group-item"><strong>Title: </strong>  <%= pattern.title %></li>
+                <li class="list-group-item"><strong>Price: </strong>  $<%= pattern.price %></li>
+                <%= link_to 'More info', patterns_show_path , class: 'btn btn-primary  bottom-link-index' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  </ul>
+
+
+
+</div>
