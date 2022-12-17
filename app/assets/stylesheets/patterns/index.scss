@@ -1,0 +1,27 @@
+.index-patterns{
+
+  .heading {
+    background-color: $blue;
+  }
+
+
+
+  .each-card{
+    min-height: 380px;
+    max-height: 500px;
+    margin-bottom: 20px;
+  }
+
+  .img-top{
+    width: 100%;
+    height: 64%;
+  }
+
+  .bottom-link-index{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width:100%;
+  }
+
+}
