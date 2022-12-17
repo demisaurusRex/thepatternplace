@@ -10,9 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_15_094445) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_17_000920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "instructions", force: :cascade do |t|
+    t.bigint "pattern_id", null: false
+    t.text "description"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pattern_id"], name: "index_instructions_on_pattern_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "pattern_id", null: false
+    t.decimal "price_paid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pattern_id"], name: "index_orders_on_pattern_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "patterns", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "difficulty"
+    t.integer "price"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_patterns_on_user_id"
+  end
+
+  create_table "purchased_instructions", force: :cascade do |t|
+    t.bigint "orders_id", null: false
+    t.bigint "instructions_id", null: false
+    t.integer "position"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instructions_id"], name: "index_purchased_instructions_on_instructions_id"
+    t.index ["orders_id"], name: "index_purchased_instructions_on_orders_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_reviews_on_order_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +77,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_094445) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "instructions", "patterns"
+  add_foreign_key "orders", "patterns"
+  add_foreign_key "orders", "users"
+  add_foreign_key "patterns", "users"
+  add_foreign_key "purchased_instructions", "instructions", column: "instructions_id"
+  add_foreign_key "purchased_instructions", "orders", column: "orders_id"
+  add_foreign_key "reviews", "orders"
+  add_foreign_key "reviews", "users"
 end
