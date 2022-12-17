@@ -1,2 +1,12 @@
-<h1>Patterns#index</h1>
-<p>Find me in app/views/patterns/index.html.erb</p>
+<div class="index-patterns">
+  <h1 class = "text-center heading">Available Patterns</h1>
+</div>
+
+
+
+
+<h1><%= @patterns.first.title %></h1>
+<h1><%= @patterns.first.description %></h1>
+<h1><%= @patterns.first.price %></h1>
+<h1><%= @patterns.first.difficulty %></h1>
+<h1><%= @patterns.first.user.email %></h1>
