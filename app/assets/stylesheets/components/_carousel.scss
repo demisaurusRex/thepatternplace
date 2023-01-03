@@ -1,0 +1,7 @@
+.carousel-control-prev, .carousel-control-next {
+  color: $navy;
+  font-size: 2rem;
+  &:hover, &:focus, &:active, &:visited, &:link {
+    color: $navy;
+  }
+}
