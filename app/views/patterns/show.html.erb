@@ -6,7 +6,7 @@
   <div class="card container p-2">
     <h2 class="card-title mx-auto"><%= @pattern.title %></h2>
     <hr/>
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center" data-controller="show-patterns">
       <div class="col d-flex justify-content-center">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -44,20 +44,21 @@
 
           <li class="list-group-item p-0 my-2"><%= @pattern.description %></li>
           <li class="list-group-item p-0 my-2"><strong>Price: </strong>$<%= @pattern.price %> </li>
-          <div>
+          <div data-show-patterns-target="sizing">
             <%= cl_image_tag @pattern.sizing.key,
               class: "rounded d-block mx-auto my-2",
               width: 400,
               crop: :fit %>
           </div>
-          <div>
+          <button class="btn btn-light border border-dark w400" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
+            Fabric requirements
+          </button>
+          <div class="hidden" data-show-patterns-target="fabric">
             <%= cl_image_tag @pattern.fabric_usage.key,
               class: "rounded d-block mx-auto my-2",
               width: 400,
               crop: :fit %>
           </div>
-
-
         </ul>
       </div>
     </div>
