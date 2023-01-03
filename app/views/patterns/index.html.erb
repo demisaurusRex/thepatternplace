@@ -1,6 +1,15 @@
 <div class="index-patterns">
   <h1 class = "text-center heading">Available Patterns</h1>
 
+  
+  <%= form_with url: patterns_path, method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a pattern"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
   <ul class = "list-group">
     <div class="container">
         <div class="d-flex justify-content-between flex-wrap">
