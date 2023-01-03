@@ -54,6 +54,8 @@ seed_images.each_with_index do |seed_image, index|
     content_type: "image/png"
   )
 end
+# test method hello world!
+
 
 
 # seed 1 image http://res.cloudinary.com/dhnpqzuip/image/upload/v1671241308/dwhoyitivawract6dsih.jpg
