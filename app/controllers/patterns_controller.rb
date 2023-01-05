@@ -1,6 +1,10 @@
 class PatternsController < ApplicationController
   def index
-    @patterns = Pattern.all
+    if params[:query].present?
+      @patterns = Pattern.where("title ILIKE :query OR description ILIKE :query", query: "%#{params[:query]}%")
+    else
+      @patterns = Pattern.all
+    end
   end
 
   def show
