@@ -59,6 +59,12 @@
               width: 400,
               crop: :fit %>
           </div>
+          <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id) %>
+          <%# make a block if a pattern is already purchased
+
+            make a block if a pattern is in the shopping cart
+
+            make a block if the user is not logged in %>
         </ul>
       </div>
     </div>
