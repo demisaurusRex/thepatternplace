@@ -1,0 +1,14 @@
+
+<%= simple_form_for(@pattern) do |f| %>
+
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <div class="images">
+    <%= form.label :images%>
+    <%= form.file_field :images, :multiple => true %>
+  </div>
+  <%= f.input :images, as: :file %>
+  <%= f.input :difficulty, collection: ["easy", "medium", "hard"] %>
+  <%= f.submit  class: "btn btn-outline-primary"%>
+  <% end %>

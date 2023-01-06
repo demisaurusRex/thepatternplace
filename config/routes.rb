@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'patterns/index'
   get 'patterns/show'
-  devise_for :users
+  get 'dashboard', to: 'pages#dashboard'
   root to: "pages#home"
-  resources :patterns
-
+  resources :patterns do
+    resources :instructions
+  end
 end
