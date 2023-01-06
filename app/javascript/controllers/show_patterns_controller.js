@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="show-patterns"
 export default class extends Controller {
-  static targets = ["sizing", "fabric", "fabricbutton"]
+  static targets = ["sizing", "fabric", "fabricbutton", "sizingbutton"]
   connect() {
     console.log("loaded")
   }
@@ -14,7 +14,6 @@ export default class extends Controller {
   }
 
   showFabric() {
-    this.fabricbuttonTarget.classList.toggle("border-bottom-0")
     this.fabricTarget.classList.toggle("hidden")
     console.log("clicked")
   }
