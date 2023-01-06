@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :patterns
   has_many :orders
   has_many :reviews
+  has_many :line_items, dependent: :destroy
 end
