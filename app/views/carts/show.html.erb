@@ -1,0 +1,29 @@
+<h2>Cart show</h2>
+<ul>
+  <% @cart.line_items.each do |line_item| %>
+    <li>Item: <%= line_item.pattern.title %>
+    / Price: <%= number_to_currency(line_item.pattern.price) %>
+    </li>
+    <ul>
+      <li>
+        <%= link_to "Remove item", line_item_path(line_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      </li>
+    </ul>
+    #
+  <% end %>
+</ul>
+<h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
+
+<%=
+  button_to "Checkout",
+  checkout_cart_path,
+  :data => {turbo_confirm: "Are you sure?"}
+%>
+
+<br>
+
+<%=
+  link_to "Empty cart", cart_path(@current_cart),
+  method: :delete,
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
