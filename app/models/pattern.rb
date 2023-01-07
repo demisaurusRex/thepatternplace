@@ -1,5 +1,6 @@
 class Pattern < ApplicationRecord
   belongs_to :user
+  has_many :line_items, dependent: :destroy
   validates :difficulty,
             acceptance:
             { accept: ["easy", "medium", "hard"] }
