@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 <div class="body-container">
   <div class="card m-0 w-100">
+=======
+<div class="patterns-show">
+
+
+  <div class="card m-0 w-100">
+
+>>>>>>> master
     <div class="pattern-title">
       <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
     </div>
@@ -57,6 +65,10 @@
                 <i class="upload-icon"></i><i class="file-dock-icon"></i><i class="print-icon"></i>
               </div>
             </div>
+<<<<<<< HEAD
+=======
+            <li class="list-group-item p-0 my-2"><strong>Price: </strong>$<%= @pattern.price %> </li>
+>>>>>>> master
             <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
               <div>
                 <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
@@ -83,6 +95,10 @@
             </div>
           </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
           <%# make a block if a pattern is already purchased
 
             make a block if a pattern is in the shopping cart
@@ -91,4 +107,29 @@
         </ul>
       </div>
     </div>
+<<<<<<< HEAD
+=======
+    <div class="pattern_heading">
+  <h2>Reviews</h2>
+
+    <% if @ordered_pattern %>
+      <% if @ordered_pattern.reviews.size < 1%>
+        <%= link_to 'Add a review', new_pattern_review_path(@pattern), class: 'btn btn-primary btn-lg btn-block', style: "width:100%;" %>
+      <% end %>
+    <% end %>
+  <ul class="list-group">
+  <% @reviews.each do |review| %>
+    <li class="list-group-item">
+    <strong><%= "#{review.user.email}: " %></strong><%= review.content %>
+    <% if review.user == current_user %>
+      <%= link_to 'Edit', edit_pattern_review_path(@pattern, review) %>
+      <%= link_to 'Delete', review_path(review), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+    <% end %>
+    </li>
+
+  <% end %>
+  </ul>
+</div>
+
+>>>>>>> master
 </div>

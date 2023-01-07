@@ -9,10 +9,15 @@ class PatternsController < ApplicationController
 
   def show
     @pattern = Pattern.find(params[:id])
+    @ordered_pattern = @pattern.orders.find_by(user: current_user)
+    @reviews = @pattern.reviews
   end
 
+<<<<<<< HEAD
   def show_instructions
     @pattern = Pattern.find(params[:id])
     @instructions = @pattern.instructions
   end
+=======
+>>>>>>> master
 end
