@@ -10,4 +10,5 @@ class Pattern < ApplicationRecord
   has_one_attached :pdf
   has_many :orders
   has_many :instructions
+  has_many :reviews, through: :orders
 end

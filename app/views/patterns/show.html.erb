@@ -1,93 +1,121 @@
-<div class="card m-0 w-100">
-  <div class="pattern-title">
-    <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
-  </div>
-  <div class="row d-flex justify-content-center main-container" data-controller="show-patterns">
-    <div class="col d-flex justify-content-center">
-      <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <% @pattern.image.each_with_index do |image, index| %>
-            <% if index == 0 %>
-              <div class="carousel-item active">
-                <%= cl_image_tag image.key,
-                    class: "d-block mx-auto carousel-image",
-                    height: 400,
-                    width: 500,
-                    crop: :fit %>
-              </div>
-            <% else %>
-              <div class="carousel-item">
-                <%= cl_image_tag image.key,
-                    class: "d-block mx-auto carousel-image",
-                    height: 400,
-                    width: 500,
-                    crop: :fit %>
-              </div>
+<div class="patterns-show">
+
+
+  <div class="card m-0 w-100">
+
+    <div class="pattern-title">
+      <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
+    </div>
+    <div class="row d-flex justify-content-center main-container" data-controller="show-patterns">
+      <div class="col d-flex justify-content-center">
+        <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @pattern.image.each_with_index do |image, index| %>
+              <% if index == 0 %>
+                <div class="carousel-item active">
+                  <%= cl_image_tag image.key,
+                      class: "d-block mx-auto carousel-image",
+                      height: 400,
+                      width: 500,
+                      crop: :fit %>
+                </div>
+              <% else %>
+                <div class="carousel-item">
+                  <%= cl_image_tag image.key,
+                      class: "d-block mx-auto carousel-image",
+                      height: 400,
+                      width: 500,
+                      crop: :fit %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <i class="fa-solid fa-circle-chevron-left"></i>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <i class="fa-solid fa-circle-chevron-right"></i>
+          </button>
+          <%= link_to '↩ Return to search', patterns_path , class: 'btn btn-secondary return-to-search-button'%>
+          <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: "btn btn-secondary add-to-cart-button" %>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <i class="fa-solid fa-circle-chevron-left"></i>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <i class="fa-solid fa-circle-chevron-right"></i>
-        </button>
-        <%= link_to '↩ Return to search', patterns_path , class: 'btn btn-secondary return-to-search-button'%>
-        <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: "btn btn-secondary add-to-cart-button" %>
+      </div>
+      <div class= "text-body">
+        <ul class = "list-group list-group-flush ">
+          <li class="list-group-item p-0 my-2"><%= @pattern.description %></li>
+          <div class="icons-body">
+            <div class="card-row">
+              <div>
+                <h4 class="card-title my-2"><strong>Difficulty level: </strong></h4>
+              </div>
+              <div class = "icon-row">
+                <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+              </div>
+            </div>
+            <div class="card-row">
+              <div>
+                <h4 class="card-title my-2"><strong>File inclusions: </strong></h4>
+              </div>
+              <div class = "icon-row">
+                <i class="upload-icon"></i><i class="file-dock-icon"></i><i class="print-icon"></i>
+              </div>
+            </div>
+            <li class="list-group-item p-0 my-2"><strong>Price: </strong>$<%= @pattern.price %> </li>
+            <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
+              <div>
+                <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
+              </div>
+                <i class="collapse-icon"></i>
+            </div>
+            <div class="hidden" data-show-patterns-target="fabric">
+              <%= cl_image_tag @pattern.fabric_usage.key,
+                class: "rounded d-block mx-auto my-2",
+                width: 400,
+                crop: :fit %>
+            </div>
+            <div class="card-row" data-action="click->show-patterns#showSizing" data-show-patterns-target="sizingbutton">
+              <div>
+                <h4 class="card-title my-2"><strong>Size chart </strong></h4>
+              </div>
+                <i class="collapse-icon"></i>
+            </div>
+            <div class="hidden" data-show-patterns-target="sizing">
+              <%= cl_image_tag @pattern.sizing.key,
+                class: "rounded d-block mx-auto my-2",
+                width: 400,
+                crop: :fit %>
+            </div>
+          </div>
+
+
+          <%# make a block if a pattern is already purchased
+
+            make a block if a pattern is in the shopping cart
+
+            make a block if the user is not logged in %>
+        </ul>
       </div>
     </div>
-    <div class= "text-body">
-      <ul class = "list-group list-group-flush ">
-        <li class="list-group-item p-0 my-2"><%= @pattern.description %></li>
-        <div class="icons-body">
-          <div class="card-row">
-            <div>
-              <h4 class="card-title my-2"><strong>Difficulty level: </strong></h4>
-            </div>
-            <div class = "icon-row">
-              <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
-            </div>
-          </div>
-          <div class="card-row">
-            <div>
-              <h4 class="card-title my-2"><strong>File inclusions: </strong></h4>
-            </div>
-            <div class = "icon-row">
-              <i class="upload-icon"></i><i class="file-dock-icon"></i><i class="print-icon"></i>
-            </div>
-          </div>
-          <li class="list-group-item p-0 my-2"><strong>Price: </strong>$<%= @pattern.price %> </li>
-          <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
-            <div>
-              <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
-            </div>
-              <i class="collapse-icon"></i>
-          </div>
-          <div class="hidden" data-show-patterns-target="fabric">
-            <%= cl_image_tag @pattern.fabric_usage.key,
-              class: "rounded d-block mx-auto my-2",
-              width: 400,
-              crop: :fit %>
-          </div>
-          <div class="card-row" data-action="click->show-patterns#showSizing" data-show-patterns-target="sizingbutton">
-            <div>
-              <h4 class="card-title my-2"><strong>Size chart </strong></h4>
-            </div>
-              <i class="collapse-icon"></i>
-          </div>
-          <div class="hidden" data-show-patterns-target="sizing">
-            <%= cl_image_tag @pattern.sizing.key,
-              class: "rounded d-block mx-auto my-2",
-              width: 400,
-              crop: :fit %>
-          </div>
-        </div>
+    <div class="pattern_heading">
+  <h2>Reviews</h2>
 
-        <%# make a block if a pattern is already purchased
+    <% if @ordered_pattern %>
+      <% if @ordered_pattern.reviews.size < 1%>
+        <%= link_to 'Add a review', new_pattern_review_path(@pattern), class: 'btn btn-primary btn-lg btn-block', style: "width:100%;" %>
+      <% end %>
+    <% end %>
+  <ul class="list-group">
+  <% @reviews.each do |review| %>
+    <li class="list-group-item">
+    <strong><%= "#{review.user.email}: " %></strong><%= review.content %>
+    <% if review.user == current_user %>
+      <%= link_to 'Edit', edit_pattern_review_path(@pattern, review) %>
+      <%= link_to 'Delete', review_path(review), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+    <% end %>
+    </li>
 
-          make a block if a pattern is in the shopping cart
+  <% end %>
+  </ul>
+</div>
 
-          make a block if the user is not logged in %>
-      </ul>
-    </div>
-  </div>
+</div>
