@@ -1,6 +1,6 @@
 // desktop view
 
-body {
+.body-container {
   margin: 0 auto;
   padding: 0;
   max-width: 600px;
@@ -42,12 +42,14 @@ body {
     position: absolute;
     bottom: 0px;
     left: 10px;
+    z-index: 2;
   }
 
   .add-to-cart-button {
     position: absolute;
     bottom: 0px;
     right: 10px;
+    z-index: 2;
   }
 
   .card-row {

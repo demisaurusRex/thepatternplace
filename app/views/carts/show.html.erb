@@ -1,29 +1,45 @@
-<h2>Cart show</h2>
-<ul>
+<div class="body-container">
+  <h2>Cart</h2>
   <% @cart.line_items.each do |line_item| %>
-    <li>Item: <%= line_item.pattern.title %>
-    / Price: <%= number_to_currency(line_item.pattern.price) %>
-    </li>
-    <ul>
-      <li>
-        <%= link_to "Remove item", line_item_path(line_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      </li>
-    </ul>
-    #
+    <div class="shadow p-3 mb-5 ml-3 mr-3 bg-white cart-item">
+      <div class="card-body">
+        <div class="d-flex justify-content-between w-100">
+          <div>
+            <%= cl_image_tag line_item.pattern.image[0].key,
+                  class: "d-block",
+                  height: 80,
+                  width: 80,
+                  crop: :fit %>
+          </div>
+          <div class="d-flex flex-column justify-content-around">
+            <h5 class="mb-0"><%= line_item.pattern.title %></h5>
+            <h5 class="mb-0"><%= number_to_currency(line_item.pattern.price) %></h5>
+          </div>
+          <div class="d-flex flex-row align-items-center">
+            <%= link_to line_item_path(line_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  do %>
+             <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
-<h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
+  <div class="d-flex flex-column align-items align-items-end">
+    <h3 class="text-end w-100" >Subtotal: <%= number_to_currency(@cart.sub_total) %></h3>
+    <%=
+      button_to "Checkout",
+      checkout_cart_path,
+      class: "btn btn-light rounded-pill shadow",
+      data: {turbo_confirm: "Are you sure?"}
+    %>
+    <%=
+    link_to "Empty cart", cart_path(@current_cart),
+    method: :delete,
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
+  </div>
 
-<%=
-  button_to "Checkout",
-  checkout_cart_path,
-  :data => {turbo_confirm: "Are you sure?"}
-%>
+  <br>
 
-<br>
 
-<%=
-  link_to "Empty cart", cart_path(@current_cart),
-  method: :delete,
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+</div>
