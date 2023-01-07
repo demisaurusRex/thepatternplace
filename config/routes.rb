@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   resources :patterns
+  get 'patterns/:id/instructions', to: "patterns#show_instructions", as: "pattern_instructions"
 
   get 'carts/show'
   get 'carts/:id' => "carts#show", as: "cart"

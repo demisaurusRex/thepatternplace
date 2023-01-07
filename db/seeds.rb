@@ -82,7 +82,7 @@ seed_images.each_with_index do |seed_image, index|
 end
 instructions = [
   {
-    pattern_id: 1,
+    pattern_id: 2,
     steps:
     [
         "First we will begin with constructing the back pieces. Take your back leg pieces and neaten centre back and inner leg edges separately. Sew the two darts on the back trouser piece. Press the darts towards the centre back. Apply the jet pocket opening interfacing as indicated on the Jet Pocket Template to the wrong side of the pants. Take your time to centre your interfacing over the dart points exactly. The fusing should extend 3.5cm either side of the dart points and 1.6cm above and below. Repeat for the other side.",
@@ -134,15 +134,17 @@ instructions = [
 ]
 
 instructions.each_with_index do |instruction, index|
-  instruction = Instruction.new(
-    pattern_id: instruction[:pattern_id],
-    description: instruction[:steps][index],
-    position: index + 1,
-  )
-  instruction.image.attach(
-      io: File.open("#{Rails.root}/seedimages/instructions_seed_images/pattern_2/#{index + 1}.png"),
-      filename: "image_2_#{index + 1}.png",
-      content_type: "image/png"
-  )
-  instruction.save
+  instruction[:steps].each_with_index do |step, step_index|
+    instruction = Instruction.new(
+      pattern_id: instruction[:pattern_id],
+      description: step,
+      position: step_index + 1,
+    )
+    instruction.image.attach(
+        io: File.open("#{Rails.root}/seedimages/instructions_seed_images/pattern_2/#{step_index + 1}.png"),
+        filename: "image_2_#{step_index + 1}.png",
+        content_type: "image/png"
+    )
+    instruction.save
+  end
 end

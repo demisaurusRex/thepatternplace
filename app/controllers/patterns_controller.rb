@@ -10,4 +10,9 @@ class PatternsController < ApplicationController
   def show
     @pattern = Pattern.find(params[:id])
   end
+
+  def show_instructions
+    @pattern = Pattern.find(params[:id])
+    @instructions = @pattern.instructions
+  end
 end
