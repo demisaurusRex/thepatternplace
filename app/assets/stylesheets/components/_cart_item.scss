@@ -1,0 +1,11 @@
+.cart-item {
+  border-radius: 20px;
+  height: 120px;
+  .card-body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

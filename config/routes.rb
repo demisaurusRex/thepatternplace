@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  get 'patterns/:id/instructions', to: "patterns#show_instructions", as: "pattern_instructions"
   resources :patterns do
     resources :reviews, only: [:new, :create, :edit, :update]
   end

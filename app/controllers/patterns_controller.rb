@@ -13,4 +13,8 @@ class PatternsController < ApplicationController
     @reviews = @pattern.reviews
   end
 
+  def show_instructions
+    @pattern = Pattern.find(params[:id])
+    @instructions = @pattern.instructions
+  end
 end
