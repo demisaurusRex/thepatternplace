@@ -48,8 +48,11 @@
               <div class = "icon-row">
                 <% if @pattern.difficulty == "easy" %>
                 <i class="difficulty-icon"></i>
+                <i class="difficulty-icon-light"></i>
+                <i class="difficulty-icon-light"></i>
                 <% elsif @pattern.difficulty == "medium" %>
                 <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+                <i class="difficulty-icon-light"></i>
                 <% elsif @pattern.difficulty == "hard" %>
                 <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
                 <% end %>
@@ -101,14 +104,17 @@
   <h2>Reviews</h2>
 
     <% if @ordered_pattern %>
-      <% if @ordered_pattern.reviews.size < 1%>
+
+      <% if !@ordered_pattern.review %>
         <%= link_to 'Add a review', new_pattern_review_path(@pattern), class: 'btn btn-primary btn-lg btn-block', style: "width:100%;" %>
       <% end %>
     <% end %>
   <ul class="list-group">
   <% @reviews.each do |review| %>
     <li class="list-group-item">
-    <strong><%= "#{review.user.email}: " %></strong><%= review.content %>
+    <% name = review.user.email %>
+    <% capitalize_name = name[0, name.index('@')].capitalize  %>
+    <strong><%= "#{capitalize_name}: " %></strong><%= review.content %>
     <% if review.user == current_user %>
       <%= link_to 'Edit', edit_pattern_review_path(@pattern, review) %>
       <%= link_to 'Delete', review_path(review), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>

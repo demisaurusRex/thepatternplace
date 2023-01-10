@@ -6,7 +6,7 @@
   <%= text_field_tag :query,
       params[:query],
       class: "form-control",
-      placeholder: "Find a pattern"
+      placeholder: "dress"
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
@@ -15,7 +15,7 @@
         <div class="d-flex justify-content-between flex-wrap">
           <% @patterns.each do |pattern| %>
             <div class="card each-card" style="width: 19rem">
-              <%= image_tag 'heart-top.jpeg', class: 'card-img-top img-top' %>
+              <%= cl_image_tag pattern.image[0].key, class: 'card-img-top img-top' %>
               <div class="card-body">
                 <li class="list-group-item"><strong>Title: </strong>  <%= pattern.title %></li>
                 <li class="list-group-item"><strong>Price: </strong>  $<%= pattern.price %></li>
