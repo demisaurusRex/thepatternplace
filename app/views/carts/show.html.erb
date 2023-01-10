@@ -16,7 +16,7 @@
             <h5 class="mb-0"><%= number_to_currency(line_item.pattern.price) %></h5>
           </div>
           <div class="d-flex flex-row align-items-center">
-            <%= link_to line_item_path(line_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  do %>
+            <%= link_to line_item_path(line_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}  do %>
              <i class="fas fa-trash-alt"></i>
             <% end %>
           </div>
@@ -30,12 +30,12 @@
       button_to "Checkout",
       checkout_cart_path,
       class: "btn btn-light rounded-pill shadow",
-      data: {turbo_confirm: "Are you sure?"}
+      data: {turbo_confirm: "Confirm purchase?"}
     %>
     <%=
     link_to "Empty cart", cart_path(@current_cart),
     method: :delete,
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    data: {turbo_method: :delete, turbo_confirm: "Proceed with empty cart?"}
     %>
   </div>
 
