@@ -34,7 +34,11 @@
             <i class="fa-solid fa-circle-chevron-right"></i>
           </button>
           <%= link_to '↩ Return to search', patterns_path , class: 'btn btn-secondary return-to-search-button'%>
-          <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: "btn btn-secondary add-to-cart-button" %>
+          <% unless Order.find_by(pattern_id: @pattern.id, user: current_user) || LineItem.find_by(pattern_id: @pattern.id, user: current_user) %>
+            <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: 'btn btn-secondary add-to-cart-button' %>
+          <% else %>
+            <div class="btn btn-secondary add-to-cart-button"> Already purchased/in cart</div>
+          <% end %>
         </div>
       </div>
       <div class= "text-body">
