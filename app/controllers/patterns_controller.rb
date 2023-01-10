@@ -13,11 +13,8 @@ class PatternsController < ApplicationController
     @reviews = @pattern.reviews
   end
 
-<<<<<<< HEAD
   def show_instructions
     @pattern = Pattern.find(params[:id])
     @instructions = @pattern.instructions
   end
-=======
->>>>>>> master
 end

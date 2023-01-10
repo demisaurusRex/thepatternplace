@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 <div class="body-container">
   <div class="card m-0 w-100">
-=======
-<div class="patterns-show">
-
-
-  <div class="card m-0 w-100">
-
->>>>>>> master
     <div class="pattern-title">
       <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
     </div>
@@ -54,7 +46,13 @@
                 <h4 class="card-title my-2"><strong>Difficulty level: </strong></h4>
               </div>
               <div class = "icon-row">
+                <% if @pattern.difficulty == "easy" %>
+                <i class="difficulty-icon"></i>
+                <% elsif @pattern.difficulty == "medium" %>
+                <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+                <% elsif @pattern.difficulty == "hard" %>
                 <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+                <% end %>
               </div>
             </div>
             <div class="card-row">
@@ -65,10 +63,6 @@
                 <i class="upload-icon"></i><i class="file-dock-icon"></i><i class="print-icon"></i>
               </div>
             </div>
-<<<<<<< HEAD
-=======
-            <li class="list-group-item p-0 my-2"><strong>Price: </strong>$<%= @pattern.price %> </li>
->>>>>>> master
             <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
               <div>
                 <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
@@ -95,10 +89,6 @@
             </div>
           </div>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
           <%# make a block if a pattern is already purchased
 
             make a block if a pattern is in the shopping cart
@@ -107,8 +97,6 @@
         </ul>
       </div>
     </div>
-<<<<<<< HEAD
-=======
     <div class="pattern_heading">
   <h2>Reviews</h2>
 
@@ -131,5 +119,4 @@
   </ul>
 </div>
 
->>>>>>> master
 </div>
