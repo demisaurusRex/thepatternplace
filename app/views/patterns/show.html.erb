@@ -72,30 +72,34 @@
                 <i class="upload-icon"></i><i class="file-dock-icon"></i><i class="print-icon"></i>
               </div>
             </div>
-            <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
-              <div>
-                <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
+            <% if @pattern.fabric_usage %>
+              <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
+                <div>
+                  <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
+                </div>
+                  <i class="collapse-icon"></i>
               </div>
-                <i class="collapse-icon"></i>
-            </div>
-            <div class="hidden" data-show-patterns-target="fabric">
-              <%= cl_image_tag @pattern.fabric_usage.key,
-                class: "rounded d-block mx-auto my-2",
-                width: 400,
-                crop: :fit %>
-            </div>
-            <div class="card-row" data-action="click->show-patterns#showSizing" data-show-patterns-target="sizingbutton">
-              <div>
-                <h4 class="card-title my-2"><strong>Size chart </strong></h4>
+              <div class="hidden" data-show-patterns-target="fabric">
+                <%= cl_image_tag @pattern.fabric_usage.key,
+                  class: "rounded d-block mx-auto my-2",
+                  width: 400,
+                  crop: :fit %>
               </div>
-                <i class="collapse-icon"></i>
-            </div>
-            <div class="hidden" data-show-patterns-target="sizing">
-              <%= cl_image_tag @pattern.sizing.key,
-                class: "rounded d-block mx-auto my-2",
-                width: 400,
-                crop: :fit %>
-            </div>
+            <% end %>
+            <% if @pattern.sizing %>
+              <div class="card-row" data-action="click->show-patterns#showSizing" data-show-patterns-target="sizingbutton">
+                <div>
+                  <h4 class="card-title my-2"><strong>Size chart </strong></h4>
+                </div>
+                  <i class="collapse-icon"></i>
+              </div>
+              <div class="hidden" data-show-patterns-target="sizing">
+                <%= cl_image_tag @pattern.sizing.key,
+                  class: "rounded d-block mx-auto my-2",
+                  width: 400,
+                  crop: :fit %>
+              </div>
+            <% end %>
           </div>
 
           <%# make a block if a pattern is already purchased
