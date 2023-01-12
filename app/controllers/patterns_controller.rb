@@ -50,7 +50,5 @@ class PatternsController < ApplicationController
 
   def pattern_params
     params.require(:pattern).permit(:title, :description, :price, :difficulty, image: [])
-    @ordered_pattern = @pattern.orders.find_by(user: current_user)
-    @reviews = @pattern.reviews
   end
 end
