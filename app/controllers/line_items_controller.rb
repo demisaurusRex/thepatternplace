@@ -1,5 +1,8 @@
 class LineItemsController < ApplicationController
   def create
+    if LineItem.find_by(pattern_id: @pattern.id, user: current_user)
+      redirect_to cart_path(current_cart)
+    end
     # Find associated product and current cart
     chosen_pattern = Pattern.find(params[:pattern_id])
     current_cart = @current_cart
