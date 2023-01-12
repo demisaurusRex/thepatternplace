@@ -9,9 +9,8 @@ class PatternsController < ApplicationController
 
   def show
     @pattern = Pattern.find(params[:id])
-    # @instruction = Instruction.new
-    # email = @pattern.user.email
-    # @username = email.match(/.*@/).to_s.chop.capitalize
+    @ordered_pattern = @pattern.orders.find_by(user: current_user)
+    @reviews = @pattern.reviews
   end
 
   def new

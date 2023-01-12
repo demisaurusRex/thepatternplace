@@ -107,13 +107,32 @@
             make a block if a pattern is in the shopping cart
 
             make a block if the user is not logged in %>
+        </ul>
+      </div>
+    </div>
+    <div class="pattern_heading">
+  <h2>Reviews</h2>
+
     <% if @ordered_pattern %>
 
       <% if !@ordered_pattern.review %>
         <%= link_to 'Add a review', new_pattern_review_path(@pattern), class: 'btn btn-primary btn-lg btn-block', style: "width:100%;" %>
       <% end %>
     <% end %>
+  <ul class="list-group">
+  <% @reviews.each do |review| %>
+    <li class="list-group-item">
+    <% name = review.user.email %>
+    <% capitalize_name = name[0, name.index('@')].capitalize  %>
+    <strong><%= "#{capitalize_name}: " %></strong><%= review.content %>
+    <% if review.user == current_user %>
+      <%= link_to 'Edit', edit_pattern_review_path(@pattern, review) %>
+      <%= link_to 'Delete', review_path(review), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+    <% end %>
+    </li>
 
+  <% end %>
+  </ul>
 </div>
 
 </div>
