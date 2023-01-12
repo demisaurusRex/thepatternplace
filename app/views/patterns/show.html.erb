@@ -97,81 +97,13 @@
             make a block if a pattern is in the shopping cart
 
             make a block if the user is not logged in %>
-        </ul>
-      </div>
-    </div>
-<<<<<<< HEAD
-    <div class= "text-body">
-      <ul class = "list-group list-group-flush ">
-        <li class="list-group-item p-0 my-2"><%= @pattern.description %></li>
-        <div class="icons-body">
-          <div class="card-row">
-            <div>
-              <h4 class="card-title my-2"><strong>Difficulty level: </strong></h4>
-            </div>
-            <div class = "icon-row">
-              <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
-            </div>
-          </div>
-          <div class="card-row">
-            <div>
-              <h4 class="card-title my-2"><strong>File inclusions: </strong></h4>
-            </div>
-            <div class = "icon-row">
-              <i class="upload-icon"></i><i class="file-dock-icon"></i><i class="print-icon"></i>
-            </div>
-          </div>
-          <li class="list-group-item p-0 my-2"><strong>Price: </strong>$<%= @pattern.price %> </li>
-          <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
-            <div>
-              <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
-            </div>
-              <i class="collapse-icon"></i>
-          </div>
-          <div class="hidden" data-show-patterns-target="fabric">
-            <%= cl_image_tag @pattern.photos[0].key,
-              class: "rounded d-block mx-auto my-2",
-              width: 400,
-              crop: :fit %>
-          </div>
-          <div class="card-row" data-action="click->show-patterns#showSizing" data-show-patterns-target="sizingbutton">
-            <div>
-              <h4 class="card-title my-2"><strong>Size chart </strong></h4>
-            </div>
-              <i class="collapse-icon"></i>
-          </div>
-          <div class="hidden" data-show-patterns-target="sizing">
-            <%= cl_image_tag @pattern.photos[0].key,
-              class: "rounded d-block mx-auto my-2",
-              width: 400,
-              crop: :fit %>
-          </div>
-        </div>
-=======
-    <div class="pattern_heading">
-  <h2>Reviews</h2>
->>>>>>> master
-
     <% if @ordered_pattern %>
 
       <% if !@ordered_pattern.review %>
         <%= link_to 'Add a review', new_pattern_review_path(@pattern), class: 'btn btn-primary btn-lg btn-block', style: "width:100%;" %>
       <% end %>
     <% end %>
-  <ul class="list-group">
-  <% @reviews.each do |review| %>
-    <li class="list-group-item">
-    <% name = review.user.email %>
-    <% capitalize_name = name[0, name.index('@')].capitalize  %>
-    <strong><%= "#{capitalize_name}: " %></strong><%= review.content %>
-    <% if review.user == current_user %>
-      <%= link_to 'Edit', edit_pattern_review_path(@pattern, review) %>
-      <%= link_to 'Delete', review_path(review), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
-    <% end %>
-    </li>
 
-  <% end %>
-  </ul>
 </div>
 
 </div>

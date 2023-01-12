@@ -9,7 +9,6 @@ class PatternsController < ApplicationController
 
   def show
     @pattern = Pattern.find(params[:id])
-<<<<<<< HEAD
     # @instruction = Instruction.new
     # email = @pattern.user.email
     # @username = email.match(/.*@/).to_s.chop.capitalize
@@ -34,27 +33,25 @@ class PatternsController < ApplicationController
     @pattern = pattern.find(params[:id])
     @pattern.update(pattern_params)
     @pattern.save
-    redirect_to dashboard_path
+    redirect_to patterns_path
   end
 
   def destroy
     @pattern = pattern.find(params[:id])
     @pattern.delete
-    redirect_to dashboard_path
-  end
-
-  private
-
-  def pattern_params
-    params.require(:pattern).permit(:title, :description, :price, :difficulty, photos: [])
-=======
-    @ordered_pattern = @pattern.orders.find_by(user: current_user)
-    @reviews = @pattern.reviews
+    redirect_to patterns_path
   end
 
   def show_instructions
     @pattern = Pattern.find(params[:id])
     @instructions = @pattern.instructions
->>>>>>> master
+  end
+
+  private
+
+  def pattern_params
+    params.require(:pattern).permit(:title, :description, :price, :difficulty, image: [])
+    @ordered_pattern = @pattern.orders.find_by(user: current_user)
+    @reviews = @pattern.reviews
   end
 end
