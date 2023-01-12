@@ -1,0 +1,9 @@
+<h1>Edit page</h1>
+
+<%= simple_form_for [@pattern,  @review] do |f| %>
+  <%= f.input :content , class: 'btn btn-outline-primary'%>
+  <br>
+  <%= f.submit 'Submit review', class: 'btn btn-primary' %>
+  <%= link_to 'exit', pattern_path(@pattern), class: 'btn btn-outline-primary' %>
+
+<% end %>

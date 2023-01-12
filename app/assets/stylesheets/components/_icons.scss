@@ -8,6 +8,16 @@
   display: inline-block;
 }
 
+.difficulty-icon-light {
+  background-image: image-url("difficulty_icon_light.svg");
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 0 0;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
 .file-dock-icon {
   background-image: image-url("file_dock_light.svg");
   background-repeat: no-repeat;
@@ -37,6 +47,27 @@
 }
 .collapse-icon {
   background-image: image-url("collapse_light.svg");
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 0 0;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+.trashcan-icon {
+  background-image: image-url("trashcan.svg");
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 0 0;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+
+.flower-icon {
+  background-image: image-url("flower.svg");
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 0 0;

@@ -1,6 +1,15 @@
 // desktop view
+.patterns-show {
+  h2{
+    color: black;
+    background: grey;
+    text-align: center;
+  }
+}
 
-body {
+
+
+.body-container {
   margin: 0 auto;
   padding: 0;
   max-width: 600px;
@@ -42,12 +51,14 @@ body {
     position: absolute;
     bottom: 0px;
     left: 10px;
+    z-index: 2;
   }
 
   .add-to-cart-button {
     position: absolute;
     bottom: 0px;
     right: 10px;
+    z-index: 2;
   }
 
   .card-row {
@@ -71,4 +82,5 @@ body {
     width: 400px;
     margin: 0 auto;
   }
+
 }

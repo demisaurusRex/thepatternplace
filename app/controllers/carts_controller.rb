@@ -19,13 +19,13 @@ class CartsController < ApplicationController
 
     session[:cart_id] = nil
 
-    redirect_to root_path
+    redirect_to patterns_path, notice: 'Your purchase is successfull'
   end
 
   def destroy
     @cart = @current_cart
     @cart.destroy
     session[:cart_id] = nil
-    redirect_to root_path
+    redirect_to patterns_path
   end
 end

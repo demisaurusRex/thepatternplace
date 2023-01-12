@@ -9,6 +9,7 @@ class PatternsController < ApplicationController
 
   def show
     @pattern = Pattern.find(params[:id])
+<<<<<<< HEAD
     # @instruction = Instruction.new
     # email = @pattern.user.email
     # @username = email.match(/.*@/).to_s.chop.capitalize
@@ -46,5 +47,14 @@ class PatternsController < ApplicationController
 
   def pattern_params
     params.require(:pattern).permit(:title, :description, :price, :difficulty, photos: [])
+=======
+    @ordered_pattern = @pattern.orders.find_by(user: current_user)
+    @reviews = @pattern.reviews
+  end
+
+  def show_instructions
+    @pattern = Pattern.find(params[:id])
+    @instructions = @pattern.instructions
+>>>>>>> master
   end
 end
