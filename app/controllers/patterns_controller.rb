@@ -22,7 +22,7 @@ class PatternsController < ApplicationController
     @pattern = Pattern.new(pattern_params)
     @pattern.user = current_user
     @pattern.save
-    redirect_to dashboard_path
+    redirect_to patterns_path
   end
 
   def edit
@@ -45,6 +45,6 @@ class PatternsController < ApplicationController
   private
 
   def pattern_params
-    params.require(:pattern).permit(:title, :description, :price, :difficulty, :images => [])
+    params.require(:pattern).permit(:title, :description, :price, :difficulty, photos: [])
   end
 end

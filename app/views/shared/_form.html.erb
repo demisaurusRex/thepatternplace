@@ -4,11 +4,20 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :price %>
-  <div class="images">
-    <%= form.label :images%>
-    <%= form.file_field :images, :multiple => true %>
-  </div>
-  <%= f.input :images, as: :file %>
-  <%= f.input :difficulty, collection: ["easy", "medium", "hard"] %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :difficulty,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: Pattern::DIFFICULTY_CATEGORIES %>
+  <%= f.input :instruction_format,
+            as: :check_boxes,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: Pattern::INSTRUCTION_CATEGORIES %>
   <%= f.submit  class: "btn btn-outline-primary"%>
   <% end %>

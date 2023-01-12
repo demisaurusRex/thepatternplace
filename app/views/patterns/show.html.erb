@@ -6,7 +6,7 @@
     <div class="col d-flex justify-content-center">
       <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <% @pattern.image.each_with_index do |image, index| %>
+          <% @pattern.photos.each_with_index do |image, index| %>
             <% if index == 0 %>
               <div class="carousel-item active">
                 <%= cl_image_tag image.key,
@@ -64,7 +64,7 @@
               <i class="collapse-icon"></i>
           </div>
           <div class="hidden" data-show-patterns-target="fabric">
-            <%= cl_image_tag @pattern.fabric_usage.key,
+            <%= cl_image_tag @pattern.photos[0].key,
               class: "rounded d-block mx-auto my-2",
               width: 400,
               crop: :fit %>
@@ -76,7 +76,7 @@
               <i class="collapse-icon"></i>
           </div>
           <div class="hidden" data-show-patterns-target="sizing">
-            <%= cl_image_tag @pattern.sizing.key,
+            <%= cl_image_tag @pattern.photos[0].key,
               class: "rounded d-block mx-auto my-2",
               width: 400,
               crop: :fit %>
