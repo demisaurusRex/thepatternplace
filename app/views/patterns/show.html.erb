@@ -72,7 +72,7 @@
                 <i class="upload-icon"></i><i class="file-dock-icon"></i><i class="print-icon"></i>
               </div>
             </div>
-            <% if @pattern.fabric_usage %>
+            <% if @pattern.fabric_usage == nil %>
               <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
                 <div>
                   <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
@@ -86,7 +86,7 @@
                   crop: :fit %>
               </div>
             <% end %>
-            <% if @pattern.sizing %>
+            <% if @pattern.sizing == nil %>
               <div class="card-row" data-action="click->show-patterns#showSizing" data-show-patterns-target="sizingbutton">
                 <div>
                   <h4 class="card-title my-2"><strong>Size chart </strong></h4>
