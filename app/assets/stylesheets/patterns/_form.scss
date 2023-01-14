@@ -6,7 +6,6 @@
 
 .category-item {
   flex: 0 0 30%;
-
 }
 
 .category-selector {
@@ -16,19 +15,20 @@
 
 .category-selector + label {
   display: block;
-  cursor: pointer;
+  cursor:pointer;
   box-sizing: border-box;
-  width: 100px;
+  width: 80px;
+  height: 60px;
   font-size: 12px;
   text-align: left;
   padding: 10px 10px 30px 10px;
   border: 1px solid #EAEAEA;
   border-radius: 4px;
-  background-color: white;
+  background-image: white;
 }
 
 .category-selector:checked + label {
-  color: white !important;
+  color: rgb(2, 2, 2) !important;
 }
 
 
@@ -38,7 +38,6 @@
 
 #pattern_instruction_format_print:checked + label {
   background-color: #fd9a1052;
-  border-color: #fd9a1052;
 }
 
 
@@ -48,7 +47,6 @@
 
 #pattern_instruction_format_interactive:checked + label {
   background-color: #fd9a1052;
-  border-color: #fd9a1052;
 }
 
 #pattern_difficulty_easy + label {
@@ -57,7 +55,6 @@
 
 #pattern_difficulty_easy:checked + label {
   background-color: #fd9a1052;
-  border-color: #fd9a1052;
 }
 
 
@@ -67,7 +64,6 @@
 
 #pattern_difficulty_medium:checked + label {
   background-color: #fd9a1052;
-  border-color: #fd9a1052;
 }
 
   #pattern_difficulty_hard + label {
@@ -76,5 +72,4 @@
 
   #pattern_difficulty_hard:checked + label {
     background-color: #fd9a1052;
-    border-color: #fd9a1052;
   }

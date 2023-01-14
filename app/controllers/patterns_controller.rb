@@ -49,6 +49,6 @@ class PatternsController < ApplicationController
   private
 
   def pattern_params
-    params.require(:pattern).permit(:title, :description, :price, :difficulty, image: [])
+    params.require(:pattern).permit(:title, :description, :price, :difficulty, :fabric_usage, :sizing, image: [], pdf: [])
   end
 end
