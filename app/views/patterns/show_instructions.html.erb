@@ -15,8 +15,10 @@
         <% end %>
 
         <div class="d-flex flex-wrap justify-content-center">
-          <% @order.customised_instructions.each do |customised_instructions|%>
-            <div class="card m-1" style="width: 10rem;"> Test </div>
+          <% @order.customised_instructions.each do |customised_instruction|%>
+            <%= link_to customised_instruction_path(customised_instruction) do%>
+              <div class="card m-1" style="width: 10rem;"> customised_instruction.name </div>
+            <% end %>
           <% end %>
         </div>
       </div>

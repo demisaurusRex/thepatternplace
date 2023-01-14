@@ -1,4 +1,17 @@
 class CustomisedInstructionsController < ApplicationController
+  def show
+    @customised_instruction = CustomisedInstruction.find(params[:id])
+  end
+
+  def show_steps
+    if params[:step].present?
+      @step = params[:step].to_i
+    else
+      @step = 1
+    end
+    @customised_instruction = CustomisedInstruction.find(params[:id])
+  end
+
   def create
     @order = Order.find(params[:order_id])
     @customised_instruction = CustomisedInstruction.new(customised_instruction_params)
