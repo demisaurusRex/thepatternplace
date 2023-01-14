@@ -1,0 +1,22 @@
+<div class="body-container">
+  <div class="card m-0 w-100">
+    <div class="pattern-title">
+      <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center">
+      <% @instructions.each do |instruction|%>
+        <%= link_to pattern_steps_path(step: instruction.position) do %>
+          <div class="card m-1" style="width: 10rem;">
+            <%= cl_image_tag instruction.image.key,
+                        class: "card-img-top img-top instructions-thumbnail",
+                        height: 300,
+                        crop: :fit %>
+            <ul class = "list-group">
+              <li class="list-group-item"><%= instruction.description[0..26] %>...</li>
+            </ul>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
