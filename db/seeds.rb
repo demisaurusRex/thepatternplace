@@ -93,82 +93,79 @@ seed_images = [
   }
 ]
 
+user_last = User.all.length
 patterns = [
   {
     title: "Vogue Misses Special Occasion Dress",
     description: "Dress is fitted through bust and hip with lined body, unlined sleeve and flounce, purchased bias tape to finish armhole edge, narrow hems and length and trim variations. B: Purchased trim.",
     difficulty: "easy",
-    price: 10,
-    user_id: 1
+    price: 10
   },
   {
     title: "Make by TFS - Cass Pant",
     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
     difficulty: "hard",
-    price: 22,
-    user_id: 1
+    price: 22
   },
   {
     title: "Brown Striped Pant",
     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
     difficulty: "easy",
-    price: 50,
-    user_id: 2
+    price: 50
   },
   {
     title: "Fancy Checked Warm Top",
     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
     difficulty: "hard",
-    price: 35,
-    user_id: 3
+    price: 35
   },
   {
     title: "Plain Black Pant",
     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
     difficulty: "hard",
-    price: 20,
-    user_id: 3
+    price: 20
   },
   {
     title: "Beach Shirt",
     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
     difficulty: "hard",
-    price: 22,
-    user_id: 1
+    price: 22
   },
   {
     title: "Woman Kurta top",
     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
     difficulty: "hard",
-    price: 15,
-    user_id: 4
+    price: 15
   },
   {
     title: "Crop Top Holly",
     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
     difficulty: "medium",
-    price: 22,
-    user_id: 4
+    price: 22
   },
   {
     title: "Comfy summer Dress",
     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
     difficulty: "easy",
-    price: 25,
-    user_id: 1
+    price: 25
   }
 ]
+
+puts 'patterns created'
 
 patterns.each do |pattern|
   pattern = Pattern.new(
     title: pattern[:title],
+    user_id: rand(1..user_last),
     description: pattern[:description],
-    difficulty: pattern[:difficulty],
+    difficulty: ["Easy", "Medium", "Hard"].sample,
     price: pattern[:price],
-    user_id: pattern[:user_id]
+    instruction_format: ["Print", "Interactive"].sample
   )
   pattern.save
 end
+
+puts 'patterns created'
 
 seed_images.each_with_index do |seed_image, index|
   pattern = Pattern.find(index + 1)
@@ -179,6 +176,7 @@ seed_images.each_with_index do |seed_image, index|
       content_type: "image/jpg"
     )
   end
+
   pattern.fabric_usage.attach(
     io: File.open(seed_image[:fabric]),
     filename: "fabric_#{index + 1}.jpg",
@@ -189,6 +187,9 @@ seed_images.each_with_index do |seed_image, index|
     content_type: "image/jpg"
   )
 end
+
+
+puts  'Adding Instructions'
 instructions = [
   {
     pattern_id: 2,
@@ -241,6 +242,8 @@ instructions = [
     ]
   }
 ]
+
+puts 'Instruction Added'
 
 instructions.each_with_index do |instruction, index|
   instruction[:steps].each_with_index do |step, step_index|
