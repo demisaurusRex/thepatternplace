@@ -1,0 +1,26 @@
+
+<%= simple_form_for(@pattern) do |f| %>
+
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :image, as: :file, input_html: { multiple: true } %>
+  <%= f.input :fabric_usage, as: :file %>
+  <%= f.input :sizing, as: :file %>
+  <%= f.input :pdf, as: :file, input_html: { multiple: true } %>
+  <%= f.input :difficulty,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: Pattern::DIFFICULTY_CATEGORIES %>
+  <%= f.input :instruction_format,
+            as: :check_boxes,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: Pattern::INSTRUCTION_CATEGORIES %>
+  <%= f.submit  class: "btn btn-outline-primary"%>
+  <% end %>

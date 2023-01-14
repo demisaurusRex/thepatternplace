@@ -13,8 +13,42 @@ class PatternsController < ApplicationController
     @reviews = @pattern.reviews
   end
 
+  def new
+    @pattern = Pattern.new
+  end
+
+  def create
+    @pattern = Pattern.new(pattern_params)
+    @pattern.user = current_user
+    @pattern.save
+    redirect_to patterns_path
+  end
+
+  def edit
+    @pattern = Pattern.find(params[:id])
+  end
+
+  def update
+    @pattern = pattern.find(params[:id])
+    @pattern.update(pattern_params)
+    @pattern.save
+    redirect_to patterns_path
+  end
+
+  def destroy
+    @pattern = pattern.find(params[:id])
+    @pattern.delete
+    redirect_to patterns_path
+  end
+
   def show_instructions
     @pattern = Pattern.find(params[:id])
     @instructions = @pattern.instructions
+  end
+
+  private
+
+  def pattern_params
+    params.require(:pattern).permit(:title, :description, :price, :difficulty, :fabric_usage, :sizing, image: [], pdf: [])
   end
 end
