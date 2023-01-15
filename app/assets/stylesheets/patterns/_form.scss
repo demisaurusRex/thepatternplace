@@ -20,15 +20,96 @@
   width: 80px;
   height: 60px;
   font-size: 12px;
-<<<<<<< Updated upstream
-  text-align: left;
-=======
   text-align: center;
->>>>>>> Stashed changes
-  padding: 10px 10px 30px 10px;
-  border: 1px solid #EAEAEA;
-  border-radius: 4px;
-  background-image: white;
+  padding: 50px 10px 0px;
+  border: none;
+  background-image: transparent;
+}
+
+.difficulty {
+  // .category-selector + label {
+  //   background-image: image-url("difficulty_icon_light.svg");
+  //   background-repeat: no-repeat;
+  //   background-position: center;
+  //   background-size: 20px;
+  // }
+
+  .category-item:nth-child(2) {
+    .category-selector + label {
+      background-image: image-url("difficulty_icon_light.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
+    }
+    .category-selector:checked + label {
+      background-image: image-url("difficulty_icon.svg");
+      background-repeat: no-repeat;
+      background-position: bottom 20px;
+      background-size: 20px;
+    }
+  }
+
+  .category-item:nth-child(3) {
+    .category-selector + label {
+      background-image: image-url("difficulty_icon_light.svg"), image-url("difficulty_icon_light.svg");
+      background-repeat: no-repeat, no-repeat;
+      background-position: bottom 17px right 19px, bottom 17px left 19px;
+      background-size: 20px, 20px;
+    }
+    .category-selector:checked + label {
+      background-image: image-url("difficulty_icon.svg"), image-url("difficulty_icon.svg");
+      background-repeat: no-repeat, no-repeat;
+      background-position: bottom 17px right 19px, bottom 17px left 19px;
+      background-size: 20px, 20px;
+    }
+  }
+
+  .category-item:nth-child(4) {
+    .category-selector + label {
+      background-image: image-url("difficulty_icon_light.svg"), image-url("difficulty_icon_light.svg"), image-url("difficulty_icon_light.svg");
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-position: bottom 17px right 9px, bottom 17px left 9px, bottom 17px right 30px;
+      background-size: 20px, 20px, 20px;
+    }
+    .category-selector:checked + label {
+      background-image: image-url("difficulty_icon.svg"), image-url("difficulty_icon.svg"), image-url("difficulty_icon.svg");
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-position: bottom 17px right 9px, bottom 17px left 9px, bottom 17px right 30px;
+      background-size: 20px, 20px, 20px;
+    }
+  }
+}
+
+.instruction {
+  .category-item:nth-child(2) {
+    .category-selector + label {
+      background-image: image-url("print_light.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 30px;
+    }
+    .category-selector:checked + label {
+      background-image: image-url("print_filled.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 30px;
+    }
+  }
+
+  .category-item:nth-child(3) {
+    .category-selector + label {
+      background-image: image-url("interactive_icon.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 25px;
+    }
+    .category-selector:checked + label {
+      background-image: image-url("interactive_icon_filled.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 25px;
+    }
+  }
 }
 
 .category-selector:checked + label {
@@ -40,40 +121,40 @@
   color: #000000;
 }
 
-#pattern_instruction_format_print:checked + label {
-  background-color: #fd9a1052;
-}
+// #pattern_instruction_format_print:checked + label {
+//   background-color: #fd9a1052;
+// }
 
 
 #pattern_instruction_format_interactive + label {
   color: #000000;
 }
 
-#pattern_instruction_format_interactive:checked + label {
-  background-color: #fd9a1052;
-}
+// #pattern_instruction_format_interactive:checked + label {
+//   background-color: #fd9a1052;
+// }
 
 #pattern_difficulty_easy + label {
   color: #000000;
 }
 
-#pattern_difficulty_easy:checked + label {
-  background-color: #fd9a1052;
-}
+// #pattern_difficulty_easy:checked + label {
+//   background-color: #fd9a1052;
+// }
 
 
 #pattern_difficulty_medium + label {
   color: #000000;
 }
 
-#pattern_difficulty_medium:checked + label {
-  background-color: #fd9a1052;
-}
+// #pattern_difficulty_medium:checked + label {
+//   background-color: #fd9a1052;
+// }
 
   #pattern_difficulty_hard + label {
     color: #000000;
   }
 
-  #pattern_difficulty_hard:checked + label {
-    background-color: #fd9a1052;
-  }
+  // #pattern_difficulty_hard:checked + label {
+  //   background-color: #fd9a1052;
+  // }
