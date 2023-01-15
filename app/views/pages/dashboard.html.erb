@@ -1,0 +1,91 @@
+<link href="app/assets/stylesheets/patterns/_show.scss" rel="stylesheet">
+<link href="app/assets/stylesheets/patterns/_index.scss" rel="stylesheet">
+<div class="container px-4 py-5">
+  <h1><%= @username %> Dashboard</h1>
+
+
+<div class="container px-4 py-5">
+  <h2 class="pb-2 border-bottom">Your Patterns for sale <%= link_to 'Add a new Pattern', new_pattern_path, class: , class: "btn btn-primary" %></h2>
+  <div class="d-flex flex-wrap">
+    <% @patterns_for_sale.each do |pattern| %>
+      <div class="card m-1" style="width: 18rem;">
+        <div class="card-body">
+         <%= cl_image_tag(pattern.image[0].key, width: 400, height: 300, crop: :fill) %>
+          <div class="card-row">
+            <div>
+              <h5 class="card-title"></strong> <%= pattern.title %></h5>
+            </div>
+          </div>
+          <div class="card-row">
+            <div class = "icon-row">
+              <% if pattern.difficulty == "Easy" %>
+              <i class="difficulty-icon"></i>
+              <i class="difficulty-icon-light"></i>
+              <i class="difficulty-icon-light"></i>
+              <% elsif pattern.difficulty == "Medium" %>
+              <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+              <i class="difficulty-icon-light"></i>
+              <% elsif pattern.difficulty == "Hard" %>
+              <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+              <% end %>
+            </div>
+            <div class = "icon-row">
+              <i class="interactive-icon"></i></i><i class="print-icon"></i>
+            </div>
+          </div>
+          <div class="card-row">
+            <div>
+              <p class="card-text"></strong> <%= pattern.description[0..30] %></p>
+            </div>
+          </div>
+          <div class="card-row">
+            <p class="card-text"></strong>$<%= pattern.price %></p>
+          </div>
+        </div>
+        <%= link_to 'delete', pattern_path(pattern), data: { turbo_confirm: 'Are you sure', turbo_method: :delete }, class: 'btn btn-danger' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container px-4 py-5">
+  <h2 class="pb-2 border-bottom">Patterns you purchased</h2>
+  <div class="d-flex flex-wrap">
+    <% @orders.each do |order| %>
+      <div class="card m-1" style="width: 18rem;">
+        <div class="card-body">
+         <%= cl_image_tag(order.pattern.image[0].key, width: 400, height: 300, crop: :fill) %>
+          <div class="card-row">
+            <div>
+              <h5 class="card-title"></strong> <%= order.pattern.title %></h5>
+            </div>
+          </div>
+          <div class="card-row">
+            <div class = "icon-row">
+              <% if order.pattern.difficulty == "Easy" %>
+              <i class="difficulty-icon"></i>
+              <i class="difficulty-icon-light"></i>
+              <i class="difficulty-icon-light"></i>
+              <% elsif order.pattern.difficulty == "Medium" %>
+              <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+              <i class="difficulty-icon-light"></i>
+              <% elsif order.pattern.difficulty == "Hard" %>
+              <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+              <% end %>
+            </div>
+            <div class = "icon-row">
+              <i class="interactive-icon"></i></i><i class="print-icon"></i>
+            </div>
+          </div>
+          <div class="card-row">
+            <div>
+              <p class="card-text"></strong> <%= order.pattern.description[0..30] %></p>
+            </div>
+          </div>
+          <%= link_to 'Go to pattern', pattern_path(order.pattern) , class: 'btn btn-primary  bottom-link-index' %>
+    <% end %>
+  </div>
+</div>
+
+
+</div>
