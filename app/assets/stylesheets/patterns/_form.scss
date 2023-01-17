@@ -44,7 +44,7 @@
     .category-selector:checked + label {
       background-image: image-url("difficulty_icon.svg");
       background-repeat: no-repeat;
-      background-position: bottom 20px;
+      background-position: center;
       background-size: 20px;
     }
   }
@@ -117,43 +117,43 @@
 }
 
 
-#pattern_instruction_format_print + label {
-  color: #000000;
-}
+// #pattern_instruction_format_print + label {
+//   color: #000000;
+// }
 
 // #pattern_instruction_format_print:checked + label {
 //   background-color: #fd9a1052;
 // }
 
 
-#pattern_instruction_format_interactive + label {
-  color: #000000;
-}
+// #pattern_instruction_format_interactive + label {
+//   color: #000000;
+// }
 
 // #pattern_instruction_format_interactive:checked + label {
 //   background-color: #fd9a1052;
 // }
 
-#pattern_difficulty_easy + label {
-  color: #000000;
-}
+// #pattern_difficulty_easy + label {
+//   color: #000000;
+// }
 
 // #pattern_difficulty_easy:checked + label {
 //   background-color: #fd9a1052;
 // }
 
 
-#pattern_difficulty_medium + label {
-  color: #000000;
-}
+// #pattern_difficulty_medium + label {
+//   color: #000000;
+// }
 
 // #pattern_difficulty_medium:checked + label {
 //   background-color: #fd9a1052;
 // }
 
-  #pattern_difficulty_hard + label {
-    color: #000000;
-  }
+//   #pattern_difficulty_hard + label {
+//     color: #000000;
+//   }
 
   // #pattern_difficulty_hard:checked + label {
   //   background-color: #fd9a1052;
