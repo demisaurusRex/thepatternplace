@@ -19,8 +19,13 @@
                       height: 800,
                       width: 500,
                       crop: :fit %>
-
                   <div class="step-description"><%= instruction.instruction.description %></div>
+                  <% if instruction.comment %>
+                    <div class="step-comment"><%=instruction.comment%></div>
+                  <% else %>
+                    <%= render partial: "step_comment", locals: {customised_instruction_step: instruction }%>
+                  <% end %>
+
                 </div>
               <% else %>
                 <div class="carousel-item">
@@ -33,6 +38,11 @@
                       width: 500,
                       crop: :fit %>
                   <div class="step-description"><%= instruction.instruction.description %></div>
+                  <% if instruction.comment %>
+                    <div class="step-comment"><%=instruction.comment%></div>
+                  <% else %>
+                    <%= render partial: "step_comment", locals: {customised_instruction_step: instruction }%>
+                  <% end %>
                 </div>
               <% end %>
             <% end %>

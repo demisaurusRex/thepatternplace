@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :customised_instructions, only: [:show, :destroy]
   get 'customised_instructions/:id/steps', to: "customised_instructions#show_steps", as: "customised_instruction_steps"
 
+  resources :customised_instruction_steps, only: [:edit, :update]
+
   get 'carts/show'
   get 'carts/:id' => "carts#show", as: "cart"
   post 'carts/checkout' => "carts#checkout", as: "checkout_cart"

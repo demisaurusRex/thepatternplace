@@ -1,0 +1,8 @@
+<%# <%= render partial: "footer" locals: {darkmode: false}%> %>
+
+<div>
+  <%= simple_form_for [customised_instruction_step] do |f| %>
+    <%= f.input :comment %>
+    <%= f.submit "Save comment", class: "btn btn-primary" %>
+  <% end %>
+</div>
