@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'customised_instructions/:id/steps', to: "customised_instructions#show_steps", as: "customised_instruction_steps"
 
   resources :customised_instruction_steps, only: [:edit, :update]
+  patch 'customised_instruction_steps/:id/category', to: "customised_instruction_steps#update_category"
+
 
   get 'carts/show'
   get 'carts/:id' => "carts#show", as: "cart"

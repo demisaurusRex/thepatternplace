@@ -1,6 +1,8 @@
 class CustomisedInstructionsController < ApplicationController
   def show
     @customised_instruction = CustomisedInstruction.find(params[:id])
+    @customised_instruction_steps = @customised_instruction.customised_instruction_steps.order('position ASC')
+    @customised_instruction_steps_by_category = @customised_instruction_steps.group_by(&:category)
   end
 
   def show_steps
@@ -9,7 +11,13 @@ class CustomisedInstructionsController < ApplicationController
     else
       @step = 1
     end
+    @category = params[:category] if params[:category].present?
     @customised_instruction = CustomisedInstruction.find(params[:id])
+    @customised_instruction_steps = @customised_instruction.customised_instruction_steps.order('position ASC')
+    customised_instruction_steps_by_category = @customised_instruction_steps.group_by(&:category)
+
+    @categories = customised_instruction_steps_by_category.keys
+    @customised_instruction_steps = customised_instruction_steps_by_category[@category] if @category
   end
 
   def create

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_14_040358) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_17_085739) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_14_040358) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category", default: "Uncategorised"
     t.index ["customised_instruction_id"], name: "index_customised_instruction_steps_on_customised_instruction_id"
     t.index ["instruction_id"], name: "index_customised_instruction_steps_on_instruction_id"
   end
@@ -72,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_14_040358) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category", default: "Uncategorised"
     t.index ["pattern_id"], name: "index_instructions_on_pattern_id"
   end
 
@@ -104,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_14_040358) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "instruction_format"
     t.index ["user_id"], name: "index_patterns_on_user_id"
   end
 

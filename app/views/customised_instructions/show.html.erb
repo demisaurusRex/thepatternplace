@@ -3,20 +3,31 @@
     <div class="pattern-title">
       <h2 class="card-title mx-auto text-center"><%= @customised_instruction.order.pattern.title %></h2>
     </div>
-    <div class="d-flex flex-wrap justify-content-center">
-      <% @customised_instruction.customised_instruction_steps.each do |customised_instruction|%>
-        <%= link_to customised_instruction_steps_path(step: customised_instruction.position) do %>
-          <div class="card m-1" style="width: 10rem;">
-            <%= cl_image_tag customised_instruction.instruction.image.key,
-                        class: "card-img-top img-top instructions-thumbnail",
-                        height: 300,
-                        crop: :fit %>
-            <ul class = "list-group">
-              <li class="list-group-item"><%= customised_instruction.instruction.description[0..26] %>...</li>
-            </ul>
-          </div>
+    <%=  %>
+    <% @customised_instruction_steps_by_category.each_key do |key|%>
+      <h3> <%= key %> </h3>
+      <div class="d-flex flex-wrap justify-content-center">
+        <% @customised_instruction_steps_by_category[key].each do |customised_instruction| %>
+          <%= link_to customised_instruction_steps_path(step: customised_instruction.position) do %>
+            <div class="card m-1" style="width: 10rem;">
+              <%= cl_image_tag customised_instruction.instruction.image.key,
+                          class: "card-img-top img-top instructions-thumbnail",
+                          height: 300,
+                          crop: :fit %>
+              <ul class = "list-group">
+                <li class="list-group-item"><%= customised_instruction.instruction.description[0..26] %>...</li>
+              </ul>
+            </div>
+          <% end %>
+          <%=
+            render partial: "step_category",
+            locals: {
+              customised_instruction_step: customised_instruction,
+              categories: @customised_instruction_steps_by_category.keys
+            }
+          %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

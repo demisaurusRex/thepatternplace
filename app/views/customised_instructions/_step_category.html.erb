@@ -1,0 +1,15 @@
+<%# <%= render partial: "footer" locals: {darkmode: false}%> %>
+
+<div>
+  <%= simple_form_for [customised_instruction_step], url:"/customised_instruction_steps/#{customised_instruction_step.id}/category" do |f| %>
+    <%=
+      f.input :category,
+      collection: categories
+    %>
+    <%= f.submit "Reassign", class: "btn btn-primary" %>
+  <% end %>
+  <%= simple_form_for [customised_instruction_step], url:"/customised_instruction_steps/#{customised_instruction_step.id}/category" do |f| %>
+    <%= f.input :category %>
+    <%= f.submit "New category", class: "btn btn-primary" %>
+  <% end %>
+</div>
