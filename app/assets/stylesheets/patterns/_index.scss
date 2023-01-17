@@ -24,3 +24,21 @@
   }
 
 }
+
+.icons-body {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.icon-row {
+  display: flex;
+  justify-content: space-between;
+  min-width: 20%;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 10px 0;
+}

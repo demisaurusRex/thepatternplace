@@ -11,14 +11,14 @@
   <%= f.input :difficulty,
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'category-wrapper',
+            collection_wrapper_class: 'difficulty category-wrapper',
             item_wrapper_class: 'category-item',
             input_html: {class: 'category-selector'},
             collection: Pattern::DIFFICULTY_CATEGORIES %>
   <%= f.input :instruction_format,
             as: :check_boxes,
             collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'category-wrapper',
+            collection_wrapper_class: 'instruction category-wrapper',
             item_wrapper_class: 'category-item',
             input_html: {class: 'category-selector'},
             collection: Pattern::INSTRUCTION_CATEGORIES %>

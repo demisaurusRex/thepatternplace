@@ -20,25 +20,20 @@ class PatternsController < ApplicationController
   def create
     @pattern = Pattern.new(pattern_params)
     @pattern.user = current_user
-    @pattern.save
-    redirect_to patterns_path
-  end
-
-  def edit
-    @pattern = Pattern.find(params[:id])
-  end
-
-  def update
-    @pattern = pattern.find(params[:id])
-    @pattern.update(pattern_params)
-    @pattern.save
-    redirect_to patterns_path
+    if @pattern.save
+      redirect_to dashboard_path, notice: 'Your pattern has been created'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @pattern = pattern.find(params[:id])
-    @pattern.delete
-    redirect_to patterns_path
+    @pattern = Pattern.find(params[:id])
+    if @pattern.delete
+      redirect_to dashboard_path, notice: 'Your pattern has been deleted'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show_instructions
