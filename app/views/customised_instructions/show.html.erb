@@ -1,23 +1,29 @@
 <div class="body-container">
   <div class="card m-0 w-100">
-    <div class="pattern-title">
-      <h2 class="card-title mx-auto text-center"><%= @customised_instruction.order.pattern.title %></h2>
+    <div class="card each-card" style="width: 19rem">
+      <%= cl_image_tag @customised_instruction.order.pattern.image[0].key, class: 'card-img-top img-top' %>
+      <div class="card-body">
+        <li class="list-group-item"><strong>Title: </strong>  <%= @customised_instruction.order.pattern.title %></li>
+      </div>
     </div>
     <%=  %>
     <% @customised_instruction_steps_by_category.each_key do |key|%>
-      <h3> <%= key %> </h3>
+      <h3 class="text-center"> <%= key %> </h3>
+      <h3 class="text-center"> <%= @customised_instruction_steps_by_category[key].length %> steps </h3>
       <div class="d-flex flex-wrap justify-content-center" data-controller="popover">
         <% @customised_instruction_steps_by_category[key].each do |customised_instruction| %>
-          <div class="card m-1" style="width: 10rem;">
+          <div class="d-flex flex-row card m-1" style="width: 100%;">
             <%= link_to customised_instruction_steps_path(@customised_instruction, step: customised_instruction.position) do %>
               <%= cl_image_tag customised_instruction.instruction.image.key,
-                          class: "card-img-top img-top instructions-thumbnail",
-                          height: 300,
+                          class: "card-img-top img-top",
+                          height: 150,
+                          width: 150,
                           crop: :fit %>
-              <ul class = "list-group">
-                <li class="list-group-item"><%= customised_instruction.instruction.description[0..26] %>...</li>
-              </ul>
+
             <% end %>
+            <ul class = "list-group">
+                <li class="list-group-item"><%= customised_instruction.instruction.description[0..100] %>...</li>
+            </ul>
             <%=
               render partial: 'shared/step_category',
               locals: {

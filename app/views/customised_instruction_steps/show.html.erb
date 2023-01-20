@@ -40,11 +40,7 @@
                       crop: :fit %>
                   <div class="step-description"><%= instruction.instruction.description %></div>
 
-                  <%# <% if instruction.comment %> %>
-                    <div class="step-comment"><%=instruction.comment%></div>
-                  <%# <% else %> %>
-                    <%= render partial: "step_comment", locals: { customised_instruction_step: instruction }%>
-                  <%# <% end %> %>
+                  <%= render partial: "step_comment", locals: { customised_instruction_step: instruction }%>
 
                 </div>
               <% else %>
@@ -58,11 +54,7 @@
                       width: 500,
                       crop: :fit %>
                   <div class="step-description"><%= instruction.instruction.description %></div>
-                  <%# <% if instruction.comment %> %>
-                    <div class="step-comment"><%=instruction.comment%></div>
-                  <%# <% else %> %>
                     <%= render partial: "step_comment", locals: {customised_instruction_step: instruction }%>
-                  <%# <% end %> %>
                 </div>
               <% end %>
             <% end %>

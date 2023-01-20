@@ -1,7 +1,8 @@
 <div data-controller="reveal" data-reveal-hidden-class="hidden">
   <a data-action="click->reveal#show ">
   Click to recategorise
-    <div data-action="mouseleave->reveal#hide" data-reveal-target="item" class="z-3 hidden max-w-sm rounded shadow-lg bg-white position-absolute left-0" style="z-index: 3">
+    <div data-action="mouseleave->reveal#hide"
+    data-reveal-target="item" class="z-3 hidden max-w-sm rounded shadow-lg bg-white position-absolute left-0" style="z-index: 3; width: 300px">
       <div data-controller="reveal" data-reveal-hidden-class="hidden">
         <div data-reveal-target="item">
           <%= simple_form_for [customised_instruction_step], url:"/customised_instruction_steps/#{customised_instruction_step.id}/category" do |f| %>
