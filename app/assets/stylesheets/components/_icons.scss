@@ -18,17 +18,8 @@
   display: inline-block;
 }
 
-.file-dock-icon {
-  background-image: image-url("file_dock_light.svg");
-  background-repeat: no-repeat;
-  background-size: 32px 32px;
-  background-position: 0 0;
-  width: 32px;
-  height: 32px;
-  display: inline-block;
-}
-.upload-icon {
-  background-image: image-url("upload_light.svg");
+.interactive-icon {
+  background-image: image-url("interactive_icon.svg");
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: 0 0;

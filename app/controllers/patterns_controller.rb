@@ -13,6 +13,29 @@ class PatternsController < ApplicationController
     @reviews = @pattern.reviews
   end
 
+  def new
+    @pattern = Pattern.new
+  end
+
+  def create
+    @pattern = Pattern.new(pattern_params)
+    @pattern.user = current_user
+    if @pattern.save
+      redirect_to dashboard_path, notice: 'Your pattern has been created'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @pattern = Pattern.find(params[:id])
+    if @pattern.delete
+      redirect_to dashboard_path, notice: 'Your pattern has been deleted'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def show_instructions
     @pattern = Pattern.find(params[:id])
     @instructions = @pattern.instructions.order('position ASC')
@@ -29,5 +52,11 @@ class PatternsController < ApplicationController
     end
     @pattern = Pattern.find(params[:id])
     @instructions = @pattern.instructions.order('position ASC')
+  end
+
+  private
+
+  def pattern_params
+    params.require(:pattern).permit(:title, :description, :price, :difficulty, :fabric_usage, :sizing, image: [], pdf: [])
   end
 end
