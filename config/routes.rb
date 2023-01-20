@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   post 'orders/:order_id/customised_instructions', to: "customised_instructions#create", as: "order_customised_instructions"
 
   resources :customised_instructions, only: [:show, :destroy]
-  get 'customised_instructions/:id/steps', to: "customised_instructions#show_steps", as: "customised_instruction_steps"
 
   resources :customised_instruction_steps, only: [:edit, :update]
+  get 'customised_instruction_steps/:id/', to: "customised_instruction_steps#show", as: "customised_instruction_steps"
   patch 'customised_instruction_steps/:id/category', to: "customised_instruction_steps#update_category"
 
 
