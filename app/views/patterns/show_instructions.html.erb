@@ -1,47 +1,67 @@
 <div class="body-container">
   <div class="card m-0 w-100">
-    <div class="pattern-title">
-      <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
-    </div>
-    <div class="row d-flex justify-content-center main-container min-vh-100" data-controller="show-patterns">
-      <div class="col d-flex justify-content-center">
-        <div id="carouselExampleControls" class="carousel slide w-100">
-          <div class="carousel-inner">
-            <% @instructions.each_with_index do |instruction, index| %>
-              <% if index == 0 %>
-                <div class="carousel-item active">
-                  <div class="position-header">
-                    <h5>Step <%= instruction.position %> of <%= @instructions.length %></h5>
-                  </div>
-                  <%= cl_image_tag instruction.image.key,
-                      class: "d-block mx-auto carousel-image",
-                      height: 800,
-                      width: 500,
-                      crop: :fit %>
+    <% if @order %>
+      <div class="pattern-title">
+        <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
+      </div>
 
-                  <div class="step-description"><%= instruction.description %></div>
-                </div>
-              <% else %>
-                <div class="carousel-item">
-                  <div class="position-header">
-                    <h5>Step <%= instruction.position %> of <%= @instructions.length %></h5>
-                  </div>
+      <div>
+        <div class="pattern-title">
+          <h2 class="card-title mx-auto text-center">Customise instructions</h2>
+        </div>
+        <%= simple_form_for [@order, @customised_instruction] do |f| %>
+          <%= f.input :name %>
+          <%= f.submit "Make an editable copy", class: "btn btn-primary" %>
+        <% end %>
+        <div class="d-flex flex-wrap justify-content-center">
+          <% @order.customised_instructions.each do |customised_instruction|%>
+            <%= link_to customised_instruction_path(customised_instruction) do%>
+              <div class="card m-1" style="width: 10rem;"> <%=customised_instruction.name%> </div>
+            <% end %>
+          <% end %>
+        </div>
+        <% @instructions_by_category.each_key do |key|%>
+          <h3 class="text-center"> <%= key %> </h3>
+          <h3 class="text-center"> <%= @instructions_by_category[key].length %> steps </h3>
+          <div class="d-flex flex-wrap justify-content-center" data-controller="popover">
+            <% @instructions_by_category[key].each do |instruction| %>
+              <div class="d-flex flex-row card m-1" style="width: 100%;">
+                <%= link_to pattern_steps_path(step: instruction.position) do %>
                   <%= cl_image_tag instruction.image.key,
-                      class: "d-block mx-auto carousel-image",
-                      height: 800,
-                      width: 500,
-                      crop: :fit %>
-                  <div class="step-description"><%= instruction.description %></div>
-                </div>
-              <% end %>
+                              class: "card-img-top img-top",
+                              height: 150,
+                              width: 150,
+                              crop: :fit %>
+
+                <% end %>
+                <ul class = "list-group">
+                    <li class="list-group-item"><%= instruction.description[0..100] %>...</li>
+                </ul>
+              </div>
             <% end %>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <i class="fa-solid fa-circle-chevron-left"></i>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <i class="fa-solid fa-circle-chevron-right"></i>
-          </button>
-    </div>
+        <% end %>
+
+      </div>
+      <div class="d-flex flex-wrap justify-content-center">
+        <% @instructions.each do |instruction|%>
+          <%= link_to pattern_steps_path(step: instruction.position) do %>
+            <div class="card m-1" style="width: 10rem;">
+              <%= cl_image_tag instruction.image.key,
+                          class: "card-img-top img-top instructions-thumbnail",
+                          height: 300,
+                          crop: :fit %>
+              <ul class = "list-group">
+                <li class="list-group-item"><%= instruction.description[0..26] %>...</li>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="pattern-title">
+        You need to purchase this pattern in order to see the instructions
+      </div>
+    <% end %>
   </div>
 </div>

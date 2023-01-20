@@ -38,7 +38,20 @@ class PatternsController < ApplicationController
 
   def show_instructions
     @pattern = Pattern.find(params[:id])
-    @instructions = @pattern.instructions
+    @instructions = @pattern.instructions.order('position ASC')
+    @instructions_by_category = @instructions.group_by(&:category)
+    @customised_instruction = CustomisedInstruction.new
+    @order = Order.find_by(user: current_user, pattern: @pattern)
+  end
+
+  def show_steps
+    if params[:step].present?
+      @step = params[:step].to_i
+    else
+      @step = 1
+    end
+    @pattern = Pattern.find(params[:id])
+    @instructions = @pattern.instructions.order('position ASC')
   end
 
   private

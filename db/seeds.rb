@@ -10,10 +10,10 @@ puts "Database created"
 print `rails db:migrate`
 
 puts "Creating users..."
-User.create(email: "stephen@test.com", password: "123456")
-User.create(email: "demi@test.com", password: "123456")
-User.create(email: "yatin@test.com", password: "123456")
-User.create(email: "pizza@pasta.com", password: "123456")
+User.create(username: "stephen123", email: "stephen@test.com", password: "123456")
+User.create(username: "demi123", email: "demi@test.com", password: "123456")
+User.create(username: "yatin123", email: "yatin@test.com", password: "123456")
+User.create(username: "pizza123", email: "pizza@pasta.com", password: "123456")
 puts 'Users created'
 
 
