@@ -6,7 +6,6 @@
         <li class="list-group-item"><strong>Title: </strong>  <%= @customised_instruction.order.pattern.title %></li>
       </div>
     </div>
-    <%=  %>
     <% @customised_instruction_steps_by_category.each_key do |key|%>
       <h3 class="text-center"> <%= key %> </h3>
       <h3 class="text-center"> <%= @customised_instruction_steps_by_category[key].length %> steps </h3>

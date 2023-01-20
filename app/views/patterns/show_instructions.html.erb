@@ -13,7 +13,6 @@
           <%= f.input :name %>
           <%= f.submit "Make an editable copy", class: "btn btn-primary" %>
         <% end %>
-
         <div class="d-flex flex-wrap justify-content-center">
           <% @order.customised_instructions.each do |customised_instruction|%>
             <%= link_to customised_instruction_path(customised_instruction) do%>
@@ -21,6 +20,28 @@
             <% end %>
           <% end %>
         </div>
+        <% @instructions_by_category.each_key do |key|%>
+          <h3 class="text-center"> <%= key %> </h3>
+          <h3 class="text-center"> <%= @instructions_by_category[key].length %> steps </h3>
+          <div class="d-flex flex-wrap justify-content-center" data-controller="popover">
+            <% @instructions_by_category[key].each do |instruction| %>
+              <div class="d-flex flex-row card m-1" style="width: 100%;">
+                <%= link_to pattern_steps_path(step: instruction.position) do %>
+                  <%= cl_image_tag instruction.image.key,
+                              class: "card-img-top img-top",
+                              height: 150,
+                              width: 150,
+                              crop: :fit %>
+
+                <% end %>
+                <ul class = "list-group">
+                    <li class="list-group-item"><%= instruction.description[0..100] %>...</li>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
       </div>
       <div class="d-flex flex-wrap justify-content-center">
         <% @instructions.each do |instruction|%>
