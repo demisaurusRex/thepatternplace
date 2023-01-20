@@ -5,7 +5,7 @@
 
 
 <div class="container px-4 py-5">
-  <h2 class="pb-2 border-bottom">Your Patterns for sale <%= link_to 'Add a new Pattern', new_pattern_path, class: , class: "btn btn-primary" %></h2>
+  <h2 class="pb-2 border-bottom">Your Patterns for sale <%= link_to 'Add a new Pattern', new_pattern_path, class: , class: "btn btn-outline-dark" %></h2>
   <div class="d-flex flex-wrap">
     <% @patterns_for_sale.each do |pattern| %>
       <div class="card m-1" style="width: 18rem;">
@@ -42,7 +42,8 @@
             <p class="card-text"></strong>$<%= pattern.price %></p>
           </div>
         </div>
-        <%= link_to 'delete', pattern_path(pattern), data: { turbo_confirm: 'Are you sure', turbo_method: :delete }, class: 'btn btn-danger' %>
+         <%= link_to 'Go to pattern', pattern_path(pattern) , class: 'btn btn-outline-dark bottom-link-index' %>
+        <%= link_to 'delete', pattern_path(pattern), data: { turbo_confirm: 'Are you sure', turbo_method: :delete }, class: 'btn btn-outline-danger bottom-link-index' %>
       </div>
     <% end %>
   </div>
@@ -82,7 +83,7 @@
               <p class="card-text"></strong> <%= order.pattern.description[0..30] %></p>
             </div>
           </div>
-          <%= link_to 'Go to pattern', pattern_path(order.pattern) , class: 'btn btn-primary  bottom-link-index' %>
+          <%= link_to 'Go to pattern', pattern_path(order.pattern) , class: 'btn btn-outline-dark bottom-link-index' %>
     <% end %>
   </div>
 </div>

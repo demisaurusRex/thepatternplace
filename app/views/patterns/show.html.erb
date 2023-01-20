@@ -33,13 +33,13 @@
           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
             <i class="fa-solid fa-circle-chevron-right"></i>
           </button>
-          <%= link_to '↩ Return to search', patterns_path , class: 'btn btn-secondary return-to-search-button'%>
+          <%= link_to '↩ Return to search', patterns_path , class: 'btn btn-dark return-to-search-button'%>
           <% if Order.find_by(pattern_id: @pattern.id, user: current_user) %>
-            <%= link_to "Show Instructions", pattern_instructions_path(:pattern_id => @pattern.id), class: 'btn btn-secondary add-to-cart-button' %>
+            <%= link_to "Show Instructions", pattern_instructions_path(:pattern_id => @pattern.id), class: 'btn btn-dark add-to-cart-button' %>
           <% elsif LineItem.find_by(pattern_id: @pattern.id, user: current_user) %>
             <div class="btn btn-secondary add-to-cart-button"> Already in cart</div>
           <% else %>
-            <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: 'btn btn-secondary add-to-cart-button' %>
+            <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: 'btn btn-dark add-to-cart-button' %>
           <% end %>
         </div>
       </div>
@@ -52,14 +52,14 @@
                 <h4 class="card-title my-2"><strong>Difficulty level: </strong></h4>
               </div>
               <div class = "icon-row">
-                <% if @pattern.difficulty == "easy" %>
+                <% if @pattern.difficulty == "Easy" %>
                 <i class="difficulty-icon"></i>
                 <i class="difficulty-icon-light"></i>
                 <i class="difficulty-icon-light"></i>
-                <% elsif @pattern.difficulty == "medium" %>
+                <% elsif @pattern.difficulty == "Medium" %>
                 <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
                 <i class="difficulty-icon-light"></i>
-                <% elsif @pattern.difficulty == "hard" %>
+                <% elsif @pattern.difficulty == "Hard" %>
                 <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
                 <% end %>
               </div>
@@ -116,7 +116,7 @@
     <% if @ordered_pattern %>
 
       <% if !@ordered_pattern.review %>
-        <%= link_to 'Add a review', new_pattern_review_path(@pattern), class: 'btn btn-primary btn-lg btn-block', style: "width:100%;" %>
+        <%= link_to 'Add a review', new_pattern_review_path(@pattern), class: 'btn btn-outline-dark btn-lg btn-block', style: "width:100%;" %>
       <% end %>
     <% end %>
   <ul class="list-group">
