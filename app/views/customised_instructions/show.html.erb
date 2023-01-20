@@ -1,0 +1,39 @@
+<div class="body-container">
+  <div class="card m-0 w-100">
+    <div class="card each-card" style="width: 19rem">
+      <%= cl_image_tag @customised_instruction.order.pattern.image[0].key, class: 'card-img-top img-top' %>
+      <div class="card-body">
+        <li class="list-group-item"><strong>Title: </strong>  <%= @customised_instruction.order.pattern.title %></li>
+      </div>
+    </div>
+    <% @customised_instruction_steps_by_category.each_key do |key|%>
+      <h3 class="text-center"> <%= key %> </h3>
+      <h3 class="text-center"> <%= @customised_instruction_steps_by_category[key].length %> steps </h3>
+      <div class="d-flex flex-wrap justify-content-center" data-controller="popover">
+        <% @customised_instruction_steps_by_category[key].each do |customised_instruction| %>
+          <div class="d-flex flex-row card m-1" style="width: 100%;">
+            <%= link_to customised_instruction_steps_path(@customised_instruction, step: customised_instruction.position) do %>
+              <%= cl_image_tag customised_instruction.instruction.image.key,
+                          class: "card-img-top img-top",
+                          height: 150,
+                          width: 150,
+                          crop: :fit %>
+
+            <% end %>
+            <ul class = "list-group">
+                <li class="list-group-item"><%= customised_instruction.instruction.description[0..100] %>...</li>
+            </ul>
+            <%=
+              render partial: 'shared/step_category',
+              locals: {
+                customised_instruction_step: customised_instruction,
+                categories: @customised_instruction_steps_by_category.keys
+              }
+            %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%# class="max-w-sm rounded shadow-lg bg-white absolute left-0" %>

@@ -4,8 +4,20 @@
 
 import { application } from "./application"
 
+import CategoryPopoverController from "./category_popover_controller"
+application.register("category-popover", CategoryPopoverController)
+
+import FormToggleController from "./form_toggle_controller"
+application.register("form-toggle", FormToggleController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import PopoverController from "./popover_controller"
+application.register("popover", PopoverController)
+
 import ShowPatternsController from "./show_patterns_controller"
 application.register("show-patterns", ShowPatternsController)
+
+import Reveal from 'stimulus-reveal-controller'
+application.register('reveal', Reveal)

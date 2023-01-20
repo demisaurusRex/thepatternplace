@@ -35,7 +35,7 @@
           </button>
           <%= link_to '↩ Return to search', patterns_path , class: 'btn btn-secondary return-to-search-button'%>
           <% if Order.find_by(pattern_id: @pattern.id, user: current_user) %>
-            <%= link_to "Show Instructions", pattern_instructions_path(:pattern_id => @pattern.id), class: 'btn btn-secondary add-to-cart-button' %>
+            <%= link_to "Show Instructions", pattern_instructions_path, class: 'btn btn-secondary add-to-cart-button' %>
           <% elsif LineItem.find_by(pattern_id: @pattern.id, user: current_user) %>
             <div class="btn btn-secondary add-to-cart-button"> Already in cart</div>
           <% else %>

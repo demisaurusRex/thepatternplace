@@ -1,0 +1,47 @@
+<div class="body-container">
+  <div class="card m-0 w-100">
+    <div class="pattern-title">
+      <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
+    </div>
+    <div class="row d-flex justify-content-center main-container min-vh-100" data-controller="show-patterns">
+      <div class="col d-flex justify-content-center">
+        <div id="carouselExampleControls" class="carousel slide w-100">
+          <div class="carousel-inner">
+            <% @instructions.each_with_index do |instruction, index| %>
+              <% if index == @step - 1 %>
+                <div class="carousel-item active">
+                  <div class="position-header">
+                    <h5>Step <%= instruction.position %> of <%= @instructions.length %></h5>
+                  </div>
+                  <%= cl_image_tag instruction.image.key,
+                      class: "d-block mx-auto carousel-image",
+                      height: 800,
+                      width: 500,
+                      crop: :fit %>
+
+                  <div class="step-description"><%= instruction.description %></div>
+                </div>
+              <% else %>
+                <div class="carousel-item">
+                  <div class="position-header">
+                    <h5>Step <%= instruction.position %> of <%= @instructions.length %></h5>
+                  </div>
+                  <%= cl_image_tag instruction.image.key,
+                      class: "d-block mx-auto carousel-image",
+                      height: 800,
+                      width: 500,
+                      crop: :fit %>
+                  <div class="step-description"><%= instruction.description %></div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <i class="fa-solid fa-circle-chevron-left"></i>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <i class="fa-solid fa-circle-chevron-right"></i>
+          </button>
+    </div>
+  </div>
+</div>
