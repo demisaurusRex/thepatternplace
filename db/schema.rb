@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_21_052258) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.bigint "pattern_id", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["pattern_id"], name: "index_categories_on_pattern_id"
+  end
+
   create_table "customised_instruction_steps", force: :cascade do |t|
     t.bigint "instruction_id", null: false
     t.bigint "customised_instruction_id", null: false
@@ -65,16 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_customised_instructions_on_order_id"
-  end
-
-  create_table "instructions", force: :cascade do |t|
-    t.bigint "pattern_id", null: false
-    t.text "description"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "category", default: "Uncategorised"
-    t.index ["pattern_id"], name: "index_instructions_on_pattern_id"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -120,6 +119,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.bigint "pattern_id", null: false
+    t.text "description"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_steps_on_category_id"
+    t.index ["pattern_id"], name: "index_steps_on_pattern_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -135,10 +145,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "categories", "patterns"
   add_foreign_key "customised_instruction_steps", "customised_instructions"
-  add_foreign_key "customised_instruction_steps", "instructions"
+  add_foreign_key "customised_instruction_steps", "steps", column: "instruction_id"
   add_foreign_key "customised_instructions", "orders"
-  add_foreign_key "instructions", "patterns"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "patterns"
   add_foreign_key "line_items", "users"
@@ -147,4 +157,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
   add_foreign_key "patterns", "users"
   add_foreign_key "reviews", "orders"
   add_foreign_key "reviews", "users"
+  add_foreign_key "steps", "categories"
+  add_foreign_key "steps", "patterns"
 end

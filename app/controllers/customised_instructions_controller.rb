@@ -10,11 +10,11 @@ class CustomisedInstructionsController < ApplicationController
     @customised_instruction = CustomisedInstruction.new(customised_instruction_params)
     @customised_instruction.order_id = @order.id
     @customised_instruction.save
-    @order.pattern.instructions.each do |instruction|
+    @order.pattern.steps.each do |step|
       newstep = CustomisedInstructionStep.new(
         customised_instruction: @customised_instruction,
-        instruction: instruction,
-        position: instruction.position
+        instruction: step,
+        position: step.position
       )
       newstep.save!
     end

@@ -1,0 +1,7 @@
+<%= simple_form_for(@steps) do |f| %>
+  <%# button to create new instruction **below appears once selected** %>
+  <%= f.input :description %>
+  <%= f.input :image, as: :file %>
+
+  <%= f.submit class: "btn btn-outline-primary"%>
+  <% end %>

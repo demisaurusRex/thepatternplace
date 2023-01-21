@@ -21,13 +21,13 @@
           <% end %>
         </div>
         <% @instructions_by_category.each_key do |key|%>
-          <h3 class="text-center"> <%= key %> </h3>
+          <h3 class="text-center"> <%= key.name %> </h3>
           <h3 class="text-center"> <%= @instructions_by_category[key].length %> steps </h3>
           <div class="d-flex flex-wrap justify-content-center" data-controller="popover">
-            <% @instructions_by_category[key].each do |instruction| %>
+            <% @instructions_by_category[key].each do |step| %>
               <div class="d-flex flex-row card m-1" style="width: 100%;">
-                <%= link_to pattern_steps_path(step: instruction.position) do %>
-                  <%= cl_image_tag instruction.image.key,
+                <%= link_to pattern_steps_path(step: step.position) do %>
+                  <%= cl_image_tag step.image.key,
                               class: "card-img-top img-top",
                               height: 150,
                               width: 150,
@@ -35,7 +35,7 @@
 
                 <% end %>
                 <ul class = "list-group">
-                    <li class="list-group-item"><%= instruction.description[0..100] %>...</li>
+                    <li class="list-group-item"><%= step.description[0..100] %>...</li>
                 </ul>
               </div>
             <% end %>
@@ -44,15 +44,15 @@
 
       </div>
       <div class="d-flex flex-wrap justify-content-center">
-        <% @instructions.each do |instruction|%>
-          <%= link_to pattern_steps_path(step: instruction.position) do %>
+        <% @instructions.each do |step|%>
+          <%= link_to pattern_steps_path(step: step.position) do %>
             <div class="card m-1" style="width: 10rem;">
-              <%= cl_image_tag instruction.image.key,
+              <%= cl_image_tag step.image.key,
                           class: "card-img-top img-top instructions-thumbnail",
                           height: 300,
                           crop: :fit %>
               <ul class = "list-group">
-                <li class="list-group-item"><%= instruction.description[0..26] %>...</li>
+                <li class="list-group-item"><%= step.description[0..26] %>...</li>
               </ul>
             </div>
           <% end %>
