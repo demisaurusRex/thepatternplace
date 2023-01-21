@@ -96,7 +96,7 @@ seed_images = [
 user_last = User.all.length
 patterns = [
   {
-    title: "Vogue Misses Special Occasion Dress",
+    title: "Vogue Occasion Dress",
     description: "Dress is fitted through bust and hip with lined body, unlined sleeve and flounce, purchased bias tape to finish armhole edge, narrow hems and length and trim variations. B: Purchased trim.",
     difficulty: "easy",
     price: 10
