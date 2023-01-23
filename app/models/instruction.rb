@@ -1,4 +1,4 @@
-class Step < ApplicationRecord
+class Instruction < ApplicationRecord
   belongs_to :pattern
   belongs_to :category
   has_one :purchased_instruction

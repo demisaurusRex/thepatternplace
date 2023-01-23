@@ -12,8 +12,8 @@
       <div class="d-flex flex-wrap justify-content-center" data-controller="popover">
         <% @customised_instruction_steps_by_category[key].each do |customised_instruction| %>
           <div class="d-flex flex-row card m-1" style="width: 100%;">
-            <%= link_to customised_instruction_steps_path(@customised_instruction, step: customised_instruction.position) do %>
-              <%= cl_image_tag customised_instruction.step.image.key,
+            <%= link_to customised_instruction_path(@customised_instruction, step: customised_instruction.position) do %>
+              <%= cl_image_tag customised_instruction.instruction.image.key,
                           class: "card-img-top img-top",
                           height: 150,
                           width: 150,
@@ -21,7 +21,7 @@
 
             <% end %>
             <ul class = "list-group">
-                <li class="list-group-item"><%= customised_instruction.step.description[0..100] %>...</li>
+                <li class="list-group-item"><%= customised_instruction.description[0..100] %>...</li>
             </ul>
             <%=
               render partial: 'shared/step_category',
