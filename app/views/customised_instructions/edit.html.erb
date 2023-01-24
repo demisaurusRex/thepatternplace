@@ -1,0 +1,58 @@
+<%= simple_form_for [@customised_instruction, @custom_category] do |f| %>
+  <%= f.input :name %>
+  <%= f.submit "New category", class: "btn btn-primary" %>
+<% end %>
+
+<h3> Select the sections you want</h3>
+<h3> Reassign the steps as you need </h3>
+<div class="accordion ">
+  <% @customised_instruction.custom_categories.each_with_index do |category, index| %>
+    <h3 class="text-center accordion-button" data-bs-toggle="collapse" data-bs-target="#category<%=index%>" role="button" aria-expanded="false" aria-controls="category<%=index%>">
+      <%= category.name %>
+    </h3>
+    <h3 class="text-center"> Show this category
+      <%= turbo_frame_tag dom_id(category) do %>
+        <%= link_to custom_category_path(category, custom_category: { showing: !category.showing }),
+                        data: {
+                          turbo_method: :patch
+                        } do %>
+          <% if category.showing? %>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 25px; height: 25px">
+              <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+            </svg>
+          <% else %>
+            <div style="border-radius: 50%; height: 25px; width: 25px; background: #d6d6d6;"></div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </h3>
+    <div class="collapse accordion-collapse" id="category<%=index%>">
+      <h3 class="text-center"> <%= category.customised_instruction_steps.length %> steps </h3>
+      <div class="d-flex flex-wrap justify-content-center"  data-controller="popover">
+        <% category.customised_instruction_steps.each do |step| %>
+          <div class="d-flex flex-row card m-1" style="width: 100%;">
+            <%= link_to customised_instruction_path(@customised_instruction, step: step.position) do %>
+              <%= cl_image_tag step.instruction.image.key,
+                          class: "card-img-top img-top",
+                          height: 150,
+                          width: 150,
+                          crop: :fit %>
+            <% end %>
+            <ul class = "list-group">
+                <li class="list-group-item"><%= step.instruction.description[0..100] %>...</li>
+            </ul>
+            <%=
+              render partial: 'shared/step_category',
+              locals: {
+                customised_instruction_step: step,
+                categories: @customised_instruction_steps_by_category
+              }
+            %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="fixed-bottom"><%= link_to "Confirm changes", customised_instruction_path(@customised_instruction) %> </div>

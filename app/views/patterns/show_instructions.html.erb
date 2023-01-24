@@ -25,8 +25,9 @@
           <h3 class="text-center"> <%= @instructions_by_category[key].length %> instructions </h3>
           <div class="d-flex flex-wrap justify-content-center" data-controller="popover">
             <% @instructions_by_category[key].each do |instruction| %>
+              <%= link_to pattern_steps_path(step: instruction.position) do %>
               <div class="d-flex flex-row card m-1" style="width: 100%;">
-                <%= link_to pattern_instructions_path(step: instruction.position) do %>
+
                   <%= cl_image_tag instruction.image.key,
                               class: "card-img-top img-top",
                               height: 150,

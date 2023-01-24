@@ -2,24 +2,17 @@
   <a data-action="click->reveal#toggle ">
   Click to recategorise
     <div data-action="mouseleave->reveal#hide"
-    data-reveal-target="item" class="z-3 hidden max-w-sm rounded shadow-lg bg-white position-absolute left-0" style="z-index: 3; width: 300px">
+    data-reveal-target="item" class="z-3 hidden max-w-sm rounded shadow-lg bg-white position-absolute left-0 popover">
       <div data-controller="reveal" data-reveal-hidden-class="hidden">
         <div data-reveal-target="item">
           <%= simple_form_for [customised_instruction_step], url:"/customised_instruction_steps/#{customised_instruction_step.id}/category" do |f| %>
             <%=
-              f.input :category,
+              f.input :custom_category,
               collection: categories
             %>
             <%= f.submit "Reassign", class: "btn btn-primary" %>
           <% end %>
           <button data-action="click->reveal#toggle" type="button" class="btn"> New category</button>
-        </div>
-        <div data-reveal-target="item" class="hidden">
-          <%= simple_form_for [customised_instruction_step], url:"/customised_instruction_steps/#{customised_instruction_step.id}/category" do |f| %>
-            <%= f.input :category %>
-            <%= f.submit "New category", class: "btn btn-primary" %>
-          <% end %>
-          <button data-action="click->reveal#toggle" type="button" class="btn"> Back </button>
         </div>
       </div>
     </div>
