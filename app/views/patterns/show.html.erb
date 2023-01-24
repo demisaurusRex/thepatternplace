@@ -49,7 +49,7 @@
             <div class="icons-body">
               <div class="card-row">
                 <div class="title-section-second">
-                  <h4 class="card-title my-2"><strong>Difficulty level: </strong></h4>
+                  <h4 class="my-2"><strong>Difficulty level </strong></h4>
                 </div>
                 <div class = "icon-row">
                   <% if @pattern.difficulty == "Easy" %>
@@ -66,52 +66,51 @@
               </div>
               <div class="card-row">
                 <div class="title-section">
-                  <h4 class="card-title my-2"><strong>File inclusions: </strong></h4>
+                  <h4 class="my-2"><strong>File inclusions </strong></h4>
                 </div>
                 <div class = "icon-row">
                   <i class="interactive-icon"></i></i><i class="print-icon"></i>
                 </div>
               </div>
-              <% if @pattern.fabric_usage != nil %>
-                <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
-                  <div class="title-section-third">
-                    <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
+              <div class="accordion accordion-flush" id="accordionPattern">
+                <% if @pattern.fabric_usage != nil %>
+                  <div class="accordion-item mt-3 mb-3">
+                    <div class="accordion-header">
+                      <div class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFabric" aria-expanded="false" aria-controls="collapseFabric">
+                        <h4><strong>Fabric information </strong></h4>
+                      </div>
+                    </div>
+                    <div id="collapseFabric" class="accordion-collapse collapse" aria-labelledby="collapseFabric" data-bs-parent="#accordionPattern">
+                    <%= cl_image_tag @pattern.fabric_usage.key,
+                      class: "rounded d-block mx-auto my-2 w-100",
+                      width: 400,
+                      crop: :fit %>
                   </div>
-                    <i class="collapse-icon"></i>
                 </div>
-                <div class="hidden" data-show-patterns-target="fabric">
-                  <%= cl_image_tag @pattern.fabric_usage.key,
-                    class: "rounded d-block mx-auto my-2",
-                    width: 400,
-                    crop: :fit %>
-                </div>
-              <% end %>
-              <% if @pattern.sizing != nil %>
-                <div class="card-row" data-action="click->show-patterns#showSizing" data-show-patterns-target="sizingbutton">
-                  <div class="title-section-last">
-                    <h4 class="card-title my-2"><strong>Size chart </strong></h4>
+                <% end %>
+                <% if @pattern.sizing != nil %>
+                  <div class="accordion-item mt-3 mb-3">
+                    <div class="accordion-header ">
+                      <div class="accordion-button collapsed p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSizing" aria-expanded="false" aria-controls="collapseSizing">
+                        <h4><strong>Size chart </strong></h4>
+                      </div>
+                    </div>
+                    <div id="collapseSizing" class="accordion-collapse collapse" aria-labelledby="collapseSizing" data-bs-parent="#accordionPattern">
+                    <%= cl_image_tag @pattern.sizing.key,
+                      class: "rounded d-block mx-auto my-2 w-100",
+                      width: 400,
+                      crop: :fit %>
+                    </div>
                   </div>
-                    <i class="collapse-icon"></i>
-                </div>
-                <div class="hidden" data-show-patterns-target="sizing">
-                  <%= cl_image_tag @pattern.sizing.key,
-                    class: "rounded d-block mx-auto my-2",
-                    width: 400,
-                    crop: :fit %>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
-
-            <%# make a block if a pattern is already purchased
-
-              make a block if a pattern is in the shopping cart
-
-              make a block if the user is not logged in %>
           </ul>
         </div>
       </div>
 
     </div>
+
     <div class="pattern_heading">
 
     <% if !@pattern.reviews.empty? %>
