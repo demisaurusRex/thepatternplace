@@ -13,9 +13,6 @@ application.register("form-toggle", FormToggleController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import PopoverController from "./popover_controller"
-application.register("popover", PopoverController)
-
 import ShowPatternsController from "./show_patterns_controller"
 application.register("show-patterns", ShowPatternsController)
 
