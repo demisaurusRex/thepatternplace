@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_042525) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category", default: "Uncategorised"
     t.bigint "custom_category_id", null: false
     t.index ["custom_category_id"], name: "index_customised_instruction_steps_on_custom_category_id"
     t.index ["customised_instruction_id"], name: "index_customised_instruction_steps_on_customised_instruction_id"
