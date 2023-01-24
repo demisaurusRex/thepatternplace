@@ -43,82 +43,89 @@
           <% end %>
         </div>
       </div>
-      <div class= "text-body">
-        <ul class = "list-group list-group-flush ">
-          <li class="list-group-item p-0 my-2"><%= @pattern.description %></li>
-          <div class="icons-body">
-            <div class="card-row">
-              <div>
-                <h4 class="card-title my-2"><strong>Difficulty level: </strong></h4>
-              </div>
-              <div class = "icon-row">
-                <% if @pattern.difficulty == "Easy" %>
-                <i class="difficulty-icon"></i>
-                <i class="difficulty-icon-light"></i>
-                <i class="difficulty-icon-light"></i>
-                <% elsif @pattern.difficulty == "Medium" %>
-                <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
-                <i class="difficulty-icon-light"></i>
-                <% elsif @pattern.difficulty == "Hard" %>
-                <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
-                <% end %>
-              </div>
-            </div>
-            <div class="card-row">
-              <div>
-                <h4 class="card-title my-2"><strong>File inclusions: </strong></h4>
-              </div>
-              <div class = "icon-row">
-                <i class="interactive-icon"></i></i><i class="print-icon"></i>
-              </div>
-            </div>
-            <% if @pattern.fabric_usage != nil %>
-              <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
-                <div>
-                  <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
+      <div class="container">
+        <div class= "text-body">
+          <ul class = "list-group list-group-flush ">
+            <hr>
+            <li class="list-group-item p-0 my-2"><strong>Description: </strong><%= @pattern.description %></li>
+            <div class="icons-body">
+              <div class="card-row">
+                <div class="title-section-second">
+                  <h4 class="card-title my-2"><strong>Difficulty level: </strong></h4>
                 </div>
-                  <i class="collapse-icon"></i>
-              </div>
-              <div class="hidden" data-show-patterns-target="fabric">
-                <%= cl_image_tag @pattern.fabric_usage.key,
-                  class: "rounded d-block mx-auto my-2",
-                  width: 400,
-                  crop: :fit %>
-              </div>
-            <% end %>
-            <% if @pattern.sizing != nil %>
-              <div class="card-row" data-action="click->show-patterns#showSizing" data-show-patterns-target="sizingbutton">
-                <div>
-                  <h4 class="card-title my-2"><strong>Size chart </strong></h4>
+                <div class = "icon-row">
+                  <% if @pattern.difficulty == "Easy" %>
+                  <i class="difficulty-icon"></i>
+                  <i class="difficulty-icon-light"></i>
+                  <i class="difficulty-icon-light"></i>
+                  <% elsif @pattern.difficulty == "Medium" %>
+                  <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+                  <i class="difficulty-icon-light"></i>
+                  <% elsif @pattern.difficulty == "Hard" %>
+                  <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+                  <% end %>
                 </div>
-                  <i class="collapse-icon"></i>
               </div>
-              <div class="hidden" data-show-patterns-target="sizing">
-                <%= cl_image_tag @pattern.sizing.key,
-                  class: "rounded d-block mx-auto my-2",
-                  width: 400,
-                  crop: :fit %>
+              <div class="card-row">
+                <div class="title-section">
+                  <h4 class="card-title my-2"><strong>File inclusions: </strong></h4>
+                </div>
+                <div class = "icon-row">
+                  <i class="interactive-icon"></i></i><i class="print-icon"></i>
+                </div>
               </div>
-            <% end %>
-          </div>
+              <% if @pattern.fabric_usage != nil %>
+                <div class="card-row" data-action="click->show-patterns#showFabric" data-show-patterns-target="fabricbutton">
+                  <div class="title-section-third">
+                    <h4 class="card-title my-2"><strong>Fabric information </strong></h4>
+                  </div>
+                    <i class="collapse-icon"></i>
+                </div>
+                <div class="hidden" data-show-patterns-target="fabric">
+                  <%= cl_image_tag @pattern.fabric_usage.key,
+                    class: "rounded d-block mx-auto my-2",
+                    width: 400,
+                    crop: :fit %>
+                </div>
+              <% end %>
+              <% if @pattern.sizing != nil %>
+                <div class="card-row" data-action="click->show-patterns#showSizing" data-show-patterns-target="sizingbutton">
+                  <div class="title-section-last">
+                    <h4 class="card-title my-2"><strong>Size chart </strong></h4>
+                  </div>
+                    <i class="collapse-icon"></i>
+                </div>
+                <div class="hidden" data-show-patterns-target="sizing">
+                  <%= cl_image_tag @pattern.sizing.key,
+                    class: "rounded d-block mx-auto my-2",
+                    width: 400,
+                    crop: :fit %>
+                </div>
+              <% end %>
+            </div>
 
-          <%# make a block if a pattern is already purchased
+            <%# make a block if a pattern is already purchased
 
-            make a block if a pattern is in the shopping cart
+              make a block if a pattern is in the shopping cart
 
-            make a block if the user is not logged in %>
-        </ul>
+              make a block if the user is not logged in %>
+          </ul>
+        </div>
       </div>
+
     </div>
     <div class="pattern_heading">
-  <h2>Reviews</h2>
 
+    <% if !@pattern.reviews.empty? %>
+      <h2>Reviews</h2>
+    <% end %>
     <% if @ordered_pattern %>
 
       <% if !@ordered_pattern.review %>
         <%= link_to 'Add a review', new_pattern_review_path(@pattern), class: 'btn btn-outline-dark btn-lg btn-block', style: "width:100%;" %>
       <% end %>
     <% end %>
+
   <ul class="list-group">
   <% @reviews.each do |review| %>
     <li class="list-group-item">
@@ -133,6 +140,8 @@
 
   <% end %>
   </ul>
+
 </div>
+<br><br><br>
 
 </div>

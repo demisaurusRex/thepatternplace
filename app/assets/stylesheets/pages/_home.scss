@@ -14,6 +14,11 @@ body {
   color: #000000;
 }
 
+.heading, .btn-get-started {
+  margin-left: 20px;
+}
+
+
 a {
   color: #009cea;
   text-decoration: none;
@@ -64,7 +69,7 @@ h6 {
 }
 
 #hero h1 {
-  margin: 0 0 20px 0;
+  margin: 0 0 20px 20px;
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
@@ -180,7 +185,11 @@ section {
 .about .screenshot {
   border-style: solid;
   height: 300px;
-  width: 200px;
+  width: 180px;
+}
+
+.screenshot:first-child{
+  margin-right: 5px;
 }
 
 .about .content ul {
