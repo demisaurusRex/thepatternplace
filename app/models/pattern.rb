@@ -18,4 +18,5 @@ class Pattern < ApplicationRecord
   has_many :orders
   has_many :instructions
   has_many :reviews, through: :orders
+  has_many :categories
 end

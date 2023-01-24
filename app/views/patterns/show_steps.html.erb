@@ -7,31 +7,31 @@
       <div class="col d-flex justify-content-center">
         <div id="carouselExampleControls" class="carousel slide w-100">
           <div class="carousel-inner">
-            <% @instructions.each_with_index do |instruction, index| %>
+            <% @instructions.each_with_index do |step, index| %>
               <% if index == @step - 1 %>
                 <div class="carousel-item active">
                   <div class="position-header">
-                    <h5>Step <%= instruction.position %> of <%= @instructions.length %></h5>
+                    <h5>Step <%= step.position %> of <%= @instructions.length %></h5>
                   </div>
-                  <%= cl_image_tag instruction.image.key,
+                  <%= cl_image_tag step.image.key,
                       class: "d-block mx-auto carousel-image",
                       height: 800,
                       width: 500,
                       crop: :fit %>
 
-                  <div class="step-description"><%= instruction.description %></div>
+                  <div class="step-description"><%= step.description %></div>
                 </div>
               <% else %>
                 <div class="carousel-item">
                   <div class="position-header">
-                    <h5>Step <%= instruction.position %> of <%= @instructions.length %></h5>
+                    <h5>Step <%= step.position %> of <%= @instructions.length %></h5>
                   </div>
-                  <%= cl_image_tag instruction.image.key,
+                  <%= cl_image_tag step.image.key,
                       class: "d-block mx-auto carousel-image",
                       height: 800,
                       width: 500,
                       crop: :fit %>
-                  <div class="step-description"><%= instruction.description %></div>
+                  <div class="step-description"><%= step.description %></div>
                 </div>
               <% end %>
             <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_24_042525) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.bigint "pattern_id", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["pattern_id"], name: "index_categories_on_pattern_id"
+  end
+
+  create_table "custom_categories", force: :cascade do |t|
+    t.integer "position"
+    t.string "name"
+    t.bigint "customised_instruction_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "showing", default: true
+    t.index ["customised_instruction_id"], name: "index_custom_categories_on_customised_instruction_id"
+  end
+
   create_table "customised_instruction_steps", force: :cascade do |t|
     t.bigint "instruction_id", null: false
     t.bigint "customised_instruction_id", null: false
@@ -54,7 +73,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category", default: "Uncategorised"
+    t.bigint "custom_category_id", null: false
+    t.index ["custom_category_id"], name: "index_customised_instruction_steps_on_custom_category_id"
     t.index ["customised_instruction_id"], name: "index_customised_instruction_steps_on_customised_instruction_id"
     t.index ["instruction_id"], name: "index_customised_instruction_steps_on_instruction_id"
   end
@@ -73,7 +93,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category", default: "Uncategorised"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_instructions_on_category_id"
     t.index ["pattern_id"], name: "index_instructions_on_pattern_id"
   end
 
@@ -135,9 +156,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100054) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "categories", "patterns"
+  add_foreign_key "custom_categories", "customised_instructions"
+  add_foreign_key "customised_instruction_steps", "custom_categories"
   add_foreign_key "customised_instruction_steps", "customised_instructions"
   add_foreign_key "customised_instruction_steps", "instructions"
   add_foreign_key "customised_instructions", "orders"
+  add_foreign_key "instructions", "categories"
   add_foreign_key "instructions", "patterns"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "patterns"

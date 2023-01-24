@@ -26,8 +26,12 @@ class CustomisedInstructionStepsController < ApplicationController
 
   def update_category
     @customised_instruction_step = CustomisedInstructionStep.find(params[:id])
-    @customised_instruction_step.update(customised_instruction_step_params)
-    redirect_to customised_instruction_path(
+    @customised_instruction_step.remove_from_list
+    @customised_instruction_step.update(
+      custom_category_id: customised_instruction_step_params[:custom_category].to_i
+    )
+    # @customised_instruction_step.insert_at(@customised_instruction_step.custom_category.customised_instruction_steps.length + 1)
+    redirect_to edit_customised_instruction_path(
       @customised_instruction_step.customised_instruction
     )
   end
@@ -35,6 +39,6 @@ class CustomisedInstructionStepsController < ApplicationController
   private
 
   def customised_instruction_step_params
-    params.require(:customised_instruction_step).permit(:comment, :category)
+    params.require(:customised_instruction_step).permit(:comment, :custom_category)
   end
 end
