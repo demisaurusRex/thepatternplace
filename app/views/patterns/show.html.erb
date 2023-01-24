@@ -1,7 +1,14 @@
-<div class="body-container">
-  <div class="card m-0 w-100">
-    <div class="pattern-title">
-      <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
+<div class="patterns-container">
+  <div class="m-0 w-100">
+    <div class="d-flex justify-content-between">
+      <%= link_to '↩ Return to search', patterns_path , class: "shadow p-2 m-2 bg-white text-dark rounded-pill"%>
+      <% if Order.find_by(pattern_id: @pattern.id, user: current_user) %>
+        <%= link_to "Show Instructions", pattern_instructions_path, class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
+      <% elsif LineItem.find_by(pattern_id: @pattern.id, user: current_user) %>
+        <div class="shadow p-2 m-2 bg-white text-dark rounded-pill"> Already in cart</div>
+      <% else %>
+        <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
+      <% end %>
     </div>
     <div class="row d-flex justify-content-center main-container" data-controller="show-patterns">
       <div class="col d-flex justify-content-center">
@@ -27,27 +34,18 @@
               <% end %>
             <% end %>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <i class="fa-solid fa-circle-chevron-left"></i>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <i class="fa-solid fa-circle-chevron-right"></i>
-          </button>
-          <%= link_to '↩ Return to search', patterns_path , class: 'btn btn-dark return-to-search-button'%>
-          <% if Order.find_by(pattern_id: @pattern.id, user: current_user) %>
-            <%= link_to "Show Instructions", pattern_instructions_path, class: 'btn btn-dark add-to-cart-button' %>
-          <% elsif LineItem.find_by(pattern_id: @pattern.id, user: current_user) %>
-            <div class="btn btn-secondary add-to-cart-button"> Already in cart</div>
-          <% else %>
-            <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: 'btn btn-dark add-to-cart-button' %>
-          <% end %>
+
         </div>
       </div>
       <div class="container">
-        <div class= "text-body">
-          <ul class = "list-group list-group-flush ">
+        <div class="text-body">
+          <ul class="list-group list-group-flush ">
+            <div class="d-flex justify-content-between mt-2">
+              <h4 class="card-title"><%= @pattern.title %></h4>
+              <h4 class="card-title">$<%= sprintf('%.2f', @pattern.price) %></h4>
+            </div>
             <hr>
-            <li class="list-group-item p-0 my-2"><strong>Description: </strong><%= @pattern.description %></li>
+            <li class="list-group-item p-0 my-2"><strong></strong><%= @pattern.description %></li>
             <div class="icons-body">
               <div class="card-row">
                 <div class="title-section-second">

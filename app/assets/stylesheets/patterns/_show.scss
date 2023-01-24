@@ -7,89 +7,74 @@
   }
 }
 
-.body-container {
+.patterns-container {
   margin: 0 auto;
   padding: 0;
   max-width: 600px;
-}
+  .hidden {
+    display: none;
+  }
 
-.hidden {
-  display: none;
-}
+  .w400 {
+    width: 400px;
+  }
 
-.w400 {
-  width: 400px;
-}
-
-.main-container {
-  display: flex;
-  justify-content: center;
-}
+  .main-container {
+    display: flex;
+    justify-content: center;
+  }
 
 
-// mobile view
-.carousel-image {
-  max-width: 600px;
-}
+  // mobile view
+  .carousel-image {
+    max-width: 600px;
+  }
 
-.pattern-title {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  background-color: #eeeeee;
-  top: 0;
-  z-index: 3;
-}
+  .pattern-title {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    background-color: #eeeeee;
+    top: 0;
+    z-index: 3;
+  }
 
-.main-container {
-  flex-direction: column;
-}
+  .main-container {
+    flex-direction: column;
+  }
 
-.return-to-search-button {
-  position: absolute;
-  bottom: 0px;
-  left: 10px;
-  z-index: 2;
-}
+  .return-to-search-button {
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+    z-index: 2;
+  }
 
-.add-to-cart-button {
-  position: absolute;
-  bottom: 0px;
-  right: 10px;
-  z-index: 2;
-}
+  .add-to-cart-button {
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+    z-index: 2;
+  }
 
-.card-row {
-  display: flex;
-  // justify-content: space-between;
-  max-width: 100%;
-  margin: 10px 0;
-}
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 10px 0;
+  }
 
-.icon-row {
-  display: flex;
-  justify-content: space-between;
-  min-width: 20%;
-}
+  .icon-row {
+    display: flex;
+    justify-content: space-between;
+    min-width: 20%;
+  }
 
-.text-body {
-  padding: 0 20px;
-}
+  .text-body {
+    padding: 0 20px;
+  }
 
-.icons-body {
-  width: 400px;
-  margin: 0 auto;
-}
-
-.title-section {
-  margin-right:  90px;
-}
-
-.title-section-second {
-  margin-right: 126px;
-}
-.title-section-third {
-  margin-right: 139px;
-}
-.title-section-last {
-  margin-right:  226px;
+  .icons-body {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
