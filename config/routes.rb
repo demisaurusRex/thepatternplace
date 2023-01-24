@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get 'patterns/:id/steps', to: "patterns#show_steps", as: "pattern_steps"
   get 'patterns/:id/instructions', to: "patterns#show_instructions", as: "pattern_instructions"
 
+  get 'patterns/:id/instructions/new', to: "instructions#new", as: "new_instruction"
+  post 'patterns/:id/instructions', to: "instructions#create", as: "create_instruction"
+  post 'patterns/:id/categories', to: "categories#create", as: "create_category"
+
   get 'orders/:order_id/customised_instructions/new', to: "customised_instructions#new", as: "new_customised_instruction"
   post 'orders/:order_id/customised_instructions', to: "customised_instructions#create", as: "order_customised_instructions"
 
