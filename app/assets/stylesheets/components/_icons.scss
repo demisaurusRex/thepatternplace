@@ -27,6 +27,17 @@
   height: 28px;
   display: inline-block;
 }
+
+.interactive-icon-filled {
+  background-image: image-url("interactive_icon_filled.svg");
+  background-repeat: no-repeat;
+  background-size: 28px 28px;
+  background-position: 0 0;
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+}
+
 .print-icon {
   background-image: image-url("print_light.svg");
   background-repeat: no-repeat;
@@ -36,6 +47,18 @@
   height: 28px;
   display: inline-block;
 }
+
+
+.print-icon-filled {
+  background-image: image-url("print_filled.svg");
+  background-repeat: no-repeat;
+  background-size: 28px 28px;
+  background-position: 0 0;
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+}
+
 .collapse-icon {
   background-image: image-url("collapse_light.svg");
   background-repeat: no-repeat;
