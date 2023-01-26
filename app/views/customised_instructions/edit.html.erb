@@ -29,18 +29,15 @@
         <h3 class="text-center"> <%= category.customised_instruction_steps.length %> steps </h3>
         <div class="d-flex flex-wrap justify-content-center"  data-controller="popover">
           <% category.customised_instruction_steps.each do |step| %>
-            <div class="d-flex flex-row card m-1" style="width: 100%;">
-              <%= link_to customised_instruction_path(@customised_instruction, step: step.position) do %>
+            <div class="list-group-item d-flex flex-row align-items-center">
+              <div class="m-2">
                 <%= cl_image_tag step.instruction.image.key,
-                            class: "card-img-top img-top",
-                            height: 150,
-                            width: 150,
-                            crop: :fit %>
-              <% end %>
-              <ul class = "list-group">
-                  <li class="list-group-item"><%= step.instruction.description[0..100] %>...</li>
-              </ul>
-
+                    class: "instruction-thumbnail"
+                %>
+              </div>
+              <div>
+                <%= step.instruction.description[0..40] %>...
+              </div>
             </div>
           <% end %>
         </div>

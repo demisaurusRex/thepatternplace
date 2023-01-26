@@ -5,6 +5,39 @@
         <h2 class="card-title mx-auto text-center">Digital instructions</h2>
           <%= render "shared/pattern_bar", pattern: @pattern %>
       </div>
+      <div class="d-flex justify-content-center">
+        <%= link_to "Back", pattern_steps_path(@pattern), class:"btn btn-outline-dark" %>
+        <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Customise instructions
+        </button>
+      </div>
+      <div class="collapse" id="collapseExample">
+        <div class="p-3">
+          <%= simple_form_for [@order, @customised_instruction] do |f| %>
+            <div class="d-flex justify-content-center align-items-center">
+              <%= f.input :name, label: false, placeholder:'Name', wrapper: false  %>
+              <%= f.submit "Create new copy", class: "btn btn-outline-dark" %>
+            </div>
+          <% end %>
+          <div class="list-group list-group-flush">
+            <li class="list-group-item"> <strong>Your copies</strong> </li>
+            <% @order.customised_instructions.each do |customised_instruction|%>
+              <%= link_to customised_instruction_path(customised_instruction) do%>
+                <li class="list-group-item d-flex justify-content-between">
+                  <%=customised_instruction.name%>
+                  <%=
+                    link_to customised_instruction_path(customised_instruction),
+                    method: :delete,
+                    data: {turbo_method: :delete, turbo_confirm: "Cancel customising instructions?"} do
+                  %>
+                   <i class="trashcan-icon"></i>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div class="accordion accordion-flush">
         <h3 class="mt-4 mb-1 text-center"> Sections </h3>
         <% @pattern.categories.each_with_index do |category, index|%>
@@ -19,44 +52,19 @@
             <div class="collapse accordion-collapse"  id="category<%=index%>">
               <div class="list-group list-group-flush">
                 <% category.instructions.each do |instruction| %>
-                  <%= link_to pattern_steps_path(@pattern, category_position: category.position,step: instruction.position) do %>
-                    <div class="list-group-item d-flex flex-row align-items-center">
-                      <div class="m-2">
-                        <%= cl_image_tag instruction.image.key,
-                            class: "instruction-thumbnail"
-                        %>
-                      </div>
-                      <div><%= instruction.description[0..40] %>...</div>
+                  <div class="list-group-item d-flex flex-row align-items-center">
+                    <div class="m-2">
+                      <%= cl_image_tag instruction.image.key,
+                          class: "instruction-thumbnail"
+                      %>
                     </div>
-                  <% end %>
+                    <div><%= instruction.description[0..40] %>...</div>
+                  </div>
                 <% end %>
               </div>
             </div>
           </div>
         <% end %>
-      </div>
-      <p>
-        <button class="shadow p-2 m-2 bg-white text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Customise instructions
-        </button>
-      </p>
-      <div class="collapse" id="collapseExample">
-        <div class="card mx-3">
-          <%= simple_form_for [@order, @customised_instruction] do |f| %>
-            <div class="d-flex justify-content-center align-items-center">
-              <%= f.input :name, label: false, placeholder:'Name', class: "m-0" %>
-              <%= f.submit "Make an editable copy", class: "btn shadow p-2 m-2 bg-white rounded-pill" %>
-            </div>
-          <% end %>
-          <div class="list-group">
-            <li class="list-group-item"> <strong>Your copies</strong> </li>
-            <% @order.customised_instructions.each do |customised_instruction|%>
-              <%= link_to customised_instruction_path(customised_instruction) do%>
-                <li class="list-group-item"> <%=customised_instruction.name%> </li>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
       </div>
     <% else %>
       <div class="pattern-title">

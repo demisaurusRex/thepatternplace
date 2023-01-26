@@ -4,7 +4,8 @@
   &:hover, &:focus, &:active, &:visited, &:link {
     color: $navy;
   }
-  width: 50%;
+  width: 30%;
+  max-height: 40vh;
 }
 
 .position-header {
@@ -21,9 +22,6 @@
   }
 }
 
-.step-container{
-  min-height: 60vh;
-}
 
 .step-description {
   margin: 20px;

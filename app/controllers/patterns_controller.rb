@@ -49,14 +49,8 @@ class PatternsController < ApplicationController
     else
       @step = 1
     end
-    if params[:category_position].present?
-      @category_position = params[:category_position].to_i
-    else
-      @category_position = 1
-    end
     @pattern = Pattern.find(params[:id])
-    @category = @pattern.categories.where(position: @category_position).first
-    @instructions = @category.instructions.order('position ASC')
+    @instructions = @pattern.instructions
   end
 
   private

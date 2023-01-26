@@ -2,13 +2,15 @@
   <div class="m-0 w-100">
 
     <div class="pattern-title">
-      <h2 class="card-title mx-auto text-center">Customised instructions</h2>
-      <%= cl_image_tag @customised_instruction.order.pattern.image[0].key, class: 'card-img-top img-top' %>
-      <h2 class="card-title mx-auto text-center"><%= @customised_instruction.order.pattern.title %></h2>
+      <h2 class="card-title mx-auto text-center"><%= @customised_instruction.name %> </h2>
+      <%= render "shared/pattern_bar", pattern: @customised_instruction.order.pattern %>
     </div>
 
     <div class="accordion accordion-flush">
-      <h3 class="mt-4 mb-1 text-center"> Sections </h3>
+      <div class="d-flex justify-content-around">
+        <%= link_to "Back", pattern_instructions_path(@customised_instruction.order.pattern), class: "btn btn-outline-dark" %>
+        <%= link_to "Show instructions", customised_instruction_steps_path(@customised_instruction), class: "btn btn-outline-dark" %>
+      </div>
       <% @customised_instruction_steps_by_category.each_with_index do |category, index|%>
         <% if category.showing %>
           <div class="accordion-item">
@@ -22,7 +24,6 @@
             <div class="collapse accordion-collapse"  id="category<%=index%>">
               <div class="list-group list-group-flush">
                 <% category.customised_instruction_steps.each do |step| %>
-                  <%= link_to customised_instruction_steps_path(@customised_instruction, step: step.position, category_position: category.position) do %>
                     <div class="list-group-item d-flex flex-row align-items-center">
                       <div class="m-2">
                         <%= cl_image_tag step.instruction.image.key,
@@ -32,7 +33,6 @@
                           <%= step.instruction.description[0..40] %>...
                       </div>
                     </div>
-                  <% end %>
                 <% end %>
               </div>
             </div>
