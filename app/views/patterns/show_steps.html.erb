@@ -1,9 +1,25 @@
-<div class="body-container">
-  <div class="card m-0 w-100">
+<div class="instructions-container">
     <div class="pattern-title">
       <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
     </div>
-    <div class="row d-flex justify-content-center main-container min-vh-100" data-controller="show-patterns">
+    <div class="dropdown d-flex justify-content-center">
+      <%= link_to "↩ Back", pattern_path(@pattern), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
+      <%= link_to "Customise instructions", pattern_instructions_path(@pattern), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
+      <ul class="dropdown-menu">
+        <% @pattern.categories.each do |category| %>
+          <% if category == @category %>
+            <li>
+              <%= link_to category.name, pattern_steps_path(@pattern, category_position: category.position), class: "dropdown-item active" %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to category.name, pattern_steps_path(@pattern, category_position: category.position), class: "dropdown-item" %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <div class="d-flex justify-content-center step-container" data-controller="show-patterns">
       <div class="col d-flex justify-content-center">
         <div id="carouselExampleControls" class="carousel slide w-100">
           <div class="carousel-inner">
@@ -11,20 +27,19 @@
               <% if index == @step - 1 %>
                 <div class="carousel-item active">
                   <div class="position-header">
-                    <h5>Step <%= step.position %> of <%= @instructions.length %></h5>
+                    <h5><%= step.category.name %></h5>
                   </div>
                   <%= cl_image_tag step.image.key,
                       class: "d-block mx-auto carousel-image",
                       height: 800,
                       width: 500,
                       crop: :fit %>
-
                   <div class="step-description"><%= step.description %></div>
                 </div>
               <% else %>
                 <div class="carousel-item">
                   <div class="position-header">
-                    <h5>Step <%= step.position %> of <%= @instructions.length %></h5>
+                    <h5><%= step.category.name %></h5>
                   </div>
                   <%= cl_image_tag step.image.key,
                       class: "d-block mx-auto carousel-image",
@@ -37,11 +52,8 @@
             <% end %>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <i class="fa-solid fa-circle-chevron-left"></i>
           </button>
           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <i class="fa-solid fa-circle-chevron-right"></i>
           </button>
     </div>
-  </div>
 </div>
