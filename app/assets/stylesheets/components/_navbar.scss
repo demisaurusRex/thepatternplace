@@ -16,3 +16,19 @@
 .navbar-lewagon .navbar-cart img {
   width: 40px;
 }
+
+.item {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-toggler{
+  color: transparent;
+  border: none;
+  // display: none;
+}
+
+.navbar-toggler-icon {
+  // background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcMQ0yY4JrqURGGcXLhNVHBy9f4dr2U-O8xMCaV_S2YxIhGY3h631TbOhauI42g_H6yh4&usqp=CAU');
+  color: blue;
+}

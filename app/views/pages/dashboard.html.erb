@@ -12,7 +12,7 @@
         <div class="d-flex justify-content-between flex-wrap">
 
           <% @patterns_for_sale.each do |pattern| %>
-            <div class="card each-card" style="width: 19rem">
+            <div class="card each-card" style="width: 25rem">
               <%= cl_image_tag pattern.image[0].key, class: 'card-img-top img-top' %>
               <div class="card-body">
                 <div class="card-row">
@@ -63,7 +63,7 @@
         <div class="d-flex justify-content-between flex-wrap">
 
           <% @orders.each do |order| %>
-            <div class="card each-card-dashboard" style="width: 19rem">
+            <div class="card each-card-dashboard" style="width: 25rem">
               <%= cl_image_tag order.pattern.image[0].key, class: 'card-img-top img-top-dashboard' %>
               <div class="card-body">
                 <div class="card-row">
