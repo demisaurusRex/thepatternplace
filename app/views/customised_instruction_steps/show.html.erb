@@ -12,7 +12,7 @@
         <div id="carouselExampleControls" class="carousel slide w-100">
           <div class="carousel-inner">
             <% @customised_instruction_steps.each_with_index do |instruction, index| %>
-              <% if instruction.position == @step || (@step == 1 && index == 0) %>
+              <% if index == 1 %>
                 <div class="carousel-item active">
                   <div class="position-header">
                     <h5><%= instruction.custom_category.name %></h5>

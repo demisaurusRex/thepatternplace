@@ -1,4 +1,4 @@
-<div class=" container-fluid">
+<div class="container-fluid">
   <h2>Your cart</h2>
   <% @cart.line_items.each do |line_item| %>
     <div class="shadow p-3 mb-5 ml-3 mr-3 bg-white cart-item">
@@ -22,21 +22,6 @@
           </div>
         </div>
       </div>
-    <% end %>
-    <div class="d-flex flex-column align-items align-items-end">
-      <h3 class="text-end w-100" >Subtotal: <%= number_to_currency(@cart.sub_total) %></h3>
-      <%=
-        button_to "Checkout",
-        checkout_cart_path,
-        class: "btn btn-info shadow mb-2",
-        data: {turbo_confirm: "Confirm purchase?"}
-      %>
-      <%# <%=
-        link_to "Empty cart", cart_path(@current_cart),
-        method: :delete,
-        class: "btn btn-light rounded-pill shadow",
-        data: {turbo_method: :delete, turbo_confirm: "Remove all the items from your cart?"}
-      %>
     </div>
   <% end %>
   <div class="d-flex flex-column align-items align-items-end">
@@ -46,12 +31,6 @@
       checkout_cart_path,
       class: "btn btn-outline-dark shadow mb-2",
       data: {turbo_confirm: "Confirm purchase?"}
-    %>
-    <%# <%=
-      link_to "Empty cart", cart_path(@current_cart),
-      method: :delete,
-      class: "btn btn-light rounded-pill shadow",
-      data: {turbo_method: :delete, turbo_confirm: "Remove all the items from your cart?"}
     %>
   </div>
 
