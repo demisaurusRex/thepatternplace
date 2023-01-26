@@ -1,29 +1,13 @@
 <div class="body-container">
-  <div class="card m-0 w-100">
+  <div class="m-0 w-100">
     <div class="pattern-title">
-      <h2 class="card-title mx-auto text-center"><%= @customised_instruction.order.pattern.title %> with notes</h2>
+      <h2 class="card-title mx-auto text-center"><%= @customised_instruction.order.pattern.title %> </h2>
       <h4 class="card-title mx-auto text-center"><%= @customised_instruction.name %></h2>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <% if @category == nil %>
-            All
-          <% else %>
-            <%= @category %>
-          <% end %>
-        </button>
-        <ul class="dropdown-menu">
-          <li>
-            <%= link_to "All", customised_instruction_steps_path, class: "dropdown-item" %>
-          </li>
-          <% @categories.each do |category| %>
-            <li>
-              <%= link_to category, customised_instruction_steps_path(@customised_instruction, category: category), class: "dropdown-item" %>
-            </li>
-          <% end %>
-        </ul>
+      <div class="dropdown d-flex justify-content-center">
+        <%= link_to "↩ Back", customised_instruction_path(@customised_instruction), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
       </div>
     </div>
-    <div class="row d-flex justify-content-center main-container min-vh-100" data-controller="show-patterns">
+    <div class="row d-flex justify-content-center step-container" data-controller="show-patterns">
       <div class="col d-flex justify-content-center">
         <div id="carouselExampleControls" class="carousel slide w-100">
           <div class="carousel-inner">
@@ -31,42 +15,76 @@
               <% if instruction.position == @step || (@step == 1 && index == 0) %>
                 <div class="carousel-item active">
                   <div class="position-header">
-                    <h5>Step <%= index + 1 %> of <%= @customised_instruction_steps.length %></h5>
+                    <h5><%= instruction.custom_category.name %></h5>
                   </div>
                   <%= cl_image_tag instruction.instruction.image.key,
                       class: "d-block mx-auto carousel-image",
                       height: 800,
                       width: 500,
                       crop: :fit %>
-                  <div class="step-description"><%= instruction.instruction.description %></div>
-
-                  <%= render partial: "step_comment", locals: { customised_instruction_step: instruction }%>
-
+                  <ul class="nav nav-tabs" id="myTab<%=index%>" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="instructions<%=index%>-tab" data-bs-toggle="tab" data-bs-target="#instructions<%=index%>" type="button" role="tab" aria-controls="instructions" aria-selected="true">
+                        Instructions
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="notes<%=index%>-tab" data-bs-toggle="tab" data-bs-target="#notes<%=index%>" type="button" role="tab" aria-controls="notes" aria-selected="false">
+                        Personal notes
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="instructions<%=index%>" role="tabpanel" aria-labelledby="instructions<%=index%>-tab">
+                      <div class="step-description">
+                        <%= instruction.instruction.description %>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="notes<%=index%>" role="tabpanel" aria-labelledby="notes<%=index%>-tab">
+                      <%= render partial: "step_comment", locals: {customised_instruction_step: instruction }%>
+                    </div>
+                  </div>
                 </div>
               <% else %>
                 <div class="carousel-item">
                   <div class="position-header">
-                    <h5>Step <%= index + 1 %> of <%= @customised_instruction_steps.length %></h5>
+                    <h5><%= instruction.custom_category.name %></h5>
                   </div>
                   <%= cl_image_tag instruction.instruction.image.key,
                       class: "d-block mx-auto carousel-image",
                       height: 800,
                       width: 500,
                       crop: :fit %>
-                  <div class="step-description"><%= instruction.instruction.description %></div>
-                    <%= render partial: "step_comment", locals: {customised_instruction_step: instruction }%>
+                  <ul class="nav nav-tabs" id="myTab<%=index%>" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="instructions<%=index%>-tab" data-bs-toggle="tab" data-bs-target="#instructions<%=index%>" type="button" role="tab" aria-controls="instructions" aria-selected="true">
+                        Instructions
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="notes<%=index%>-tab" data-bs-toggle="tab" data-bs-target="#notes<%=index%>" type="button" role="tab" aria-controls="notes" aria-selected="false">
+                        Personal notes
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="instructions<%=index%>" role="tabpanel" aria-labelledby="instructions<%=index%>-tab">
+                      <div class="step-description">
+                        <%= instruction.instruction.description %>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="notes<%=index%>" role="tabpanel" aria-labelledby="notes<%=index%>-tab">
+                      <%= render partial: "step_comment", locals: {customised_instruction_step: instruction }%>
+                    </div>
+                  </div>
                 </div>
               <% end %>
             <% end %>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <i class="fa-solid fa-circle-chevron-left"></i>
           </button>
           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <i class="fa-solid fa-circle-chevron-right"></i>
           </button>
-
-
     </div>
   </div>
 </div>

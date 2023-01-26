@@ -3,7 +3,7 @@
 
 // Define fonts for body and headers
 $body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$headers-font: "JosefinSans", "Nunito", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -14,3 +14,13 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+@font-face {
+  font-family: 'BrandonGrotesque';
+  src: url(config/brandon-grotesque.otf);
+}
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url(config/josefin-sans.ttf);
+}

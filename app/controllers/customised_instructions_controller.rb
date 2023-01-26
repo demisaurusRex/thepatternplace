@@ -10,6 +10,12 @@ class CustomisedInstructionsController < ApplicationController
     @custom_category = CustomCategory.new
   end
 
+  def update
+    @customised_instruction = CustomisedInstruction.find(params[:id])
+    @customised_instruction.update(customised_instruction_params)
+    redirect_to customised_instruction_path(@customised_instruction)
+  end
+
   def new
     @order = Order.find(params[:order_id])
     @customised_instruction = CustomisedInstruction.new
@@ -41,6 +47,13 @@ class CustomisedInstructionsController < ApplicationController
       end
     end
     redirect_to edit_customised_instruction_path(@customised_instruction)
+  end
+
+  def destroy
+    @customised_instruction = CustomisedInstruction.find(params[:id])
+    @pattern = @customised_instruction.order.pattern
+    @customised_instruction.destroy
+    redirect_to pattern_instructions_path(@pattern)
   end
 
   private
