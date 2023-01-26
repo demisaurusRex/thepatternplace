@@ -29,10 +29,10 @@
     <%=
       button_to "Checkout",
       checkout_cart_path,
-      class: "btn btn-info rounded-pill shadow mb-2",
+      class: "btn btn-info shadow mb-2",
       data: {turbo_confirm: "Confirm purchase?"}
     %>
-    <%=
+    <%# <%=
       link_to "Empty cart", cart_path(@current_cart),
       method: :delete,
       class: "btn btn-light rounded-pill shadow",
