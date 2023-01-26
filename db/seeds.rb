@@ -1,199 +1,195 @@
-# require 'open-uri'
+require 'open-uri'
 
 
 
 
-# print `rails db:drop`
-# puts "Creating database"
-# print `rails db:create`
-# puts "Database created"
-# print `rails db:migrate`
+print `rails db:drop`
+puts "Creating database"
+print `rails db:create`
+puts "Database created"
+print `rails db:migrate`
 
-# puts "Creating users..."
-# User.create(username: "stephen123", email: "stephen@test.com", password: "123456")
-# User.create(username: "demi123", email: "demi@test.com", password: "123456")
-# User.create(username: "yatin123", email: "yatin@test.com", password: "123456")
-# User.create(username: "pizza123", email: "pizza@pasta.com", password: "123456")
-# puts 'Users created'
+puts "Creating users..."
+User.create(username: "stephen123", email: "stephen@test.com", password: "123456")
+User.create(username: "Demisaurus", email: "demi@test.com", password: "123456")
+User.create(username: "yatin123", email: "yatin@test.com", password: "123456")
+User.create(username: "PizzaPasta", email: "pizza@pasta.com", password: "123456")
+puts 'Users created'
 
 
-# seed_images = [
-#   {
-#     images: [
-#       "#{Rails.root}/seedimages/seed1_image1.jpg",
-#       "#{Rails.root}/seedimages/seed1_image2.jpg",
-#       "#{Rails.root}/seedimages/seed1_image3.jpg"
-#     ],
-#     fabric: "#{Rails.root}/seedimages/seed1_fabric.jpg",
-#     sizing: "#{Rails.root}/seedimages/seed1_sizing.jpg"
-#   },
-#   {
-#     images: [
-#       "#{Rails.root}/seedimages/seed2_image1.jpg",
-#       "#{Rails.root}/seedimages/seed2_image2.jpg",
-#     ],
-#     fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
-#     sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
-#   },
-#   {
-#     images: [
-#       "#{Rails.root}/seedimages/seed3_image1.webp",
-#       "#{Rails.root}/seedimages/seed2_image2.jpg",
-#     ],
-#     fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
-#     sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
-#   },
-#   {
-#     images: [
-#       "#{Rails.root}/seedimages/seed4_image1.webp",
-#       "#{Rails.root}/seedimages/seed2_image2.jpg",
-#     ],
-#     fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
-#     sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
-#   },
-#   {
-#     images: [
-#       "#{Rails.root}/seedimages/seed5_image1.webp",
-#       "#{Rails.root}/seedimages/seed2_image2.jpg",
-#     ],
-#     fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
-#     sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
-#   },
-#   {
-#     images: [
-#       "#{Rails.root}/seedimages/seed6_image1.png",
-#       "#{Rails.root}/seedimages/seed2_image2.jpg",
-#     ],
-#     fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
-#     sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
-#   },
-#   {
-#     images: [
-#       "#{Rails.root}/seedimages/seed7_image1.jpeg",
-#       "#{Rails.root}/seedimages/seed2_image2.jpg",
-#     ],
-#     fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
-#     sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
-#   },
-#   {
-#     images: [
-#       "#{Rails.root}/seedimages/seed8_image1.png",
-#       "#{Rails.root}/seedimages/seed2_image2.jpg",
-#     ],
-#     fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
-#     sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
-#   },
-#   {
-#     images: [
-#       "#{Rails.root}/seedimages/seeds9_image1.jpeg",
-#       "#{Rails.root}/seedimages/seed2_image2.jpg",
-#     ],
-#     fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
-#     sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
-#   }
-# ]
+seed_images = [
+  {
+    images: [
+      "#{Rails.root}/seedimages/seed1_image1.jpg",
+      "#{Rails.root}/seedimages/seed1_image2.jpg",
+      "#{Rails.root}/seedimages/seed1_image3.jpg"
+    ],
+    fabric: "#{Rails.root}/seedimages/seed1_fabric.jpg",
+    sizing: "#{Rails.root}/seedimages/seed1_sizing.jpg"
+  },
+  {
+    images: [
+      "#{Rails.root}/seedimages/seed2_image1.jpg",
+      "#{Rails.root}/seedimages/seed2_image2.jpg",
+    ],
+    fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
+    sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
+  },
+  {
+    images: [
+      "#{Rails.root}/seedimages/seed3_image1.webp",
+      "#{Rails.root}/seedimages/seed2_image2.jpg",
+    ],
+    fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
+    sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
+  },
+  {
+    images: [
+      "#{Rails.root}/seedimages/seed4_image1.webp",
+      "#{Rails.root}/seedimages/seed2_image2.jpg",
+    ],
+    fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
+    sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
+  },
+  {
+    images: [
+      "#{Rails.root}/seedimages/seed5_image1.webp",
+      "#{Rails.root}/seedimages/seed2_image2.jpg",
+    ],
+    fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
+    sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
+  },
+  {
+    images: [
+      "#{Rails.root}/seedimages/seed6_image1.png",
+      "#{Rails.root}/seedimages/seed2_image2.jpg",
+    ],
+    fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
+    sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
+  },
+  {
+    images: [
+      "#{Rails.root}/seedimages/seed7_image1.jpeg",
+      "#{Rails.root}/seedimages/seed2_image2.jpg",
+    ],
+    fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
+    sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
+  },
+  {
+    images: [
+      "#{Rails.root}/seedimages/seed8_image1.png",
+      "#{Rails.root}/seedimages/seed2_image2.jpg",
+    ],
+    fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
+    sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
+  },
+  {
+    images: [
+      "#{Rails.root}/seedimages/seeds9_image1.jpeg",
+      "#{Rails.root}/seedimages/seed2_image2.jpg",
+    ],
+    fabric: "#{Rails.root}/seedimages/seed2_fabric.jpg",
+    sizing: "#{Rails.root}/seedimages/seed2_sizing.jpg"
+  }
+]
 
-# patterns = [
-#   {
-#     title: "Vogue Misses Special Occasion Dress",
-#     description: "Dress is fitted through bust and hip with lined body, unlined sleeve and flounce, purchased bias tape to finish armhole edge, narrow hems and length and trim variations. B: Purchased trim.",
-#     difficulty: "easy",
-#     price: 10
-#   },
-#   {
-#     title: "Make by TFS - Cass Pant",
-#     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
-#     difficulty: "hard",
-#     price: 22
-#   },
-#   {
-#     title: "Brown Striped Pant",
-#     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
-#     difficulty: "easy",
-#     price: 50
-#   },
-#   {
-#     title: "Fancy Checked Warm Top",
-#     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
-#     difficulty: "hard",
-#     price: 35
-#   },
-#   {
-#     title: "Plain Black Pant",
-#     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
-#     difficulty: "hard",
-#     price: 20
-#   },
-#   {
-#     title: "Beach Shirt",
-#     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
-#     difficulty: "hard",
-#     price: 22
-#   },
-#   {
-#     title: "Woman Kurta top",
-#     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
-#     difficulty: "hard",
-#     price: 15
-#   },
-#   {
-#     title: "Crop Top Holly",
-#     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
-#     difficulty: "medium",
-#     price: 22
-#   },
-#   {
-#     title: "Comfy summer Dress",
-#     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
-#     difficulty: "easy",
-#     price: 25
-#   }
-# ]
+patterns = [
+  {
+    title: "Vogue Misses Special Occasion Dress",
+    description: "Dress is fitted through bust and hip with lined body, unlined sleeve and flounce, purchased bias tape to finish armhole edge, narrow hems and length and trim variations. B: Purchased trim.",
+    difficulty: "easy",
+    price: 10
+  },
+  {
+    title: "Make by TFS - Cass Pant",
+    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    difficulty: "hard",
+    price: 22
+  },
+  {
+    title: "Brown Striped Pant",
+    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    difficulty: "easy",
+    price: 50
+  },
+  {
+    title: "Fancy Checked Warm Top",
+    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    difficulty: "hard",
+    price: 35
+  },
+  {
+    title: "Plain Black Pant",
+    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    difficulty: "hard",
+    price: 20
+  },
+  {
+    title: "Beach Shirt",
+    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    difficulty: "hard",
+    price: 22
+  },
+  {
+    title: "Woman Kurta top",
+    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    difficulty: "hard",
+    price: 15
+  },
+  {
+    title: "Crop Top Holly",
+    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    difficulty: "medium",
+    price: 22
+  },
+  {
+    title: "Comfy summer Dress",
+    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    difficulty: "easy",
+    price: 25
+  }
+]
 
-# puts 'patterns created'
+puts 'patterns created'
 
-# user_last = User.last.id
+user_last = User.last.id
 
-# patterns.each do |pattern|
-#   pattern = Pattern.new(
-#     title: pattern[:title],
-#     user_id: rand(1..user_last),
-#     description: pattern[:description],
-#     difficulty: ["Easy", "Medium", "Hard"].sample,
-#     price: pattern[:price],
-#     instruction_format: ["Print", "Interactive"].sample
-#   )
-#   pattern.save
-# end
+patterns.each do |pattern|
+  pattern = Pattern.new(
+    title: pattern[:title],
+    user_id: rand(1..user_last),
+    description: pattern[:description],
+    difficulty: ["Easy", "Medium", "Hard"].sample,
+    price: pattern[:price],
+    instruction_format: ["Print", "Interactive"].sample
+  )
+  pattern.save
+end
 
-# puts 'patterns created'
+puts 'patterns created'
 
-# seed_images.each_with_index do |seed_image, index|
-#   pattern = Pattern.find(index + 1)
-#   seed_image[:images].each_with_index do |image, image_index|
-#     pattern.image.attach(
-#       io: File.open(image),
-#       filename: "image_#{index + 1}#{image_index}.jpg",
-#       content_type: "image/jpg"
-#     )
-#   end
+seed_images.each_with_index do |seed_image, index|
+  pattern = Pattern.find(index + 1)
+  seed_image[:images].each_with_index do |image, image_index|
+    pattern.image.attach(
+      io: File.open(image),
+      filename: "image_#{index + 1}#{image_index}.jpg",
+      content_type: "image/jpg"
+    )
+  end
 
-#   pattern.fabric_usage.attach(
-#     io: File.open(seed_image[:fabric]),
-#     filename: "fabric_#{index + 1}.jpg",
-#     content_type: "image/jpg")
-#   pattern.sizing.attach(
-#     io: File.open(seed_image[:sizing]),
-#     filename: "sizing_#{index + 1}.jpg",
-#     content_type: "image/jpg"
-#   )
-# end
+  pattern.fabric_usage.attach(
+    io: File.open(seed_image[:fabric]),
+    filename: "fabric_#{index + 1}.jpg",
+    content_type: "image/jpg")
+  pattern.sizing.attach(
+    io: File.open(seed_image[:sizing]),
+    filename: "sizing_#{index + 1}.jpg",
+    content_type: "image/jpg"
+  )
+end
 
-<<<<<<< Updated upstream
-# puts Category.create!(pattern_id: 2, name: "Back Welt Pocket", position: 1)
-=======
 puts Category.create!(pattern_id: 2, name: "Back Darts", position: 1)
->>>>>>> Stashed changes
 
 puts 'Adding Instructions'
 instructions = [
@@ -302,7 +298,7 @@ instructions = [
       through the seam. Press the front crotch seam open.",
       "Flip the pants over so the left leg is facing up. Fold back the fly guard so the zip is showing. Pin it
       out of the way if that helps. Making sure that everything is lying flat, pin the zip to the fly facing.
-      Using a zip foot, sew the zip down 6mm from the edge of the zip tape."
+      Using a zip foot, sew the zip down 6mm from the edge of the zip tape.",
       "Using the fly facing pattern piece and the markings on the Right Front Leg pattern piece as a guide,
       draw on the shape of your fly top stitching using chalk or fabric pen. Make sure the chalk or pen
       can brush or wash off easily, so you are not left with marks on the front of your pants!
@@ -488,7 +484,7 @@ instructions.each_with_index do |instruction, index|
     instruction = Instruction.new(
       pattern_id: instruction[:pattern_id],
       description: step,
-      category_id: 1,
+      category_id: category_id,
       position: step_index + 1
     )
     instruction.image.attach(
