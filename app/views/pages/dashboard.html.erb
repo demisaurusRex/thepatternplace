@@ -6,44 +6,47 @@
   <h1><%= current_user.username %> Dashboard</h1>
 
 </div>
-  <ul class = "list-group">
-    <div class="container">
-  <h2 class="pb-2 border-bottom">Your Patterns for sale <%= link_to 'Add a new Pattern', new_pattern_path, class: , class: "btn btn-outline-dark" %></h2>
-        <div class="d-flex justify-content-between flex-wrap">
 
+
+<div>
+  <h2 class="pb-2 border-bottom">Your Patterns for sale <%= link_to 'Create a pattern', new_pattern_path, class: , class: "btn btn-outline-dark" %></h2>
+  <ul class = "list-group">
+    <div>
+        <div class = "container-fluid">
           <% @patterns_for_sale.each do |pattern| %>
-            <div class="card each-card" style="width: 25rem">
+            <div class="each-card shadow p-3 mb-5 ml-3 mr-3 bg-white">
               <%= cl_image_tag pattern.image[0].key, class: 'card-img-top img-top' %>
               <div class="card-body">
                 <div class="card-row">
-                  <p><strong>Title: </strong>  <%= pattern.title %></p>
+                  <p class="mb-0"><%= pattern.title %></p>
+                  <p class="mb-0">$<%= pattern.price %></p>
                 </div>
                 <div class="card-row">
-                <div class = "icon-row">
-                  <% if pattern.difficulty == "Easy" %>
-                  <i class="difficulty-icon"></i>
-                  <i class="difficulty-icon-light"></i>
-                  <i class="difficulty-icon-light"></i>
-                  <% elsif pattern.difficulty == "Medium" %>
-                  <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
-                  <i class="difficulty-icon-light"></i>
-                  <% elsif pattern.difficulty == "Hard" %>
-                  <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
-                  <% end %>
+                  <div class = "icon-row">
+                    <% if pattern.difficulty == "Easy" %>
+                    <i class="difficulty-icon"></i>
+                    <i class="difficulty-icon-light"></i>
+                    <i class="difficulty-icon-light"></i>
+                    <% elsif pattern.difficulty == "Medium" %>
+                    <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+                    <i class="difficulty-icon-light"></i>
+                    <% elsif pattern.difficulty == "Hard" %>
+                    <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+                    <% end %>
+
                   </div>
                   <div class = "icon-row">
                     <i class="interactive-icon"></i></i><i class="print-icon"></i>
                   </div>
+
                 </div>
-                            <div>
-              <p class="card-text"><strong>Description: </strong> <%= pattern.description[0..30] %></p>
-            </div>
+                                <p class="card-text"> <%= pattern.description %></p>
                 <div class="card-row">
-                 <p class="card-text"><strong>Price: </strong>$<%= pattern.price %></p>
+                  <%# <%= link_to 'More info', pattern , class: 'btn btn-outline-dark' %>
+                  <%= link_to 'Go to pattern', pattern_path(pattern) , class: 'btn btn-outline-dark bottom-link-index' %>
+                  <%# <%= link_to 'More info', pattern , class: 'btn btn-outline-dark bottom-link-index' %>
+                  <%= link_to 'delete', pattern_path(pattern), data: { turbo_confirm: 'Are you sure', turbo_method: :delete }, class: 'btn btn-outline-danger bottom-link-index' %>
                 </div>
-                <%= link_to 'Go to pattern', pattern_path(pattern) , class: 'btn btn-outline-dark bottom-link-index' %>
-                <%# <%= link_to 'More info', pattern , class: 'btn btn-outline-dark bottom-link-index' %>
-                <%= link_to 'delete', pattern_path(pattern), data: { turbo_confirm: 'Are you sure', turbo_method: :delete }, class: 'btn btn-outline-danger bottom-link-index' %>
               </div>
             </div>
           <% end %>
@@ -54,6 +57,61 @@
 
 
 </div>
+
+
+
+<div class="dashboard-container">
+  <h2 class="pb-2 border-bottom">Patterns you purchased</h2>
+
+  <ul class = "list-group">
+    <div>
+        <div class = "container-fluid">
+          <% @orders.each do |order| %>
+            <div class="each-card shadow p-3 mb-5 ml-3 mr-3 bg-white">
+              <%= cl_image_tag order.pattern.image[0].key, class: 'card-img-top img-top' %>
+              <div class="card-body">
+                <div class="card-row">
+                  <p class="mb-0"><%= order.pattern.title %></p>
+                  <p class="mb-0">$<%= order.pattern.price %></p>
+                </div>
+                <div class="card-row">
+                  <div class = "icon-row">
+                    <% if order.pattern.difficulty == "Easy" %>
+                    <i class="difficulty-icon"></i>
+                    <i class="difficulty-icon-light"></i>
+                    <i class="difficulty-icon-light"></i>
+                    <% elsif order.pattern.difficulty == "Medium" %>
+                    <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+                    <i class="difficulty-icon-light"></i>
+                    <% elsif order.pattern.difficulty == "Hard" %>
+                    <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
+                    <% end %>
+
+                  </div>
+                  <div class = "icon-row">
+                    <i class="interactive-icon-filled"></i></i><i class="print-icon-filled"></i>
+                  </div>
+
+                </div>
+                                <p class="card-text"> <%= order.pattern.description %></p>
+                <div class="card-row">
+                  <%# <%= link_to 'More info',  pattern , class: 'btn btn-outline-dark' %>
+                  <%= link_to 'Go to pattern', pattern_path(order.pattern) , class: 'btn btn-outline-dark bottom-link-index' %>
+                  <%# <%= link_to 'More info', pattern , class: 'btn btn-outline-dark bottom-link-index' %>
+                  <%= link_to "Show Instructions", pattern_instructions_path(order.pattern), class: "btn btn-outline-dark bottom-link-index" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+  </ul>
+
+
+
+</div>
+
+
 
 <br>
 </div class="dashboard-container">
@@ -105,3 +163,4 @@
 
 
 </div>
+<br><br><br><br>
