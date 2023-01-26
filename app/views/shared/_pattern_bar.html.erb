@@ -1,0 +1,10 @@
+<div class="shadow p-2 m-2 bg-white text-dark d-flex justify-content-between align-items-center w-auto m-4">
+  <div>
+    <%= cl_image_tag pattern.image[0].key,
+          class: "d-block",
+          height: 80,
+          width: 80,
+          crop: :fit %>
+  </div>
+  <h5 class="mb-0"><%= pattern.title %></h5>
+</div>

@@ -6,13 +6,15 @@ class CustomisedInstructionStepsController < ApplicationController
     else
       @step = 1
     end
-    @category = params[:category] if params[:category].present?
+    if params[:category_position].present?
+      @category_position = params[:category_position].to_i
+    else
+      @category_position = 1
+    end
+    @category = @customised_instruction.custom_categories.where(position: @category_position).first
 
     @customised_instruction_steps = @customised_instruction.customised_instruction_steps.order('position ASC')
-    customised_instruction_steps_by_category = @customised_instruction_steps.group_by(&:category)
 
-    @categories = customised_instruction_steps_by_category.keys
-    @customised_instruction_steps = customised_instruction_steps_by_category[@category] if @category
   end
 
   def update

@@ -1,6 +1,12 @@
 // desktop view
-.instructions-thumbnail {
-  height: 200px;
+.instruction-thumbnail {
+  height: 110px;
+  width: 150px;
   object-fit: cover;
   object-position: center;
+}
+
+.instructions-container {
+  max-width: 600px;
+  margin: 0 auto;
 }
