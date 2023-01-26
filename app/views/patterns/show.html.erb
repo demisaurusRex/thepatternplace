@@ -1,15 +1,16 @@
+<div class="d-flex justify-content-around">
+  <%= link_to 'Return to search', patterns_path , class: "btn btn-outline-dark"%>
+  <% if Order.find_by(pattern_id: @pattern.id, user: current_user) %>
+    <%= link_to "Show Instructions", pattern_steps_path, class: "btn btn-outline-dark" %>
+  <% elsif LineItem.find_by(pattern_id: @pattern.id, user: current_user) %>
+    <div class="shadow p-2 m-2 bg-white text-dark rounded-pill"> Already in cart</div>
+  <% else %>
+    <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
+  <% end %>
+</div>
+<br>
 <div class="patterns-container">
   <div class="m-0 w-100">
-    <div class="d-flex justify-content-between">
-      <%= link_to '↩ Return to search', patterns_path , class: "shadow p-2 m-2 bg-white text-dark rounded-pill"%>
-      <% if Order.find_by(pattern_id: @pattern.id, user: current_user) %>
-        <%= link_to "Show Instructions", pattern_steps_path, class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
-      <% elsif LineItem.find_by(pattern_id: @pattern.id, user: current_user) %>
-        <div class="shadow p-2 m-2 bg-white text-dark rounded-pill"> Already in cart</div>
-      <% else %>
-        <%= button_to "Add to cart", line_items_path(:pattern_id => @pattern.id), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
-      <% end %>
-    </div>
     <div class="row d-flex justify-content-center main-container" data-controller="show-patterns">
       <div class="col d-flex justify-content-center">
         <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">

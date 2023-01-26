@@ -2,9 +2,9 @@
     <div class="pattern-title">
       <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
     </div>
-    <div class="dropdown d-flex justify-content-center">
-      <%= link_to "↩ Back", pattern_path(@pattern), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
-      <%= link_to "Customise instructions", pattern_instructions_path(@pattern), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
+    <div class="dropdown d-flex justify-content-around">
+      <%= link_to "Back", pattern_path(@pattern), class: "btn btn-outline-dark" %>
+      <%= link_to "Customise instructions", pattern_instructions_path(@pattern), class: "btn btn-outline-dark" %>
       <ul class="dropdown-menu">
         <% @pattern.categories.each do |category| %>
           <% if category == @category %>

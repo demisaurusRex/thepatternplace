@@ -189,13 +189,6 @@ seed_images.each_with_index do |seed_image, index|
   )
 end
 
-<<<<<<< HEAD
-
-
-=======
-puts Category.create!(pattern_id: 2, name: "Back Welt Pocket", position: 1)
->>>>>>> master
-
 puts 'Adding Instructions'
 instructions =
   [

@@ -4,7 +4,7 @@
       <h2 class="card-title mx-auto text-center"><%= @customised_instruction.order.pattern.title %> </h2>
       <h4 class="card-title mx-auto text-center"><%= @customised_instruction.name %></h2>
       <div class="dropdown d-flex justify-content-center">
-        <%= link_to "↩ Back", customised_instruction_path(@customised_instruction), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
+        <%= link_to "Back", customised_instruction_path(@customised_instruction), class: "btn btn-outline-dark" %>
       </div>
     </div>
     <div class="row d-flex justify-content-center step-container" data-controller="show-patterns">
