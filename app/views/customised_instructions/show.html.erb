@@ -9,7 +9,7 @@
     <div class="accordion accordion-flush">
       <div class="d-flex justify-content-around">
         <%= link_to "Back", pattern_instructions_path(@customised_instruction.order.pattern), class: "btn btn-outline-dark" %>
-        <%= link_to "Show instructions", customised_instruction_steps_path(@customised_instruction), class: "btn btn-outline-dark" %>
+        <%= link_to "Show customised instructions", customised_instruction_steps_path(@customised_instruction), class: "btn btn-outline-dark" %>
       </div>
       <% @customised_instruction_steps_by_category.each_with_index do |category, index|%>
         <% if category.showing %>
