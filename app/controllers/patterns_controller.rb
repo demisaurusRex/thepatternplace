@@ -50,7 +50,13 @@ class PatternsController < ApplicationController
       @step = 1
     end
     @pattern = Pattern.find(params[:id])
-    @instructions = @pattern.instructions
+    @instructions = []
+    @categories = @pattern.categories.order('position ASC')
+    @categories.each do |category|
+      category.instructions.order('position ASC').each do |instruction|
+        @instructions << instruction
+      end
+    end
   end
 
   private
