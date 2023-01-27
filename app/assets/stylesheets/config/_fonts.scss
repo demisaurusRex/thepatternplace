@@ -1,9 +1,10 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish&family=Quicksand:wght@300&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "JosefinSans", "Nunito", "Helvetica", "sans-serif";
+$body-font: "Quicksand", "Helvetica", "sans-serif";
+$headers-font: "Mulish", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -15,12 +16,12 @@ $headers-font: "JosefinSans", "Nunito", "Helvetica", "sans-serif";
 // }
 // $my-font: "Font Name";
 
-@font-face {
-  font-family: 'BrandonGrotesque';
-  src: url(config/brandon-grotesque.otf);
-}
+// @font-face {
+//   font-family: 'BrandonGrotesque';
+//   src: url(config/brandon-grotesque.otf);
+// }
 
-@font-face {
-  font-family: 'JosefinSans';
-  src: url(config/josefin-sans.ttf);
-}
+// @font-face {
+//   font-family: 'JosefinSans';
+//   src: url(config/josefin-sans.ttf);
+// }

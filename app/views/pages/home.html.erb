@@ -1,35 +1,66 @@
-  <div id="hero">
 
+<%#
     <div class="text-wrapper">
       <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
         <div>
-          <h1 class='heading first-heading'>A digital space for the designers and the makers</h1>
-          <h2 class='heading second-heading'>Create, sell, buy patterns and find inspiration</h2>
+          <h1 class='heading first-heading'>Store, organise and learn</h1>
+          <h2 class='heading second-heading'>with your community, all in one place</h2>
           <%=
             link_to "Get started",
             patterns_path,
             class: "btn btn-light"
           %>
+        <%# </div>
+      </div>
+    </div> %>
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">The Pattern Place</h1>
+        <p class="lead">Store, organise and learn with your community, all in one place!</p>
+        <p>It's time to ditch the printed instructions, the disorganisation and the wasted storage space. Interactive instructions are here to improve your space and sewing experience.</p>
+        <p class="lead">
+          <%= link_to "Get started", patterns_path, class: "btn btn-light" %>
+        </p>
+    </div>
+  </section>
+  <div class="album py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="lead">Featured patterns</h2>
+    </div>
+    <ul class = "list-group">
+      <div>
+        <div class = "container-fluid">
+          <% @patterns.each do |pattern| %>
+            <div class="each-card shadow p-3 mb-5 ml-3 mr-3 bg-white">
+              <%= cl_image_tag pattern.image[0].key, class: 'card-img-top img-top' %>
+              <div class="card-body">
+                <div class="card-row">
+                  <h5 class="mb-0"><%= pattern.title %></h5>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-    </div>
+     </ul>
 
-  </div><!-- End Hero -->
-
-  <main id="main">
+  </div>
+</main>
+  <%# <main id="main">
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
-      <div class="container">
+      <div class="container ">
 
         <div class="row">
           <div class="col-lg-6 d-flex screenshot-row" data-aos="zoom-in">
             <%# <div class="screenshot">placeholder</div> %>
             <%# <div class="screenshot"><placeholde></placeholde>r</div> %>
-            <%= image_tag "homepage_image1.jpg", class: "img-fluid screenshot"%>
-            <%= image_tag "homepage_image2.jpg", class: "img-fluid screenshot"%>
+            <%# <%= image_tag "homepage_image1.jpg", class: "img-fluid screenshot"%>
+            <%# <%= image_tag "homepage_image2.jpg", class: "img-fluid screenshot"%>
             <%# <%= image_tag "instructions.png", class: "img-fluid screenshot"%>
-          </div>
+          <%# </div>
           <div class="col-lg-6 d-flex flex-column justify-contents-center" data-aos="fade-left">
             <div class="content pt-4 pt-lg-0">
               <h3>Your personal library of design and fabric patterns</h3>
@@ -47,4 +78,4 @@
 
       </div>
     </section><!-- End About Section -->
-  </main>
+  </main>  %>
