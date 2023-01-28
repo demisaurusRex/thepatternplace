@@ -18,7 +18,7 @@
         <div class="list-group list-group-flush">
             <li class="list-group-item"> <h5>Your copies</h5> </li>
             <% @order.customised_instructions.each do |customised_instruction|%>
-              <%= link_to customised_instruction_path(customised_instruction) do%>
+              <%= link_to customised_instruction_path(customised_instruction), style: 'text-decoration: none;' do%>
                 <li class="list-group-item d-flex justify-content-between">
                   <%=customised_instruction.name%>
                   <%=
