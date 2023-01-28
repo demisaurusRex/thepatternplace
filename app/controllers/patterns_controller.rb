@@ -52,6 +52,7 @@ class PatternsController < ApplicationController
     @pattern = Pattern.find(params[:id])
     @instructions = []
     @categories = @pattern.categories.order('position ASC')
+    # note - N + 1 query - inherently bad, trying to find a better way of doing it
     @categories.each do |category|
       category.instructions.order('position ASC').each do |instruction|
         @instructions << instruction

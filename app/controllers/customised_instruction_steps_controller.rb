@@ -6,11 +6,12 @@ class CustomisedInstructionStepsController < ApplicationController
     else
       @step = 1
     end
+    # TODO: another N + 1 query that needs to be redone
     @customised_instruction_categories = @customised_instruction
-                                    .custom_categories.where(showing: true)
+                                    .custom_categories.where(showing: true).order('position ASC')
     @customised_instruction_steps = []
     @customised_instruction_categories.each do |category|
-      category.customised_instruction_steps.each do |step|
+      category.customised_instruction_steps.order('position ASC').each do |step|
         @customised_instruction_steps << step
       end
     end
