@@ -108,7 +108,11 @@ patterns = [
   },
   {
     title: "Ivy Dress Top",
-    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    description: "Ivy is an everyday staple - a modern dress + top pattern with options galore!
+    The Dress (View A) features a boxy straight-t through the bodice with a dropped waist and generous gathered full
+    skirt, in seam pockets and a deep turned-back hem. The Top (View B) features a fully faced peplum-style hem. Both
+    views have a centre back neck opening and three collar options are provided, including a Peter Pan Collar, fully faced
+    Round Neck, or a Tie Back Collar.",
     difficulty: "medium",
     price: 50
   },
