@@ -1,21 +1,21 @@
 <div class="body-container">
   <div class="m-0 w-100">
     <div class="pattern-title">
-      <h2 class="card-title mx-auto text-center"><%= @customised_instruction.order.pattern.title %> </h2>
-      <h4 class="card-title mx-auto text-center"><%= @customised_instruction.name %></h2>
+        <h2 class="card-title m-2 text-center"><%= @customised_instruction.name %></h2>
+      </div>
       <div class="dropdown d-flex justify-content-center">
-        <%= link_to "↩ Back", customised_instruction_path(@customised_instruction), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
+        <%= link_to "Back", customised_instruction_path(@customised_instruction), class: "btn btn-outline-dark" %>
       </div>
     </div>
-    <div class="row d-flex justify-content-center step-container" data-controller="show-patterns">
+    <div class="row d-flex justify-content-center step-container mt-2" data-controller="show-patterns">
       <div class="col d-flex justify-content-center">
         <div id="carouselExampleControls" class="carousel slide w-100">
           <div class="carousel-inner">
             <% @customised_instruction_steps.each_with_index do |instruction, index| %>
               <% if index == 1 %>
                 <div class="carousel-item active">
-                  <div class="position-header">
-                    <h5><%= instruction.custom_category.name %></h5>
+                  <div class="d-flex justify-content-center">
+                    <h6><%= instruction.custom_category.name %></h6>
                   </div>
                   <%= cl_image_tag instruction.instruction.image.key,
                       class: "d-block mx-auto carousel-image",
@@ -47,8 +47,8 @@
                 </div>
               <% else %>
                 <div class="carousel-item">
-                  <div class="position-header">
-                    <h5><%= instruction.custom_category.name %></h5>
+                  <div class="d-flex justify-content-center">
+                    <h6><%= instruction.custom_category.name %></h6>
                   </div>
                   <%= cl_image_tag instruction.instruction.image.key,
                       class: "d-block mx-auto carousel-image",

@@ -2,27 +2,23 @@
   <div class="m-0 w-100">
     <% if @order %>
       <div class="pattern-title">
-        <h2 class="card-title mx-auto text-center">Digital instructions</h2>
+        <h2 class="card-title mx-auto text-center">Interactive instructions</h2>
           <%= render "shared/pattern_bar", pattern: @pattern %>
       </div>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-around">
         <%= link_to "Back", pattern_steps_path(@pattern), class:"btn btn-outline-dark" %>
+        <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCopies" aria-expanded="false" aria-controls="collapseCopies">
+          Your copies
+        </button>
         <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Customise instructions
+          Create instructions
         </button>
       </div>
-      <div class="collapse" id="collapseExample">
-        <div class="p-3">
-          <%= simple_form_for [@order, @customised_instruction] do |f| %>
-            <div class="d-flex justify-content-center align-items-center">
-              <%= f.input :name, label: false, placeholder:'Name', wrapper: false  %>
-              <%= f.submit "Create new copy", class: "btn btn-outline-dark" %>
-            </div>
-          <% end %>
-          <div class="list-group list-group-flush">
-            <li class="list-group-item"> <strong>Your copies</strong> </li>
+      <div class="collapse" id="collapseCopies">
+        <div class="list-group list-group-flush">
+            <li class="list-group-item"> <h5>Your copies</h5> </li>
             <% @order.customised_instructions.each do |customised_instruction|%>
-              <%= link_to customised_instruction_path(customised_instruction) do%>
+              <%= link_to customised_instruction_path(customised_instruction), style: 'text-decoration: none;' do%>
                 <li class="list-group-item d-flex justify-content-between">
                   <%=customised_instruction.name%>
                   <%=
@@ -30,12 +26,22 @@
                     method: :delete,
                     data: {turbo_method: :delete, turbo_confirm: "Cancel customising instructions?"} do
                   %>
-                   <i class="trashcan-icon"></i>
+                  <i class="trashcan-icon"></i>
                   <% end %>
                 </li>
               <% end %>
             <% end %>
           </div>
+        </div>
+      </div>
+      <div class="collapse" id="collapseExample">
+        <div class="p-3">
+          <%= simple_form_for [@order, @customised_instruction] do |f| %>
+            <div class="d-flex justify-content-around align-items-center">
+              <%= f.input :name, label: false, placeholder:'Name', wrapper: false  %>
+              <%= f.submit "Create new copy", class: "btn btn-outline-dark" %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="accordion accordion-flush">

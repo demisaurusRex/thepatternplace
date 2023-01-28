@@ -10,10 +10,10 @@ puts "Database created"
 print `rails db:migrate`
 
 puts "Creating users..."
-User.create(username: "stephen123", email: "stephen@test.com", password: "123456")
-User.create(username: "demi123", email: "demi@test.com", password: "123456")
-User.create(username: "yatin123", email: "yatin@test.com", password: "123456")
-User.create(username: "pizza123", email: "pizza@pasta.com", password: "123456")
+User.create(username: "StephenChoo", email: "stephen@test.com", password: "123456")
+User.create(username: "Demisaurus", email: "demi@test.com", password: "123456")
+User.create(username: "Yatin", email: "yatin@test.com", password: "123456")
+User.create(username: "PizzaPasta", email: "pizza@pasta.com", password: "123456")
 puts 'Users created'
 
 
@@ -107,14 +107,18 @@ patterns = [
     price: 22
   },
   {
-    title: "Brown Striped Pant",
+    title: "Ivy Dress Top",
     description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
-    difficulty: "easy",
+    difficulty: "medium",
     price: 50
   },
   {
     title: "Fancy Checked Warm Top",
-    description: "The Cass Pant is a modern take on a classic pleat front trouser and is designed to complement your existing wardrobe. This style of trouser pairs nicely with merino tops and button-down shirts. It features a casual mid-rise, zip fly front with internal button tab closure, belt loops, side angled pockets, two rear jet pockets, and a wide leg with a subtle taper and deep hem at the ankle. Cass comes as a single view, and you can lengthen or shorten the leg as you wish!",
+    description: "Ivy is an everyday staple - a modern dress + top pattern with options galore!
+    The Dress (View A) features a boxy straight-t through the bodice with a dropped waist and generous gathered full
+    skirt, in seam pockets and a deep turned-back hem. The Top (View B) features a fully faced peplum-style hem. Both
+    views have a centre back neck opening and three collar options are provided, including a Peter Pan Collar, fully faced
+    Round Neck, or a Tie Back Collar.",
     difficulty: "hard",
     price: 35
   },
@@ -188,13 +192,6 @@ seed_images.each_with_index do |seed_image, index|
     content_type: "image/jpg"
   )
 end
-
-<<<<<<< HEAD
-
-
-=======
-puts Category.create!(pattern_id: 2, name: "Back Welt Pocket", position: 1)
->>>>>>> master
 
 puts 'Adding Instructions'
 instructions =
@@ -336,7 +333,7 @@ instructions =
     {
       category: {
         pattern_id: 2,
-        name: "Side",
+        name: "Side Pockets",
         position: 5
       },
       pattern_id: 2,
@@ -356,7 +353,7 @@ instructions =
       "Use a point to ensure the corner is fully turned out and press. Sew the bottom edge again at 5mm to
       enclose the seam.",
       "Matching the notches, baste the pocket bag to the side seam and waist seam of the front pant
-      piece within the seam allowance. Repeat for other side.",
+      piece within the seam allowance. Repeat for other side."
       ]
     },
     {
@@ -437,7 +434,7 @@ instructions =
         for all belt loops.",
         "Sew a buttonhole as indicated on the waistband pattern piece. If your button varies in size to the
         recommended you will need to adjust the length of your buttonhole accordingly",
-        "Sew a buttonhole on the fly barrier extension if you haven’t done so already.",
+        "Sew a buttonhole on the fly barrier extension if you haven’t done so already."
       ]
     },
     {
@@ -462,9 +459,7 @@ instructions =
       steps:
       [
         "Sew on buttons on your back jet pockets and on the waistband, as indicated on the pattern. When
-      sewing on the internal button take extra care that the stitches do not come through to the right side.",
-      "Next, sew buttons on your back pockets.",
-      "Clip your loose threads and give your garment a final press. All complete!"
+      sewing on the internal button take extra care that the stitches do not come through to the right side. Next, sew buttons on your back pockets. Clip your loose threads and give your garment a final press. All complete!"
       ]
     }
   ]
@@ -485,6 +480,356 @@ instructions.each_with_index do |instruction, index|
     )
     instruction.image.attach(
         io: File.open("#{Rails.root}/seedimages/instructions_seed_images/pattern_2/#{count}.png"),
+        filename: "image_2_#{step_index + 1}.png",
+        content_type: "image/png"
+    )
+    puts instruction.save!
+    count += 1
+  end
+end
+puts 'Instructions added'
+
+puts 'Adding Instructions'
+instructions2 =
+  [
+    {
+      category: {
+        pattern_id: 3,
+        name: "Bodice",
+        position: 1
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "First we will begin with constructing the bodice. This step is the same for both the Top and Dress view. Stay stitch the front bodice neckline.",
+        "On the front bodice, pin the darts and then sew them from the side seam, towards the dart point. Press the dart excess
+        down.",
+        "Neaten the sides and shoulders of the front bodice.",
+        "Stay stitch neckline of back bodice pieces.",
+        "Neaten the sides, centre back and shoulder edges of the of back bodice. Take care not to stretch out the edges when
+        overlocking, especially at the shoulders. If you are sewing the Peter Pan collar or Round Neck option, you will now sew the button loop."
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3,
+        name: "Button loops bodice ONLY",
+        position: 2
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "Fold the button loop as shown as per your pressing at the beginning and edge stitch it closed. Now fold the piece to
+        form a loop. Pin the button loop on the right side of the left back bodice piece at centre back, 1cm down from the neck edge. Align
+        the raw edges with the centre back. Baste in place. "
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3,
+        name: "Bodice Cont.",
+        position: 3
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "With the right sides together, pin, then sew the two back bodice pieces together at centre back from the notch to the
+        waist edge. Press the seam open.",
+        "Pin the front shoulder to the back shoulder with the right sides together and sew them with a 1cm seam. Repeat for both
+        shoulders. Press the seams open.
+        Sew the side seams together and press open."
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3,
+        name: "Peter Pan Collar",
+        position: 4
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "With right sides together, sew one top collar piece to an under collar piece around the long, curved edge.
+        Trim the seam at the curved edge.",
+        "Fold the seam allowance at centre back end towards the under collar. Pin the centre back and then sew the centre back
+        seam, catching the seam allowance as you sew. Turn the collar right side out and under stitch at centre back for as far as you can comfortably sew, and along the outer
+        collar where the collar will sit over the shoulder. Give it a press, rolling the collar piece slightly towards under collar as
+        you go. Repeat for the other side.",
+        "Baste the collar to the neck edge, with under collar facing the right side of the bodice. The centre back of the collar will
+        align with the notch at centre back on the bodice.",
+        "The two collar pieces will meet at the centre front notch. Sew the collar pieces to the bodice, just inside the seam
+        allowance.",
+        "Stitch the neck facing at the centre back from the notch to the lower edge.
+        Press the seam open then neaten the outer edge.
+        With right sides together, pin the neck facing to the bodice at centre back. Now sew each centre back edge together
+        with a 1cm seam, starting at the neck edge and finishing at the notch.",
+        "Next, fold the facing to the wrong side so the wrong sides are together, then under stitch each edge at the centre back
+        opening. ",
+        "Turn the facing back, so it is right sides together with the bodice again. Fold the seam allowance at the centre back
+        towards the facing and then pin the neck facing to the bodice at the neck edge. Sew around the neck edge.",
+        "Clip the curve with approximately 1cm spacings and then turn the facing to the wrong using a point turner to help you if
+        you need.",
+        "Under stitch around the neck edge on the facing. You won’t be able to under stitch right to centre back, just sew as
+        close as you can. Give your neckline a press."
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3,
+        name: "Round Neck Collar",
+        position: 5
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "Stitch the neck facing at the centre back from the notch to the lower edge.
+        Press the seam open then neaten the outer edge.
+        With right sides together, pin the neck facing to the bodice at centre back. Now sew each centre back edge together
+        with a 1cm seam, starting at the neck edge and finishing at the notch.",
+        "Next, fold the facing to the wrong side so the wrong sides are together, then under stitch each edge at the centre back
+        opening. ",
+        "Turn the facing back, so it is right sides together with the bodice again. Fold the seam allowance at the centre back
+        towards the facing and then pin the neck facing to the bodice at the neck edge. Sew around the neck edge.",
+        "Clip the curve with approximately 1cm spacings and then turn the facing to the wrong using a point turner to help you if
+        you need.",
+        "Under stitch around the neck edge on the facing. You won’t be able to under stitch right to centre back, just sew as
+        close as you can. Give your neckline a press.",
+        "At the centre back, fold back the neck facing and sew the facing seam allowance to the bodice seam allowance to
+        secure it. Be careful not to catch your bodice when sewing.",
+        "Ditch stitch at each shoulder seam to secure the neck facing to the bodice. If you are sewing the Peter Pan collar, take
+        care not to catch your collar securing the facing. "
+
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3,
+        name: "Tie Back Collar",
+        position: 6
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "With the right sides together, stitch the back neck facing at centre back from the notch to the lower edge.
+        Press the seam open, then neaten the long out edge and shoulder.",
+        "With right sides together, pin the centre back neck facing to back bodice. Now sew the edges together. ",
+        "Next, turn the facing right side out, then under stitch each edge at the centre back opening. ",
+        "At the centre back, fold back the neck facing and sew the facing seam allowance to the bodice seam allowance to
+        secure it.
+        Stitch the back neck facing to the front bodice shoulder seam allowance and then baste the facing to the bodice at the
+        back neckline. ",
+        "Sew a line stitching at 1cm between the notches, on one side only. This stitching is a guide for folding under the seam
+        allowance to help ensure a tidy finish when you close up the collar.",
+        "Pin the collar to the bodice on the unstitched side, with the right side of the collar, to the wrong side of the bodice,
+        matching the notches. Sew at 1cm then press the seam towards the collar.",
+        "Fold the tie collar in half right sides together and pin. Then, stitch the ends closed. Do the same for both ties.",
+        "Trim the curves and turn right side out. Give the ties a press.",
+        "Fold the collar seam allowance under 1cm, using the line of stitching to guide you and pin it in place. Now, edge stitch
+        the collar closed."
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3,
+        name: "Long Sleeves",
+        position: 7
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "We will start by sewing the sleeve placket binding. Using a ruler and tailor’s chalk or a fabric pen, mark your slash line
+        from the notch at the wrist to the X mark
+        Cut up the slash line to the X mark. Do not cut past the centre of the X or your opening will be too long for the sleeve
+        placket binding.",
+        "Lay the sleeve placket binding right side up, then place the sleeve on top, also right side up. The cut edge of the sleeve
+        split aligns with the long edge of the sleeve placket binding at each end. The top of the split is set back 8mm from the
+        binding edge.
+        Sew a seam 1cm from the edge of the sleeve placket binding, until you reach the top of the split. The seam allowance on
+        the sleeve starts at 1cm, and reduces to 2mm at the top of the split. Stop with your needle down at the top of the split,
+        adjust your fabric, and then continue sewing to the other end. The seam allowance on
+        the sleeve starts at 1cm
+        and reduces to 2mm at
+        top of the split.",
+        "Fold the binding to enclose the raw edge, tucking the 1cm seam allowance of the placket binding under. Pin in place
+        then edge stitch the binding closed from the right side.",
+        "Fold the binding in half with the right sides of the sleeve together and stitch diagonally across the fold in the binding. ",
+        "Fold the upper binding under to the wrong side, then baste in place. Gently give the binding a press.",
+        "With the right sides together, pin the sleeve seam then stitch. Neaten the seam and press it towards the back."
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3,
+        name: "Button Cuff",
+        position: 8
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "Sew a line of stitching at 1cm between the notches as shown below. The side with the stitched line will be the outer cuff,
+        and the side without stitching will be the inner cuff. The stitching is a guide for folding under the seam allowance to help
+        ensure a tidy finish when you close up the cuff.",
+        "Fold the cuff in half, lengthways with the right sides together. Sew the buttonhole end of the cuff closed, finishing 1cm
+        before the cuff edge.",
+        "At the button tab end of the cuff, sew the end closed at 1cm, this time finishing at the cuff edge.",
+        "Then fold the seam towards the inner cuff (unstitched side) and stitch from the edge to the notch, catching the seam
+        allowance as you sew. Clip into the end of the seam 1cm on the inner cuff only. ",
+        "Sew second cuff as a mirror image of the first cuff so you create a pair of cuffs.",
+        "Trim the lower corner on the tab/button end of the cuffs. Now turn your cuff right side out and press.",
+        "Using the longest stitch on your sewing machine, run two parallel lines of stitching 6mm apart, at the cuff edge.
+        Gather the stitching until it is the same width as the cuff opening.
+        Pin the sleeve to the cuff between the notches, wrong side of the sleeve to the right side of the inner cuff. This is the
+        unstitched edge of the cuff. The button tab end will go at the back of the sleeve, and the buttonhole end will be at the
+        front. Now stitch the sleeve and cuff together.",
+        "Press the seam into the cuff. Fold the 1cm seam allowance under, using the line of stitching you sewed to guide you, and
+        pin. Edge stitch the cuff closed from the right side. Remove any visible gathering stitches and repeat for your other cuff.",
+        "This is how your cuffs will look when complete. The buttons and buttonholes will be sewn at the end.",
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3, name: "Tie Cuff", position: 9
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "On the tie cuff, sew a line of stitching at 1cm from the edge to the notch as shown below. This stitching is a guide for
+        folding under the seam allowance to help ensure a tidy finish when you close up the cuff. The side with the stitched line
+        will be the outer cuff, and the side without stitching will be the inner cuff.",
+        "Using the longest stitch on your sewing machine, run two parallel lines of stitching 6mm apart, at the cuff edge. Gather
+        the stitching until it is the same width cuff between the notches.
+        Pin the sleeve to the cuff between the notches, on the inner cuff (unstitched side). Place the wrong side of the sleeve to
+        the right side of the cuff. Now stitch together.",
+        "Fold the tie cuff in half right sides together and stitch the ends closed.",
+        "Trim the curves and turn right side out. ",
+        "Press the seam into the cuff. Fold under the seam allowance 1cm and pin. Edge stitch the cuff closed from the right side.
+        Repeat for your other cuff."
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3, name: "Attach sleeve", position: 10
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "We will now set in the sleeves.
+        Run a line of basting stitches over the sleeve head, 6mm from the edge, between the notches.
+        With the right sides together, pin the sleeve to the bodice, matching the underarm seam and the notches. Pull the
+        basting thread gently to ease the sleeve head to the bodice. Sew the sleeve to the bodice, adjusting the sleeve head as you sew and taking care not to create any tucks. Neaten the
+        seam and then press it towards the sleeve. Repeat for the second sleeve."
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3, name: "Sleeveless", position: 11
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "With right sides together, stitch the front armhole facing to the back armhole facing at the shoulder and underarm.
+        Press the seams open then neaten the outer edge with your overlocker.",
+        "Pin the facing to the bodice with the right sides together, matching the notches. Sew the armhole facing to the bodice
+        then clip the curves. ",
+        "Under stitch on the facing then press it to the wrong side of the garment.",
+        "Ditch stitch at the shoulder and underarm seams to secure the armhole facing to the bodice.",
+        "Now, top stitch the facing at 2cm from the edge.
+        Repeat for the other side."
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3, name: "Sewing the skirt", position: 12
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "First, we will construct the skirt back.
+        With right sides together pin one back skirt side panel to a skirt centre panel, matching the notches. Stitch, and then
+        neaten the seam. Repeat for the other side panel. Press the seams towards the side panels.
+        Run two parallel lines of basting stitches, 6mm apart, at the waist edge of the skirt back. Use the longest stitch your
+        machine has.
+        Next, pull the bobbin threads to gather the skirt until it is the same width as the waist edge on the bodice back. ",
+        "Now we will sew the skirt front.
+        Place the pocket bag onto the front skirt side panel with the right sides together and pin together at notches marked
+        ‘pocket opening’. Stitch a box from notch to notch, from the outside edge in towards the pocket bag 1cm. With needle
+        down, turn 90 degrees and continue stitching at 1cm, parallel to the edge. Stitch down to line up with the lower notch,
+        turn back towards outside and stitch towards the edge.
+        Next, mitre in to the upper and lower corners of the box by snipping into each corner. Take care not to cut into your
+        stitch line.",
+        "Fold entire pocket bag over towards the wrong side of the fabric and press along edge of pocket opening. Under stitch
+        the pocket opening from corner to corner. ",
+        "Fold the pocket in half, right sides together. Stitch a 1cm seam across the top of the pocket bag to close it and a 1cm
+        seam around the curved, lower edge of the pocket bag to close the base. Neaten the lower edge only. Baste the pocket
+        to the skirt at the side seam above and below the pocket opening.
+        Repeat for the other side.",
+        "With right sides together, pin unpocketed edge of the left front side panel to the left side of the front centre panel,
+        matching the notches. Sew the seam at 1cm then neaten edges. Repeat for the other front side panel. Press the seams
+        towards the side seams.
+        Fold the pocket out of the way then run two parallel lines of basting stitches, 6mm apart, at the waist edge of the skirt
+        front. Use the longest stitch your machine has. Do not catch the pocket with these stitches.
+        Next, pull the bobbin threads to gather the skirt until it is the same width as the waist edge on the bodice front.",
+        "With the right sides together, pin the skirt front to the skirt back at the side seams. Stitch together using a 1cm seam.
+        Take care near pocket edge not to accidently catch the pocket opening in this seam. You can either pin it back a little or
+        tuck it out of the way as you get close to it.
+        Neaten the side seams then press them towards the back.",
+        "With the right sides together, pin the skirt to the bodice, matching the notches and distributing the gathers evenly. Then
+        pin the pockets in place on top of the gathers. Sew the skirt to the bodice and then neaten the seam. Press the seam up, towards the bodice. Fold back your hem seam allowance 1cm, the fold up the hem another 8cm and pin. Edge stitch the hem closed and
+        then press. "
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3, name: "Sewing the peplum", position: 13
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "Stay stitch the waist edge of each peplum and peplum facing piece separately to prevent them from stretching out. ",
+        "Now, with right sides together, sew the side seams of the two peplum pieces together. Press the seams open. Do the
+        same with the peplum facing.",
+        "Pin the peplum to the peplum facing at the outer edge, with the right sides together and matching the side seams and
+        notches. Sew the peplum to the peplum facing with a 6mm seam at the outer edge. Go slow when sewing this seam,
+        and take care not to stretch out the hem edge. ",
+        "Turn the peplum right sides out and then under stitch on the peplum facing. Give your peplum a press then baste the
+        peplum to the peplum facing at the waist edge.",
+        "Pin the peplum to the bodice at the waist edge, with the right sides together. Sew them together with 1cm seam and
+        then neaten the raw edge. Press this seam towards the bodice."
+      ]
+    },
+    {
+      category: {
+        pattern_id: 3, name: "Finishing Touches", position: 14
+      },
+      pattern_id: 3,
+      steps:
+      [
+        "To keep your skirt or peplum seam allowance in place, back tack in the ditch 2-3 stitches at the bodice side seams and
+        bodice centre back.",
+        "If you are sewing the Round Neck or Peter Pan Collar, sew a button at centre back, opposite your button loop. ",
+        "If you are sewing the button cuff, sew a buttonhole on each cuff as indicated, as per your machine’s settings. Use the
+        buttonhole placement template as a guide. Sew a button on the tab, opposite the buttonhole, as indicated. Clip any loose threads, remove any visible basting stitches, then give your Ivy Dress or Top a final press.
+        You’re all done!"
+      ]
+    }
+  ]
+
+count = 1
+instructions2.each_with_index do |instruction, index|
+  category = Category.create(
+    pattern_id: instruction[:category][:pattern_id],
+    name: instruction[:category][:name],
+    position: instruction[:category][:position]
+  )
+  instruction[:steps].each_with_index do |step, step_index|
+    instruction = Instruction.new(
+      pattern_id: instruction[:pattern_id],
+      description: step,
+      category_id: category.id,
+      position: step_index + 1
+    )
+    instruction.image.attach(
+        io: File.open("#{Rails.root}/seedimages/instructions_seed_images/pattern_3/#{count}.png"),
         filename: "image_2_#{step_index + 1}.png",
         content_type: "image/png"
     )

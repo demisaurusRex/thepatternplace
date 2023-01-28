@@ -8,8 +8,8 @@
 </div>
 
 
-<div>
-  <h2 class="pb-2 border-bottom">Your Patterns for sale <%= link_to 'Create a pattern', new_pattern_path, class: , class: "btn btn-outline-dark" %></h2>
+<div class="container-fluid mb-3">
+  <h2 class="pb-2">Patterns created <%= link_to 'New pattern', new_pattern_path, class: , class: "btn btn-outline-dark" %></h2>
   <ul class = "list-group">
     <div>
         <div class = "container-fluid">
@@ -40,7 +40,6 @@
                   </div>
 
                 </div>
-                                <p class="card-text"> <%= pattern.description %></p>
                 <div class="card-row">
                   <%# <%= link_to 'More info', pattern , class: 'btn btn-outline-dark' %>
                   <%= link_to 'Go to pattern', pattern_path(pattern) , class: 'btn btn-outline-dark bottom-link-index' %>
@@ -60,8 +59,8 @@
 
 
 
-<div class="dashboard-container">
-  <h2 class="pb-2 border-bottom">Patterns you purchased</h2>
+<div class="container-fluid mb-3">
+  <h2 class="pb-2">Patterns purchased</h2>
 
   <ul class = "list-group">
     <div>
@@ -93,12 +92,11 @@
                   </div>
 
                 </div>
-                                <p class="card-text"> <%= order.pattern.description %></p>
                 <div class="card-row">
                   <%# <%= link_to 'More info',  pattern , class: 'btn btn-outline-dark' %>
                   <%= link_to 'Go to pattern', pattern_path(order.pattern) , class: 'btn btn-outline-dark bottom-link-index' %>
                   <%# <%= link_to 'More info', pattern , class: 'btn btn-outline-dark bottom-link-index' %>
-                  <%= link_to "Show Instructions", pattern_instructions_path(order.pattern), class: "btn btn-outline-dark bottom-link-index" %>
+                  <%= link_to "Show Instructions", pattern_steps_path(order.pattern), class: "btn btn-outline-dark bottom-link-index" %>
                 </div>
               </div>
             </div>
@@ -110,57 +108,3 @@
 
 
 </div>
-
-
-
-<br>
-</div class="dashboard-container">
-  <ul class = "list-group">
-    <div class="container">
-  <h2 class="pb-2 border-bottom">Patterns you purchased</h2>
-        <div class="d-flex justify-content-between flex-wrap">
-
-          <% @orders.each do |order| %>
-            <div class="card each-card-dashboard" style="width: 25rem">
-              <%= cl_image_tag order.pattern.image[0].key, class: 'card-img-top img-top-dashboard' %>
-              <div class="card-body">
-                <div class="card-row">
-                  <p><strong>Title: </strong>  <%= order.pattern.title %></p>
-                </div>
-                <div class="card-row">
-                <div class = "icon-row">
-                  <% if order.pattern.difficulty == "Easy" %>
-                  <i class="difficulty-icon"></i>
-                  <i class="difficulty-icon-light"></i>
-                  <i class="difficulty-icon-light"></i>
-                  <% elsif order.pattern.difficulty == "Medium" %>
-                  <i class="difficulty-icon"></i><i class="difficulty-icon"></i>
-                  <i class="difficulty-icon-light"></i>
-                  <% elsif order.pattern.difficulty == "Hard" %>
-                  <i class="difficulty-icon"></i><i class="difficulty-icon"></i><i class="difficulty-icon"></i>
-                  <% end %>
-                  </div>
-                  <div class = "icon-row">
-                    <i class="interactive-icon"></i></i><i class="print-icon"></i>
-                  </div>
-                </div>
-                            <div>
-              <p class="card-text"><strong>Description: </strong> <%= order.pattern.description[0..30] %></p>
-            </div>
-                <div class="card-row">
-                 <p class="card-text"><strong>Price: </strong>$<%= order.pattern.price %></p>
-                </div>
-                <%= link_to 'Go to pattern', pattern_path(order.pattern) , class: 'btn btn-outline-dark bottom-link-index' %>
-                <%# <%= link_to 'More info', pattern , class: 'btn btn-outline-dark bottom-link-index' %>
-
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-  </ul>
-</div>
-
-
-</div>
-<br><br><br><br>

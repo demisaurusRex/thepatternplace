@@ -1,10 +1,13 @@
 <div class="instructions-container">
     <div class="pattern-title">
-      <h2 class="card-title mx-auto text-center"><%= @pattern.title %></h2>
-    </div>
-    <div class="dropdown d-flex justify-content-center">
-      <%= link_to "↩ Back", pattern_path(@pattern), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
-      <%= link_to "Customise instructions", pattern_instructions_path(@pattern), class: "shadow p-2 m-2 bg-white text-dark rounded-pill" %>
+        <h2 class="card-title mx-auto text-center">Interactive instructions</h2>
+          <%= render "shared/pattern_bar", pattern: @pattern %>
+      </div>
+    <div class="dropdown">
+      <div class="d-flex justify-content-around mb-3">
+        <%= link_to "Back", pattern_path(@pattern), class: "btn btn-outline-dark" %>
+        <%= link_to "Customise instructions", pattern_instructions_path(@pattern), class: "btn btn-outline-dark" %>
+      </div>
       <ul class="dropdown-menu">
         <% @pattern.categories.each do |category| %>
           <% if category == @category %>
@@ -26,7 +29,7 @@
             <% @instructions.each_with_index do |step, index| %>
               <% if index == @step - 1 %>
                 <div class="carousel-item active">
-                  <div class="position-header">
+                  <div class="d-flex justify-content-center">
                     <h5><%= step.category.name %></h5>
                   </div>
                   <%= cl_image_tag step.image.key,
@@ -38,7 +41,7 @@
                 </div>
               <% else %>
                 <div class="carousel-item">
-                  <div class="position-header">
+                  <div class="d-flex justify-content-center">
                     <h5><%= step.category.name %></h5>
                   </div>
                   <%= cl_image_tag step.image.key,

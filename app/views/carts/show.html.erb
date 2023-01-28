@@ -12,8 +12,8 @@
                   crop: :fit %>
           </div>
           <div class="d-flex flex-column justify-content-around">
-            <h5 class="mb-0"><%= line_item.pattern.title %></h5>
-            <h5 class="mb-0"><%= number_to_currency(line_item.pattern.price) %></h5>
+            <p class="mb-0"><%= line_item.pattern.title %></p>
+            <p class="mb-0"><%= number_to_currency(line_item.pattern.price) %></p>
           </div>
           <div class="d-flex flex-row align-items-center">
             <%= link_to line_item_path(line_item), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete?"}  do %>
