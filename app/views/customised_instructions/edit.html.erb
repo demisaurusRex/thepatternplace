@@ -44,16 +44,16 @@
       </div>
     <% end %>
   </div>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-around">
     <%=
         link_to "Cancel", customised_instruction_path(@customised_instruction),
         method: :delete,
-        class: "shadow p-2 m-2 bg-white text-dark",
+        class: "btn btn-outline-dark",
         data: {turbo_method: :delete, turbo_confirm: "Cancel customising instructions?"}
       %>
     <%=
       link_to "Confirm", customised_instruction_path(@customised_instruction),
-      class: "shadow p-2 m-2 bg-white text-dark"
+      class: "btn btn-outline-dark"
     %>
   </div>
 </div>

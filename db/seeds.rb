@@ -353,7 +353,7 @@ instructions =
       "Use a point to ensure the corner is fully turned out and press. Sew the bottom edge again at 5mm to
       enclose the seam.",
       "Matching the notches, baste the pocket bag to the side seam and waist seam of the front pant
-      piece within the seam allowance. Repeat for other side.",
+      piece within the seam allowance. Repeat for other side."
       ]
     },
     {
@@ -434,7 +434,7 @@ instructions =
         for all belt loops.",
         "Sew a buttonhole as indicated on the waistband pattern piece. If your button varies in size to the
         recommended you will need to adjust the length of your buttonhole accordingly",
-        "Sew a buttonhole on the fly barrier extension if you haven’t done so already.",
+        "Sew a buttonhole on the fly barrier extension if you haven’t done so already."
       ]
     },
     {
@@ -703,7 +703,7 @@ instructions2 =
         "Fold the tie cuff in half right sides together and stitch the ends closed.",
         "Trim the curves and turn right side out. ",
         "Press the seam into the cuff. Fold under the seam allowance 1cm and pin. Edge stitch the cuff closed from the right side.
-        Repeat for your other cuff.",
+        Repeat for your other cuff."
       ]
     },
     {
