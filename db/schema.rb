@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_24_042525) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_28_034553) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_042525) do
     t.bigint "customised_instruction_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "showing", default: true
+    t.boolean "showing", default: false
     t.index ["customised_instruction_id"], name: "index_custom_categories_on_customised_instruction_id"
   end
 
